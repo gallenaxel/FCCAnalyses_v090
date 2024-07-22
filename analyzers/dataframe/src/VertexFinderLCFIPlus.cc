@@ -308,6 +308,61 @@ ROOT::VecOps::RVec<VertexingUtils::FCCAnalysesVertex> findSVfromTracks(ROOT::Vec
 
     // see if we can also get indices in the reco collection (for tracks forming an SV)
     //sec_vtx.reco_ind = VertexFitterSimple::get_reco_ind(recoparticles,thetracks); // incorrect
+    if(tr_vtx_fin.size() == 2) {
+    double chi2_vtx = sec_vtx.vertex.chi2;
+
+   
+    TVector3 x_PV(PV.vertex.position[0], PV.vertex.position[1],
+                PV.vertex.position[2]);
+    TVector3 x_vtx(sec_vtx.vertex.position[0], sec_vtx.vertex.position[1],
+                   sec_vtx.vertex.position[2]);
+    TVector3 x_vtx_PV = x_vtx - x_PV;
+
+    std::cout << "PV(x,y,z) = (" << PV.vertex.position[0] << "," << PV.vertex.position[1] << "," << PV.vertex.position[2] << ")" << std::endl;
+
+
+    std::cout << "chi2 " << chi2_vtx << std::endl;
+        
+    std::cout << "PV_DV Distance = " << x_vtx_PV.Mag() << std::endl; 
+
+
+
+    int Ntr = tr_vtx_fin.size();
+    bool Units_mm = true;
+
+    for (Int_t i = 0; i < Ntr; i++) {
+      float trk_PT = VertexingUtils::get_trackMom(tr_vtx_fin[i]);
+      std::cout << "pT = " << trk_PT << std::endl;
+  
+
+      edm4hep::TrackState t = tr_vtx_fin[i];
+      TVectorD par = VertexingUtils::get_trackParam(t,Units_mm);
+      TMatrixDSym Cov = VertexingUtils::get_trackCov(t, Units_mm);
+
+      std::cout << "COV MATRIX (d0, phi0, omega, z0, tanLambda) = ( \n";
+              for (int row = 0; row < Cov.GetNrows(); ++row) {
+                  for (int col = 0; col < Cov.GetNcols(); ++col) {
+                      std::cout << Cov(row, col);
+                      if (col < Cov.GetNcols() - 1) {
+                          std::cout << ", ";
+                      }
+                  }
+                  if (row < Cov.GetNrows() - 1) {
+                      std::cout << "; \n";
+                  }
+              }
+              std::cout << ")" << std::endl;
+          
+
+      std::cout << "(d0, phi0, omega, z0, tanLambda) = (";
+    for (int i = 0; i < par.GetNrows(); ++i) {
+        std::cout << par[i];
+        if (i < par.GetNrows() - 1) std::cout << ", ";
+    }
+    std::cout << ")" << std::endl;
+    } }
+
+
 
     result.push_back(sec_vtx);
     //
