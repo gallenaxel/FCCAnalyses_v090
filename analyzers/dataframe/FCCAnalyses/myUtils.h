@@ -77,6 +77,14 @@ namespace myUtils{
     ROOT::VecOps::RVec<int> operator() (ROOT::VecOps::RVec<edm4hep::ReconstructedParticleData> recop);
   };
 
+  struct selMC_leg{
+    selMC_leg( int arg_idx );
+    int m_idx;
+    ROOT::VecOps::RVec<edm4hep::MCParticleData> operator() (ROOT::VecOps::RVec<int> list_of_indices,
+							    ROOT::VecOps::RVec<edm4hep::MCParticleData> in) ;
+  };
+
+  ROOT::VecOps::RVec<float> get_both_scalars(ROOT::VecOps::RVec<float> scalar1_value, ROOT::VecOps::RVec<float> scalar2_value);
 
   ROOT::VecOps::RVec<edm4hep::TrackState> get_pseudotrack(ROOT::VecOps::RVec<VertexingUtils::FCCAnalysesVertex> vertex,
 							  ROOT::VecOps::RVec<edm4hep::ReconstructedParticleData> recop);
