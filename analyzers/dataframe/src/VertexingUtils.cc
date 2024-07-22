@@ -1,5 +1,6 @@
 #include "FCCAnalyses/VertexingUtils.h"
 #include "FCCAnalyses/VertexFitterSimple.h"
+#include "FCCAnalyses/myUtils.h"
 
 #include "TrkUtil.h" // from delphes
 
@@ -18,6 +19,143 @@ TVectorD XPtoPar(TVector3 x, TVector3 p, Double_t Q) {
   TrkUtil tu;
   return tu.XPtoPar(x, p, Q, fB);
 }
+
+// ----------------------------------------------------------------------------------------------------------------------
+// ---- Following code block is used in the Exotic Higgs Decays to LLPs analysis to find DVs with the SV finder of LCFI+
+// ----
+
+//
+// function to merge vertices if the distance between them are less than 10*error on the position, or if they are within 1 mm from each other
+//
+ROOT::VecOps::RVec<FCCAnalysesVertex> mergeVertices ( ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, const ROOT::VecOps::RVec<edm4hep::TrackState>& alltracks ) {
+  ROOT::VecOps::RVec<FCCAnalysesVertex> result;
+  ROOT::VecOps::RVec<FCCAnalysesVertex> merged_vertices;
+  int n = vertices_in.size();
+
+  // only try merging if there are 2 or more vertices
+  if (n == 0 || n == 1) {
+    result = vertices_in;
+    return result;
+  }
+
+  // check distance between vertices pair-wise
+  for (int i=0; i < n-1; i++){
+    FCCAnalysesVertex ivtx = vertices_in.at(i);
+
+    for (int j=i+1; j < n; j++){
+      FCCAnalysesVertex jvtx = vertices_in.at(j);
+      float distance = FCCAnalyses::myUtils::get_distanceVertex(ivtx.vertex, jvtx.vertex, -1);   //input on edm4::vertexdata format, int comp = -1 to get distance in xyz
+      float error = FCCAnalyses::myUtils::get_distanceErrorVertex(ivtx.vertex, jvtx.vertex, -1);
+      float threshold = 10*error;
+
+      if (distance < threshold || distance < 1){
+        ROOT::VecOps::RVec<edm4hep::TrackState> tracks;
+        ROOT::VecOps::RVec<int> tracks_indices_i = ivtx.reco_ind;
+        ROOT::VecOps::RVec<int> tracks_indices_j = jvtx.reco_ind;
+
+        for (int k = 0; k < tracks_indices_i.size(); k++) {
+          tracks.push_back(alltracks[tracks_indices_i.at(k)]);
+        }
+
+         for (int k = 0; k < tracks_indices_j.size(); k++) {
+          tracks.push_back(alltracks[tracks_indices_j.at(k)]);
+        }
+
+        // get the associated tracks to each vertex, combine and do a refit
+        FCCAnalysesVertex mergedVertex = VertexFitterSimple::VertexFitter_Tk(2, tracks, alltracks);
+
+        merged_vertices.push_back(mergedVertex);
+
+        for (int k = 0; k < n; k++) {
+          if (k != i && k != j) {
+            merged_vertices.push_back(vertices_in.at(k));
+          }
+        }
+
+        //recursive process, repeat until vertices that all have distance > threshold are found
+        result = FCCAnalyses::VertexingUtils::mergeVertices(merged_vertices, alltracks);
+
+        return result;
+      }
+    }
+
+    result.push_back(ivtx);
+  }
+  result.push_back(vertices_in.at(n-1));
+  return result;
+}
+
+//
+// selection of tracks based on the transverse momentum pT
+//
+sel_pt_tracks::sel_pt_tracks(float arg_min_pt) : m_min_pt(arg_min_pt) {};
+ROOT::VecOps::RVec<edm4hep::TrackState> sel_pt_tracks::operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in) {
+    ROOT::VecOps::RVec<edm4hep::TrackState> result;
+    result.reserve(in.size());
+    for (size_t i = 0; i < in.size(); ++i) {
+        auto & track = in[i];
+        TVectorD track_param = FCCAnalyses::VertexingUtils::get_trackParam(track);  //track parameters in edm4hep format
+        TVector3 tracks_p = FCCAnalyses::VertexingUtils::ParToP(track_param);   //get the momentum of the tracks from the track_parameters
+        double tracks_pt = tracks_p.Pt();   //Pt: the transverse component
+        if (tracks_pt > m_min_pt) {
+            result.emplace_back(track);
+        }
+    }
+    return result;
+}
+
+//
+// selection of tracks based on the impact paramter d0
+//
+sel_d0_tracks::sel_d0_tracks(float arg_min_d0) : m_min_d0(arg_min_d0) {};
+ROOT::VecOps::RVec<edm4hep::TrackState> sel_d0_tracks::operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in) {
+    ROOT::VecOps::RVec<edm4hep::TrackState> result;
+    result.reserve(in.size());
+    for (size_t i = 0; i < in.size(); ++i) {
+        auto & track = in[i];
+        double tr_d0 = fabs(track.D0);
+        if (tr_d0 > m_min_d0) {
+            result.emplace_back(track);
+        }
+    }
+    return result;
+}
+
+//
+// selection of DVs based on number of tracks
+//
+ROOT::VecOps::RVec<FCCAnalysesVertex> cutTracksDVs ( ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, ROOT::VecOps::RVec<int> n_tracks) {
+    ROOT::VecOps::RVec<FCCAnalysesVertex> result;
+    int n = vertices_in.size();
+
+    for (int i=0; i < n; i++){
+        if (n_tracks.at(i) > 2) {
+            result.push_back(vertices_in.at(i));
+        }
+    }
+    return result;
+}
+                          
+//
+// selection of DVs based on full vertex selection
+//
+ROOT::VecOps::RVec<FCCAnalysesVertex> vertexSelDVs ( ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, ROOT::VecOps::RVec<int> n_tracks, ROOT::VecOps::RVec<double> distanceDV, ROOT::VecOps::RVec<double> invMassDV, int n_tracks_min, double distance_min, double distance_max, double inv_mass_min) {
+    ROOT::VecOps::RVec<FCCAnalysesVertex> result;
+    int n = vertices_in.size();
+
+    for (int i=0; i < n; i++){
+        if (n_tracks.at(i) > n_tracks_min && invMassDV.at(i) > inv_mass_min && distanceDV.at(i) > distance_min && distanceDV.at(i) < distance_max) {
+            result.push_back(vertices_in.at(i));
+        }
+    }
+    return result;
+}
+
+// ----
+// ---- end of DV specific code
+// --------------------------------------------------------------------------------------------------------------
+
+
 
 //
 // Selection of particles based on the d0 / z0 significances of the associated
@@ -151,14 +289,6 @@ TVectorD Delphes2Edm4hep_TrackParam(const TVectorD &param, bool Units_mm) {
   return result;
 }
 
-#if __has_include("edm4hep/CovMatrix6f.h")
-TMatrixDSym
-Edm4hep2Delphes_TrackCovMatrix(const edm4hep::CovMatrix6f &covMatrix,
-                               bool Units_mm) {
-  return Edm4hep2Delphes_TrackCovMatrix(covMatrix.values, Units_mm);
-}
-#endif
-
 TMatrixDSym
 Edm4hep2Delphes_TrackCovMatrix(const std::array<float, 21> &covMatrix,
                                bool Units_mm) {
@@ -278,10 +408,12 @@ TVectorD get_trackParam(edm4hep::TrackState &atrack, bool Units_mm) {
   return res;
 }
 
-TMatrixDSym get_trackCov(const edm4hep::TrackState &atrack, bool Units_mm) {
-  const auto &covMatrix = atrack.covMatrix;
+TMatrixDSym get_trackCov(edm4hep::TrackState &atrack, bool Units_mm) {
+  auto covMatrix = atrack.covMatrix;
 
-  return Edm4hep2Delphes_TrackCovMatrix(covMatrix, Units_mm);
+  TMatrixDSym covM = Edm4hep2Delphes_TrackCovMatrix(covMatrix, Units_mm);
+
+  return covM;
 }
 
 // ----------------------------------------------------------------------------------------
