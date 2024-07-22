@@ -20,11 +20,10 @@
 #include "fastjet/JetDefinition.hh"
 
 
+/** Vertexing utilities
+*/
 namespace FCCAnalyses{
 
-/**
- * Vertexing utilities.
- */
 namespace VertexingUtils{
 
   /// from delphes: returns track state parameters (delphes convention) for a given vertex (x), momentum (p) and charge
@@ -84,6 +83,29 @@ namespace VertexingUtils{
   /// Retrieve the number of reconstructed vertices from the collection of vertex object
   int get_Nvertex( ROOT::VecOps::RVec<FCCAnalysesVertex> TheVertexColl );
 
+  /// Merge vertices that are within 10*error of position or 1 mm, of each other
+  ROOT::VecOps::RVec<FCCAnalysesVertex> mergeVertices ( ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, const ROOT::VecOps::RVec<edm4hep::TrackState>& alltracks );
+
+  /// select DVs with at least 3 tracks
+  ROOT::VecOps::RVec<FCCAnalysesVertex> cutTracksDVs ( ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, ROOT::VecOps::RVec<int> n_tracks);
+
+  /// select DVs with full vertex selection
+  ROOT::VecOps::RVec<FCCAnalysesVertex> vertexSelDVs (ROOT::VecOps::RVec<FCCAnalysesVertex> vertices_in, ROOT::VecOps::RVec<int> n_tracks, ROOT::VecOps::RVec<double> distanceDV, ROOT::VecOps::RVec<double> invMassDV, int n_tracks_min, double distance_min, double distance_max, double inv_mass_min);
+
+  /// selection of tracks based on the transverse momentum pT
+  struct sel_pt_tracks {
+    sel_pt_tracks(float arg_min_pt);
+    float m_min_pt = 0;
+    ROOT::VecOps::RVec<edm4hep::TrackState> operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in);
+  };
+
+  /// selection of tracks based on the impact paramter d0
+  struct sel_d0_tracks {
+    sel_d0_tracks(float arg_min_d0);
+    float m_min_d0 = 0;
+    ROOT::VecOps::RVec<edm4hep::TrackState> operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in);
+  };
+  
   /// Retrieve a single FCCAnalyses vertex from the collection of vertex object
   FCCAnalysesVertex get_FCCAnalysesVertex(ROOT::VecOps::RVec<FCCAnalysesVertex> TheVertexColl, int index );
 
@@ -305,16 +327,13 @@ namespace VertexingUtils{
   TVectorD Delphes2Edm4hep_TrackParam( const TVectorD& param, bool Units_mm );
 /// convert track covariance matrix, from edm4hep to delphes conventions
   TMatrixDSym  Edm4hep2Delphes_TrackCovMatrix( const std::array<float, 21>&  covMatrix, bool Units_mm );
-#if __has_include("edm4hep/CovMatrix6f.h")
-  TMatrixDSym  Edm4hep2Delphes_TrackCovMatrix( const edm4hep::CovMatrix6f&  covMatrix, bool Units_mm );
-#endif
 /// convert track covariance matrix, from delphes to edm4hep conventions
   std::array<float, 21> Delphes2Edm4hep_TrackCovMatrix( const TMatrixDSym& cov, bool Units_mm ) ;
 
 
  /// --- Internal methods needed by the code of  Franco B:
   TVectorD get_trackParam( edm4hep::TrackState & atrack, bool Units_mm = false) ;
-  TMatrixDSym get_trackCov( const edm4hep::TrackState &  atrack, bool Units_mm = false) ;
+  TMatrixDSym get_trackCov( edm4hep::TrackState &  atrack, bool Units_mm = false) ;
 
   TVectorD ParToACTS(TVectorD Par);
   TMatrixDSym CovToACTS(TMatrixDSym Cov,TVectorD Par);
