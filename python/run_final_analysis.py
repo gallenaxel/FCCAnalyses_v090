@@ -90,14 +90,7 @@ def run(rdf_module, args):
         else:
             LOGGER.debug('Process already in the dictionary. Skipping it...')
 
-
-    # set multithreading
-    ncpus = get_element(rdf_module, "nCPUS", 1)
-    if ncpus < 0:  # use all available threads
-        ROOT.EnableImplicitMT()
-        ncpus = ROOT.GetThreadPoolSize()
-    ROOT.ROOT.EnableImplicitMT(ncpus)
-    ROOT.EnableThreadSafety()
+    ROOT.ROOT.EnableImplicitMT(get_element(rdf_module, "nCPUS", True))
 
     nevents_real = 0
     start_time = time.time()
@@ -143,14 +136,7 @@ def run(rdf_module, args):
         save_tab.append(cut_names)
         efficiency_list.append(cut_names)
 
-    process_list = get_element(rdf_module, "processList", {})
-    if len(process_list) == 0:
-        files = glob.glob(f"{input_dir}/*")
-        process_list = [os.path.basename(file.replace(".root", "")) for file in files]
-        info_msg = f"Found {len(process_list)} processes in the input directory:"
-        for process_name in process_list:
-            info_msg += f'\n\t- {process_name}'
-        LOGGER.info(info_msg)
+    process_list = get_element(rdf_module, "processList", True)
     for process_name in process_list:
         process_events[process_name] = 0
         events_ttree[process_name] = 0
@@ -218,19 +204,6 @@ def run(rdf_module, args):
         cuts_list.append(process_name)
         eff_list = []
         eff_list.append(process_name)
-        
-        # get process information from prodDict
-        try:
-            xsec = process_dict[process_name]["crossSection"]
-            kfactor = process_dict[process_name]["kfactor"]
-            matchingEfficiency = process_dict[process_name]["matchingEfficiency"]
-        except KeyError:
-            xsec = 1.0
-            kfactor = 1.0
-            matchingEfficiency = 1.0
-            LOGGER.error(
-                f'No value defined for process {process_name} in dictionary!')
-        gen_sf = xsec*kfactor*matchingEfficiency
 
         # Define all histos, snapshots, etc...
         LOGGER.info('Defining snapshots and histograms')
@@ -311,9 +284,15 @@ def run(rdf_module, args):
         uncertainty = ROOT.Math.sqrt(all_events)
 
         if do_scale:
-            all_events = all_events * 1. * gen_sf * \
-                int_lumi / process_events[process_name]
-            uncertainty = ROOT.Math.sqrt(all_events) * gen_sf * \
+            all_events = all_events * 1. * \
+                         process_dict[process_name]["crossSection"] * \
+                         process_dict[process_name]["kfactor"] * \
+                         process_dict[process_name]["matchingEfficiency"] * \
+                         int_lumi / process_events[process_name]
+            uncertainty = ROOT.Math.sqrt(all_events) * \
+                process_dict[process_name]["crossSection"] * \
+                process_dict[process_name]["kfactor"] * \
+                process_dict[process_name]["matchingEfficiency"] * \
                 int_lumi / process_events[process_name]
             LOGGER.info('Printing scaled number of events!!!')
 
@@ -323,9 +302,9 @@ def run(rdf_module, args):
 
         if save_tabular:
             # scientific notation - recomended for backgrounds
-            cuts_list.append(f'{all_events:.2e} $\\pm$ {uncertainty:.2e}')
+            #cuts_list.append(f'{all_events:.2e} $\\pm$ {uncertainty:.2e}')
             # float notation - recomended for signals with few events
-            # cuts_list.append(f'{all_events:.3f} $\\pm$ {uncertainty:.3f}')
+            cuts_list.append(f'{all_events:.3f} $\\pm$ {uncertainty:.3f}')
             # ####eff_list.append(1.)  # start with 100% efficiency
 
         for i, cut in enumerate(cut_list):
@@ -334,10 +313,16 @@ def run(rdf_module, args):
             uncertainty = ROOT.Math.sqrt(nevents_this_cut_raw)
             if do_scale:
                 nevents_this_cut = \
-                    nevents_this_cut * 1. * gen_sf * \
+                    nevents_this_cut * 1. * \
+                    process_dict[process_name]["crossSection"] * \
+                    process_dict[process_name]["kfactor"] * \
+                    process_dict[process_name]["matchingEfficiency"] * \
                     int_lumi / process_events[process_name]
                 uncertainty = \
-                    ROOT.Math.sqrt(nevents_this_cut_raw) * gen_sf * \
+                    ROOT.Math.sqrt(nevents_this_cut_raw) * \
+                    process_dict[process_name]["crossSection"] * \
+                    process_dict[process_name]["kfactor"] * \
+                    process_dict[process_name]["matchingEfficiency"] * \
                     int_lumi / process_events[process_name]
             info_msg += f'\n\t{"After selection " + cut:{cfn_width}} : '
             info_msg += f'{nevents_this_cut:,}'
@@ -347,11 +332,11 @@ def run(rdf_module, args):
             if save_tabular and cut != 'selNone':
                 if nevents_this_cut != 0:
                     # scientific notation - recomended for backgrounds
-                    cuts_list.append(
-                        f'{nevents_this_cut:.2e} $\\pm$ {uncertainty:.2e}')
+                    #cuts_list.append(
+                    #    f'{nevents_this_cut:.2e} $\\pm$ {uncertainty:.2e}')
                     # float notation - recomended for signals with few events
-                    # cuts_list.append(
-                    #     f'{neventsThisCut:.3f} $\\pm$ {uncertainty:.3f}')
+                    cuts_list.append(
+                         f'{nevents_this_cut:.3f} $\\pm$ {uncertainty:.3f}')
                     eff_list.append(f'{1.*nevents_this_cut/all_events:.3f}')
                 # if number of events is zero, the previous uncertainty is
                 # saved instead:
@@ -372,25 +357,19 @@ def run(rdf_module, args):
             fhisto = output_dir + process_name + '_' + cut + '_histo.root'
             with ROOT.TFile(fhisto, 'RECREATE'):
                 for h in histos_list[i]:
-                    if do_scale:
-                        h.Scale(gen_sf * int_lumi / process_events[process_name])
+                    try:
+                        h.Scale(
+                            1. * process_dict[process_name]["crossSection"] *
+                            process_dict[process_name]["kfactor"] *
+                            process_dict[process_name]["matchingEfficiency"] /
+                            process_events[process_name])
+                    except KeyError:
+                        LOGGER.warning(
+                            'No value defined for process %s in dictionary!',
+                            process_name)
+                        if h.Integral(0, -1) > 0:
+                            h.Scale(1./h.Integral(0, -1))
                     h.Write()
-
-                # write all meta info to the output file
-                p = ROOT.TParameter(int)("eventsProcessed", process_events[process_name])
-                p.Write()
-                # take sum of weights=eventsProcessed for now (assume weights==1)
-                p = ROOT.TParameter(float)("sumOfWeights", process_events[process_name])
-                p.Write()
-                p = ROOT.TParameter(float)("intLumi", int_lumi)
-                p.Write()
-                p = ROOT.TParameter(float)("crossSection", xsec)
-                p.Write()
-                p = ROOT.TParameter(float)("kfactor", kfactor)
-                p.Write()
-                p = ROOT.TParameter(float)("matchingEfficiency",
-                                           matchingEfficiency)
-                p.Write()
 
             if do_tree:
                 # test that the snapshot worked well
