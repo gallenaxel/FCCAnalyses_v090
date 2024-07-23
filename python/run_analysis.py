@@ -353,7 +353,7 @@ def send_to_batch(rdf_module, chunk_list, process, anapath: str):
     local_dir = os.environ['LOCAL_DIR']
     current_date = datetime.datetime.fromtimestamp(
         datetime.datetime.now().timestamp()).strftime('%Y-%m-%d_%H-%M-%S')
-    log_dir = os.path.join('/afs/cern.ch/user/g/gripelli/work/public/FCCExoticHiggs/', 'BatchOutputs_ZZ_WW', current_date, process)
+    log_dir = os.path.join('/afs/cern.ch/user/g/gripelli/work/public/FCCExoticHiggs/', 'BatchOutputs_other', current_date, process)
     if not os.path.exists(log_dir):
         os.system(f'mkdir -p {log_dir}')
 
