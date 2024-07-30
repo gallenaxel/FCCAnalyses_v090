@@ -1,10 +1,7 @@
+
 #Input directory where the files produced at the stage1 level are
-#inputDir  = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/Reco_output_stage1/"
-#inputDir  = "/afs/cern.ch/user/u/uvandevo/work/myFCC-LLPgit/FCCAnalyses_LLP/examples/FCCee/bsm/LLPs/ExoticHiggsDecays/Reco_output_stage1_TEST/"
-#inputDir   = "/eos/user/a/axgallen/FCC_test_2/FCCAnalyses_LLP/examples/FCCee/bsm/LLPs/ExoticHiggsDecays/Reco_output_stage1_TEST/"
-#eosDir = "/eos/user/a/axgallen/FCC_test_2/FCCAnalyses_LLP/examples/FCCee/bsm/LLPs/ExoticHiggsDecays/"
-#inputDir = "v090_iso2/"
 inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_FINAL/"
+
 #Output directory where the files produced at the final-selection level are
 outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/poster_backgrounds/poster_final_binning/"
 
