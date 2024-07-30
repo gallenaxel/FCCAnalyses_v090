@@ -2,30 +2,19 @@ import ROOT
 
 #Mandatory: List of processes
 processList = {
-        #'wzp6_ee_eeH_Hbb_ecm240':{'fraction':0.01},
-        #'wzp6_ee_eeH_HZZ_ecm240':{'chunks':4},    
-        #'wzp6_ee_eeH_Hcc_ecm240':{'chunks':10},
-        #'wzp6_ee_nunuH_Hqq_ecm240':{'chunks':10},
-        #'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':10},
         #'custom_process' : {},      
-        #"exoticHiggs_scalar_ms20GeV_sine-5" : {'fraction':0.01},
-        #"exoticHiggs_scalar_ms20GeV_sine-6" : {'fraction':0.01},        
-        #'custom_process' : {'fraction':0.01},
-        #'custom_process' : {'fraction':0.01},
-        #'wzp6_ee_eeH_Hss_ecm240' : {'fraction':0.01},      
-        #'wzp6_ee_eeH_Hgg_ecm240' : {'fraction':0.01},
-        # 'wzp6_ee_eeH_Hcc_ecm240' : {'chunks':20},
-        # 'wzp6_ee_eeH_Hgg_ecm240' : {'chunks':20},
-        # 'wzp6_ee_eeH_Hmumu_ecm240' : {'chunks':20},
-        # 'wzp6_ee_eeH_Hss_ecm240' : {'chunks':20},
-        # 'wzp6_ee_eeH_Htautau_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Hbb_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Hcc_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Hgg_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Hmumu_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Hss_ecm240' : {'chunks':20},
-        # 'wzp6_ee_mumuH_Htautau_ecm240' : {'chunks':20},
 
+
+        ## SIGNALS
+        #"exoticHiggs_scalar_ms20GeV_sine-5" : {},
+        #"exoticHiggs_scalar_ms20GeV_sine-6" : {},        
+        #"exoticHiggs_scalar_ms20GeV_sine-7" : {},
+        #"exoticHiggs_scalar_ms60GeV_sine-5" : {},
+        #"exoticHiggs_scalar_ms60GeV_sine-6" : {},    
+        #"exoticHiggs_scalar_ms60GeV_sine-7" : {},
+    
+
+        ## BACKGROUNDS
         # ss Backgrounds
         # 'wzp6_ee_ssH_Hbb_ecm240':{'chunks':20},
         # 'wzp6_ee_ssH_Hcc_ecm240':{'chunks':20},
@@ -100,8 +89,8 @@ processList = {
         # 'wzp6_ee_tautauH_HWW_ecm240':{'chunks':20},
 
         # # Other
-        'p8_ee_WW_ecm240':{'chunks':100},#,'fraction':0.0001},
-        'p8_ee_ZZ_ecm240':{'chunks':100},#!,'fraction':0.0001},
+        #'p8_ee_WW_ecm240':{'chunks':100},
+        #'p8_ee_ZZ_ecm240':{'chunks':100},
                 
 
 }
@@ -120,8 +109,7 @@ prodTag     = "FCCee/winter2023/IDEA/"
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZZ_WW_full/"
-#../../../../../../../experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_repo_test/"
 
 # import ROOT
 # from podio import root_io
