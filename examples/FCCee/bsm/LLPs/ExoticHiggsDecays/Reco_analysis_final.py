@@ -4,7 +4,7 @@
 #inputDir   = "/eos/user/a/axgallen/FCC_test_2/FCCAnalyses_LLP/examples/FCCee/bsm/LLPs/ExoticHiggsDecays/Reco_output_stage1_TEST/"
 #eosDir = "/eos/user/a/axgallen/FCC_test_2/FCCAnalyses_LLP/examples/FCCee/bsm/LLPs/ExoticHiggsDecays/"
 #inputDir = "v090_iso2/"
-inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZZ_WW_full/"
+inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_FINAL/"
 #Output directory where the files produced at the final-selection level are
 outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/poster_backgrounds/poster_final_binning/"
 
@@ -24,7 +24,7 @@ processList = {
         #'test':{}
         #privately-produced signals 
         # 'exoticHiggs_scalar_ms20GeV_sine-5':{},
-        #'exoticHiggs_scalar_ms20GeV_sine-6':{},
+        # 'exoticHiggs_scalar_ms20GeV_sine-6':{},
         # 'exoticHiggs_scalar_ms20GeV_sine-7':{},
         # 'exoticHiggs_scalar_ms60GeV_sine-5':{},
         # 'exoticHiggs_scalar_ms60GeV_sine-6':{},
@@ -51,7 +51,7 @@ processList = {
         # ## cc Backgrounds
         # 'wzp6_ee_ccH_Hbb_ecm240':{},
         # 'wzp6_ee_ccH_Hcc_ecm240':{},
-        # #'wzp6_ee_ccH_Hgg_ecm240':{},
+        # 'wzp6_ee_ccH_Hgg_ecm240':{},
         # 'wzp6_ee_ccH_Hmumu_ecm240':{},
         # 'wzp6_ee_ccH_Hss_ecm240':{},
         # 'wzp6_ee_ccH_Htautau_ecm240':{},
@@ -105,8 +105,8 @@ processList = {
         # 'wzp6_ee_tautauH_HWW_ecm240':{},
 
         # # ## Other
-        'p8_ee_WW_ecm240':{},
-        #'p8_ee_ZZ_ecm240':{},
+        # 'p8_ee_WW_ecm240':{},
+        # 'p8_ee_ZZ_ecm240':{},
 
 }
 
@@ -203,21 +203,14 @@ processLabels = {
 #Link to the dictonary that contains all the cross section information etc...
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
-#Add MySample_p8_ee_ZH_ecm240 as it is not an offical process
-#OBS NUMBEROFEVENTS AND SUMOFWEIGHTS HAS BEEN MODIFIED FOR DEBUGGING, REMEMBER TO CHANGE BACK
 procDictAdd={
-    ### OLD ###
-    #'test': {"numberOfEvents": 100, "sumOfWeights": 100, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+   
     'exoticHiggs_scalar_ms20GeV_sine-5': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
     'exoticHiggs_scalar_ms20GeV_sine-6': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-     'exoticHiggs_scalar_ms20GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-     'exoticHiggs_scalar_ms60GeV_sine-5': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-     'exoticHiggs_scalar_ms60GeV_sine-6': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-     'exoticHiggs_scalar_ms60GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    ### NEW ###
-    # 'wzp6_ee_eeH_Hbb_ecm240': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 0.004171, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    # 'wzp6_ee_eeH_Hcc_ecm240': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 0.000207, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    # 'wzp6_ee_eeH_Hss_ecm240': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 0.000207, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-5': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-6': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
     'wzp6_ee_nunuH_Hbb_ecm240' : {'numberOfEvents': 1200000, 'sumOfWeights': 1200000, 'crossSection': 0.0269, 'kfactor': 1.0, 'matchingEfficiency': 1.0},
     'wzp6_ee_nunuH_Hcc_ecm240' : {'numberOfEvents': 1100000, 'sumOfWeights': 1100000, 'crossSection': 0.001335, 'kfactor': 1.0, 'matchingEfficiency': 1.0},
@@ -304,7 +297,6 @@ cutLabels = {
 
     # For event selection
     "preSel": "Exactly 2 oppositely charged leptons",
-    #"preSel+ntracks" : "Exactly 2 oppositely charged leptons + ntracks $\leq$ 2",
     "selZ": "70 < $m_{ll}$ < 110 GeV",
     "selZ+nDVs_seltracks": "n DVs $\geq$ 2",
     "selZ+nDVs_seltracks+LxyzCut" : "r$_{PV-DV} > 50$"
@@ -314,50 +306,29 @@ cutLabels = {
 ###Dictionary for the ouput variable/hitograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
 
 histoList = {
-    "n_tracks":                             {"name":"n_tracks",                 "title":"Number of reconstructed tracks",                           "bin":100, "xmin":-0.5,"xmax":99.5},
-    "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",    "title": "Number of reconstructed primary tracks",                  "bin":10, "xmin":-0.5,"xmax":9.5},
-    'n_seltracks_trackCut_DVs':                      {"name":"n_seltracks_trackCut_DVs",           "title":"Number of DVs",                                           "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
-    'n_trks_seltracks_DVs':                 {"name":'n_trks_seltracks_DVs',       "title":"Number of tracks from the DVs",                          "bin":30, "xmin":1.5, "xmax":29.5},
-    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',      "title":"Invariant mass at the DVs [GeV]",                        "bin":40, "xmin":-0.5, "xmax":39.5},
-    #"DV_evt_seltracks_chi2":                {"name":"DV_evt_seltracks_chi2",    "title":"The #chi^{2} distribution of the DVs",                    "bin":100, "xmin":-0.5, "xmax":11.5},
-    "Reco_seltracks_DVs_Lxy":               {"name":"Reco_seltracks_DVs_Lxy",     "title":"Transverse distance between PV and DVs [mm]",            "bin":50, "xmin":0, "xmax":2000},
-    "Reco_seltracks_trackCut_DVs_Lxyz":              {"name":"Reco_seltracks_trackCut_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                       "bin":30, "xmin":0, "xmax":2000, "ymin":0.001, "ytitle":"DVs"},
-    #"DV_evt_seltracks_normchi2":            {"name":"DV_evt_seltracks_normchi2",    "title":"The normalised #chi^{2} distribution of the DVs",     "bin":40, "xmin":0, "xmax":10},
-    "n_merged_DVs":                         {"name":"n_merged_DVs",              "title":"Number of DVs",                                           "bin":10, "xmin":-0.5, "xmax":9.5},
-    'n_trks_merged_DVs':                    {"name":'n_trks_merged_DVs',       "title":"Number of tracks from the DVs from sel tracks + merge",     "bin":30, "xmin":1.5, "xmax":29.5},
+    "n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
+    "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
+    'n_seltracks_trackCut_DVs':             {"name":"n_seltracks_trackCut_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
+    'n_trks_seltracks_DVs':                 {"name":'n_trks_seltracks_DVs',                "title":"Number of tracks from the DVs",                                "bin":30, "xmin":1.5, "xmax":29.5},
+    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":-0.5, "xmax":39.5},
+    #"DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
+    "Reco_seltracks_DVs_Lxy":               {"name":"Reco_seltracks_DVs_Lxy",              "title":"Transverse distance between PV and DVs [mm]",                  "bin":50, "xmin":0, "xmax":2000},
+    "Reco_seltracks_trackCut_DVs_Lxyz":     {"name":"Reco_seltracks_trackCut_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                             "bin":30, "xmin":0, "xmax":2000, "ymin":0.001, "ytitle":"DVs"},
+    #"DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"The normalised #chi^{2} distribution of the DVs",              "bin":40, "xmin":0, "xmax":10},
+    "n_merged_DVs":                         {"name":"n_merged_DVs",                        "title":"Number of DVs",                                                "bin":10, "xmin":-0.5, "xmax":9.5},
+    'n_trks_merged_DVs':                    {"name":'n_trks_merged_DVs',                   "title":"Number of tracks from the DVs from sel tracks + merge",        "bin":30, "xmin":1.5, "xmax":29.5},
 
-    'invMass_merged_DVs':                   {"name":'invMass_merged_DVs',      "title":"Invariant mass at the DVs [GeV]",                           "bin":40, "xmin":-0.5, "xmax":39.5},
-    #"merged_DVs_chi2":                      {"name":"merged_DVs_chi2",          "title":"The #chi^{2} distribution of the merged DVs",             "bin":100, "xmin":-0.5, "xmax":11.5},
-    #"merged_DVs_normchi2":                  {"name":"merged_DVs_normchi2",       "title":"The normalised #chi^{2} distribution of the merged DVs", "bin":40, "xmin":0, "xmax":10},
-    "Reco_DVs_merged_Lxy":                  {"name":"Reco_DVs_merged_Lxy",     "title":"Transverse distance between PV and DVs [mm]",               "bin":50, "xmin":0, "xmax":2000},
-    "Reco_DVs_merged_Lxyz":                 {"name":"Reco_DVs_merged_Lxyz",    "title":"Distance between PV and DVs [mm]",                          "bin":50, "xmin":0, "xmax":2000},
+    'invMass_merged_DVs':                   {"name":'invMass_merged_DVs',                  "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":-0.5, "xmax":39.5},
+    #"merged_DVs_chi2":                     {"name":"merged_DVs_chi2",                     "title":"The #chi^{2} distribution of the merged DVs",                  "bin":100, "xmin":-0.5, "xmax":11.5},
+    #"merged_DVs_normchi2":                 {"name":"merged_DVs_normchi2",                 "title":"The normalised #chi^{2} distribution of the merged DVs",       "bin":40, "xmin":0, "xmax":10},
+    "Reco_DVs_merged_Lxy":                  {"name":"Reco_DVs_merged_Lxy",                 "title":"Transverse distance between PV and DVs [mm]",                  "bin":50, "xmin":0, "xmax":2000},
+    "Reco_DVs_merged_Lxyz":                 {"name":"Reco_DVs_merged_Lxyz",                "title":"Distance between PV and DVs [mm]",                             "bin":50, "xmin":0, "xmax":2000},
 
-    'n_RecoElectrons':                      {"name":'n_RecoElectrons',      "title": "Number of reconstructed electrons",                           "bin":10,"xmin":-0.5,"xmax":9.5},
-    'n_electrons_sel_iso':                  {"name":'n_electrons_sel_iso',  "title": "Number of isolated electrons",                                "bin":10,"xmin":-0.5,"xmax":9.5},
-    "Reco_ee_invMass":                      {"name":"Reco_ee_invMass",      "title": "Invariant mass of reconstructed e- e+ [GeV]",                 "bin":30,"xmin":50,"xmax":150, "ymin":0.001},
-    'n_RecoMuons':                          {"name":'n_RecoMuons',          "title": "Number of reconstructed muons",                               "bin":10,"xmin":-0.5,"xmax":9.5},
-    'n_muons_sel_iso':                      {"name":'n_muons_sel_iso',      "title": "Number of isolated muons",                                    "bin":10,"xmin":-0.5,"xmax":9.5},
-    "Reco_mumu_invMass":                    {"name":"Reco_mumu_invMass",    "title": "Invariant mass of reconstructed #mu- #mu+ [GeV]",             "bin":100,"xmin":50,"xmax":150, "ymin":0.001},    
-
-
-    #"n_seltracks_trackCut_DVs": {"name":"n_seltracks_trackCut_DVs",    "title": "n_seltracks_trackCut_DVs",             "bin":30,"xmin":1.5,"xmax":29.5},    
-    # "n_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_merged_fullVertexSel_lowDist_DVs",    "title":"n_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "n_trks_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_trks_merged_fullVertexSel_lowDist_DVs",    "title":"n_trks_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "invMass_merged_fullVertexSel_lowDist_DVs":                 {"name":"invMass_merged_fullVertexSel_lowDist_DVs",    "title":"invMass_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "DV_evt_merged_fullVertexSel_lowDist_normchi2":                 {"name":"DV_evt_merged_fullVertexSel_lowDist_normchi2",    "title":"The normalised #chi^{2} distribution of the merged DVs","bin":40, "xmin":0, "xmax":10},
-    # "Reco_merged_fullVertexSel_lowDist_DVs_Lxyz":                 {"name":"Reco_merged_fullVertexSel_lowDist_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                          "bin":100, "xmin":0, "xmax":2000},
-
-    # "n_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_merged_fullVertexSel_lowDist_DVs",    "title":"n_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "n_trks_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_trks_merged_fullVertexSel_lowDist_DVs",    "title":"n_trks_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "invMass_merged_fullVertexSel_lowDist_DVs":                 {"name":"invMass_merged_fullVertexSel_lowDist_DVs",    "title":"invMass_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "DV_evt_merged_fullVertexSel_lowDist_normchi2":                 {"name":"DV_evt_merged_fullVertexSel_lowDist_normchi2",    "title":"The normalised #chi^{2} distribution of the merged DVs","bin":40, "xmin":0, "xmax":10},
-    # "Reco_merged_fullVertexSel_lowDist_DVs_Lxyz":                 {"name":"Reco_merged_fullVertexSel_lowDist_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                          "bin":100, "xmin":0, "xmax":2000},
-
-    # "n_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_merged_fullVertexSel_lowDist_DVs",    "title":"n_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "n_trks_merged_fullVertexSel_lowDist_DVs":                 {"name":"n_trks_merged_fullVertexSel_lowDist_DVs",    "title":"n_trks_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "invMass_merged_fullVertexSel_lowDist_DVs":                 {"name":"invMass_merged_fullVertexSel_lowDist_DVs",    "title":"invMass_merged_fullVertexSel_lowDist_DVs",                          "bin":100, "xmin":0, "xmax":2000},
-    # "DV_evt_merged_fullVertexSel_lowDist_normchi2":                 {"name":"DV_evt_merged_fullVertexSel_lowDist_normchi2",    "title":"The normalised #chi^{2} distribution of the merged DVs","bin":40, "xmin":0, "xmax":10},
-    # "Reco_merged_fullVertexSel_lowDist_DVs_Lxyz":                 {"name":"Reco_merged_fullVertexSel_lowDist_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                          "bin":100, "xmin":0, "xmax":2000},
-
+    'n_RecoElectrons':                      {"name":'n_RecoElectrons',                     "title": "Number of reconstructed electrons",                           "bin":10,"xmin":-0.5,"xmax":9.5},
+    'n_electrons_sel_iso':                  {"name":'n_electrons_sel_iso',                 "title": "Number of isolated electrons",                                "bin":10,"xmin":-0.5,"xmax":9.5},
+    "Reco_ee_invMass":                      {"name":"Reco_ee_invMass",                     "title": "Invariant mass of reconstructed e- e+ [GeV]",                 "bin":30,"xmin":50,"xmax":150, "ymin":0.001},
+    'n_RecoMuons':                          {"name":'n_RecoMuons',                         "title": "Number of reconstructed muons",                               "bin":10,"xmin":-0.5,"xmax":9.5},
+    'n_muons_sel_iso':                      {"name":'n_muons_sel_iso',                     "title": "Number of isolated muons",                                    "bin":10,"xmin":-0.5,"xmax":9.5},
+    "Reco_mumu_invMass":                    {"name":"Reco_mumu_invMass",                   "title": "Invariant mass of reconstructed #mu- #mu+ [GeV]",             "bin":100,"xmin":50,"xmax":150, "ymin":0.001},    
 
 }
