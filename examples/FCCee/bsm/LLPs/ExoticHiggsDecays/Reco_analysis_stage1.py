@@ -6,12 +6,12 @@ processList = {
 
 
         ## SIGNALS
-        #"exoticHiggs_scalar_ms20GeV_sine-5" : {},
-        #"exoticHiggs_scalar_ms20GeV_sine-6" : {},        
-        #"exoticHiggs_scalar_ms20GeV_sine-7" : {},
-        #"exoticHiggs_scalar_ms60GeV_sine-5" : {},
-        #"exoticHiggs_scalar_ms60GeV_sine-6" : {},    
-        #"exoticHiggs_scalar_ms60GeV_sine-7" : {},
+        "exoticHiggs_scalar_ms20GeV_sine-5" : {},
+        "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
+        "exoticHiggs_scalar_ms20GeV_sine-7" : {},
+        "exoticHiggs_scalar_ms60GeV_sine-5" : {},
+        "exoticHiggs_scalar_ms60GeV_sine-6" : {},    
+        "exoticHiggs_scalar_ms60GeV_sine-7" : {},
     
 
         ## BACKGROUNDS
@@ -98,18 +98,18 @@ processList = {
 #Production tag. This points to the yaml files for getting sample statistics
 #Mandatory when running over EDM4Hep centrally produced events
 #Comment out when running over privately produced events
-prodTag     = "FCCee/winter2023/IDEA/"
+#prodTag     = "FCCee/winter2023/IDEA/"
 
 
 #Input directory
 #Comment out when running over centrally produced events
 #Mandatory when running over privately produced events
-#inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
+inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
 
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_repo_test/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/track_pt_10_signal/"
 
 # import ROOT
 # from podio import root_io
@@ -300,7 +300,7 @@ class RDFanalysis():
             # Displaced vertex reconstruction
             
             # select tracks with pT > 1 GeV
-            .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(1)(EFlowTrack_1)')
+            .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(10)(EFlowTrack_1)')
             # select tracks with |d0 |> 2 mm
             .Define('sel_tracks', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
 
