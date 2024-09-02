@@ -299,10 +299,13 @@ class RDFanalysis():
 
             # Displaced vertex reconstruction
             
-            # select tracks with pT > 1 GeV
+            # select tracks with pT > 10 GeV
             .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(10)(EFlowTrack_1)')
             # select tracks with |d0 |> 2 mm
-            .Define('sel_tracks', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
+            .Define('sel_tracks_d0', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
+            # select tracks based on d0 & z0 significances
+            .Define('sel_tracks',    'VertexingUtils::selTracks(3,5,3,5)(sel_tracks_d0)')
+
 
             # find the DVs with sel pt and d0
             .Define("DV_evt_seltracks", "VertexFinderLCFIPlus::get_SV_event(sel_tracks, EFlowTrack_1, PrimaryVertexObject, true, 9., 40., 5.)")
