@@ -6,12 +6,12 @@ processList = {
 
 
         ## SIGNALS
-        "exoticHiggs_scalar_ms20GeV_sine-5" : {},
-        "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
-        "exoticHiggs_scalar_ms20GeV_sine-7" : {},
-        "exoticHiggs_scalar_ms60GeV_sine-5" : {},
-        "exoticHiggs_scalar_ms60GeV_sine-6" : {},    
-        "exoticHiggs_scalar_ms60GeV_sine-7" : {},
+        "exoticHiggs_scalar_ms20GeV_sine-5" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sine-6" : {'chunks':20},        
+        "exoticHiggs_scalar_ms20GeV_sine-7" : {'chunks':20},
+        "exoticHiggs_scalar_ms60GeV_sine-5" : {'chunks':20},
+        "exoticHiggs_scalar_ms60GeV_sine-6" : {'chunks':20},    
+        "exoticHiggs_scalar_ms60GeV_sine-7" : {'chunks':20},
     
 
         ## BACKGROUNDS
@@ -109,7 +109,7 @@ inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/track_pt_10_signal/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/track_pt_10_d0z0sig_signal/stage1/"
 
 # import ROOT
 # from podio import root_io
@@ -304,8 +304,10 @@ class RDFanalysis():
             # select tracks with |d0 |> 2 mm
             .Define('sel_tracks_d0', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
             # select tracks based on d0 & z0 significances
-            .Define('sel_tracks',    'VertexingUtils::selTracks(3,5,3,5)(sel_tracks_d0)')
-
+            #.Define('sel_tracks', 'VertexingUtils::selTracks(3,5,3,5)(ReconstructedParticles,sel_tracks_d0)')
+            .Define('sel_tracks_d0sig','VertexingUtils::sel_d0sig_tracks(3)(sel_tracks_pt)')
+            .Define('sel_tracks','VertexingUtils::sel_z0sig_tracks(3)(sel_tracks_d0sig)')
+            
 
             # find the DVs with sel pt and d0
             .Define("DV_evt_seltracks", "VertexFinderLCFIPlus::get_SV_event(sel_tracks, EFlowTrack_1, PrimaryVertexObject, true, 9., 40., 5.)")
