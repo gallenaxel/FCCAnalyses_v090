@@ -105,6 +105,18 @@ namespace VertexingUtils{
     float m_min_d0 = 0;
     ROOT::VecOps::RVec<edm4hep::TrackState> operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in);
   };
+
+  struct sel_d0sig_tracks {
+    sel_d0sig_tracks(float arg_min_d0sig);
+    float m_min_d0sig = 0;
+    ROOT::VecOps::RVec<edm4hep::TrackState> operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in);
+  };
+
+  struct sel_z0sig_tracks {
+    sel_z0sig_tracks(float arg_min_z0sig);
+    float m_min_z0sig = 0;
+    ROOT::VecOps::RVec<edm4hep::TrackState> operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in);
+  };
   
   /// Retrieve a single FCCAnalyses vertex from the collection of vertex object
   FCCAnalysesVertex get_FCCAnalysesVertex(ROOT::VecOps::RVec<FCCAnalysesVertex> TheVertexColl, int index );

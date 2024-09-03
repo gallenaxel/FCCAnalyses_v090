@@ -121,6 +121,34 @@ ROOT::VecOps::RVec<edm4hep::TrackState> sel_d0_tracks::operator() (ROOT::VecOps:
     return result;
 }
 
+sel_d0sig_tracks::sel_d0sig_tracks(float arg_min_d0sig) : m_min_d0sig(arg_min_d0sig) {};
+ROOT::VecOps::RVec<edm4hep::TrackState> sel_d0sig_tracks::operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in) {
+    ROOT::VecOps::RVec<edm4hep::TrackState> result;
+    result.reserve(in.size());
+    for (size_t i = 0; i < in.size(); ++i) {
+        auto & track = in[i];
+        double tr_d0sig = fabs(track.D0 / sqrt(track.covMatrix[0]));
+        if (tr_d0sig > m_min_d0sig) {
+            result.emplace_back(track);
+        }
+    }
+    return result;
+}
+
+sel_z0sig_tracks::sel_z0sig_tracks(float arg_min_z0sig) : m_min_z0sig(arg_min_z0sig) {};
+ROOT::VecOps::RVec<edm4hep::TrackState> sel_z0sig_tracks::operator() (ROOT::VecOps::RVec<edm4hep::TrackState> in) {
+    ROOT::VecOps::RVec<edm4hep::TrackState> result;
+    result.reserve(in.size());
+    for (size_t i = 0; i < in.size(); ++i) {
+        auto & track = in[i];
+        double tr_d0sig = fabs(track.Z0 / sqrt(track.covMatrix[9]));
+        if (tr_d0sig > m_min_z0sig) {
+            result.emplace_back(track);
+        }
+    }
+    return result;
+}
+
 //
 // selection of DVs based on number of tracks
 //
