@@ -7,7 +7,7 @@ processList = {
 
         # SIGNALS
         # "exoticHiggs_scalar_ms20GeV_sine-5" : {},
-        # "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
+        "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
         # "exoticHiggs_scalar_ms20GeV_sine-7" : {},
         # "exoticHiggs_scalar_ms60GeV_sine-5" : {},
         # "exoticHiggs_scalar_ms60GeV_sine-6" : {},    
@@ -42,7 +42,7 @@ processList = {
 
 
         # # ee Backgrounds
-        'wzp6_ee_eeH_Hbb_ecm240':{},#{'chunks':20},
+        # 'wzp6_ee_eeH_Hbb_ecm240':{},#{'chunks':20},
         # 'wzp6_ee_eeH_Hcc_ecm240':{'chunks':20},
         # 'wzp6_ee_eeH_Hgg_ecm240':{'chunks':20},
         # 'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':20},
@@ -77,7 +77,7 @@ processList = {
         # 'wzp6_ee_nunuH_Huu_ecm240':{'chunks':20},
 
         # # ZZ Backgrounds
-        'wzp6_ee_eeH_HZZ_ecm240':{},
+        # 'wzp6_ee_eeH_HZZ_ecm240':{},
         # 'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':20},
         # 'wzp6_ee_qqH_HZZ_ecm240':{'chunks':20},
         # 'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':20},
@@ -97,13 +97,13 @@ processList = {
 #Production tag. This points to the yaml files for getting sample statistics
 #Mandatory when running over EDM4Hep centrally produced events
 #Comment out when running over privately produced events
-prodTag     = "FCCee/winter2023/IDEA/"
+#prodTag     = "FCCee/winter2023/IDEA/"
 
 
 #Input directory
 #Comment out when running over centrally produced events
 #Mandatory when running over privately produced events
-# inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
+inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
 
 
 #Optional: output directory, default is local dir
@@ -198,11 +198,46 @@ class RDFanalysis():
             .Define('RP_Track',"ReconstructedParticle2Track::get_recoindTRK(ReconstructedParticles,EFlowTrack_1)")
             .Define('has_track',"ReconstructedParticle2Track::hasTRK(ReconstructedParticles)")
 
-            # Jets
-            .Define("jet_pT",     "ReconstructedParticle::get_pt(Jet)") #transverse momentum pT
-            .Define("jet_eta",     "ReconstructedParticle::get_eta(Jet)") #pseudorapidity eta
-            .Define("jet_phi",     "ReconstructedParticle::get_phi(Jet)") 
+            # Electrons
+            .Alias('Electron0', 'Electron#0.index')
+            .Define('RecoElectrons',  'ReconstructedParticle::get(Electron0, ReconstructedParticles)') 
+            .Define('n_RecoElectrons',  'ReconstructedParticle::get_n(RecoElectrons)') #count how many electrons are in the event in total
+            # Muons
+            .Alias('Muon0', 'Muon#0.index')
+            .Define('RecoMuons',  'ReconstructedParticle::get(Muon0, ReconstructedParticles)')
+            .Define('n_RecoMuons',  'ReconstructedParticle::get_n(RecoMuons)') #count how many muons are in the event in total
 
+
+            # Remove the leptons from the collection of reconstructed particles to re-cluster to jets
+            .Define("RecoPartiles_wo_muons",  "ReconstructedParticle::remove(ReconstructedParticles,  RecoMuons)")
+            .Define("RecoParticles_wo_leptons", "ReconstructedParticle::remove(RecoPartiles_wo_muons,  RecoElectrons)")
+
+            # Jet clustering
+            .Define("RP_px",          "ReconstructedParticle::get_px(RecoParticles_wo_leptons)")
+            .Define("RP_py",          "ReconstructedParticle::get_py(RecoParticles_wo_leptons)")
+            .Define("RP_pz",          "ReconstructedParticle::get_pz(RecoParticles_wo_leptons)")
+            .Define("RP_e",           "ReconstructedParticle::get_e(RecoParticles_wo_leptons)")
+            .Define("RP_m",           "ReconstructedParticle::get_mass(RecoParticles_wo_leptons)")
+            .Define("RP_q",           "ReconstructedParticle::get_charge(RecoParticles_wo_leptons)")
+
+            # build pseudo jets with the RP
+            .Define("pseudo_jets",  "JetClusteringUtils::set_pseudoJets(RP_px, RP_py, RP_pz, RP_e)")
+
+            # run jet clustering with the reconstructed particles without leptons, inputs: R=0.4, inclusive, pT cut of 1 GeV, sorted by E, E-scheme, anti-kt
+            .Define("FCCAnalysesJets_ee_genkt",  "JetClustering::clustering_ee_genkt(0.4, 0, 1, 1, 0, -1)(pseudo_jets)")
+            .Define("jets_ee_genkt",  "JetClusteringUtils::get_pseudoJets( FCCAnalysesJets_ee_genkt )")
+
+            # access the jets kinematics :
+            .Define("jets_e",        "JetClusteringUtils::get_e(jets_ee_genkt)")
+            .Define("jets_px",       "JetClusteringUtils::get_px(jets_ee_genkt)")
+            .Define("jets_py",       "JetClusteringUtils::get_py(jets_ee_genkt)")
+            .Define("jets_pz",       "JetClusteringUtils::get_pz(jets_ee_genkt)")
+            .Define("jets_pt",       "JetClusteringUtils::get_pt(jets_ee_genkt)")
+            .Define("jets_m",        "JetClusteringUtils::get_m(jets_ee_genkt)")
+            .Define("jets_eta",        "JetClusteringUtils::get_eta(jets_ee_genkt)")
+            .Define("jets_phi",        "JetClusteringUtils::get_phi(jets_ee_genkt)")
+            .Define("jets_nJets",      "JetClusteringUtils::get_nJets(jets_ee_genkt)")
+            
             # MET
             .Define("MET", "ReconstructedParticle::get_pt(MissingET)") #absolute value of MET
         )
@@ -236,9 +271,15 @@ class RDFanalysis():
             "truth_genStatus",
             "truth_simStatus",
             "truth_pdg",
-            "jet_pT",
-            "jet_eta",
-            "jet_phi",
+            "jets_e",
+            "jets_px",
+            "jets_py",
+            "jets_pz",
+            "jets_pt",
+            "jets_m",
+            "jets_eta",
+            "jets_phi",
+            "jets_nJets",
             "MET",
         ]
         return branchList
