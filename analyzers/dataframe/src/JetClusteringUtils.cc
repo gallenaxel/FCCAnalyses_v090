@@ -104,6 +104,11 @@ get_pt(const ROOT::VecOps::RVec<fastjet::PseudoJet> &in) {
   return result;
 }
 
+int get_nJets(const ROOT::VecOps::RVec<fastjet::PseudoJet> &in) {
+  int result = in.size();
+  return result;
+}
+
 ROOT::VecOps::RVec<float>
 get_p(const ROOT::VecOps::RVec<fastjet::PseudoJet> &in) {
   ROOT::VecOps::RVec<float> result;

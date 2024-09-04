@@ -68,6 +68,9 @@ namespace FCCAnalyses {
     /** Get jet pt. Details. */
     ROOT::VecOps::RVec<float> get_pt(const ROOT::VecOps::RVec<fastjet::PseudoJet>& in);
 
+    /** Get number of jets. Details. */
+    int get_nJets(const ROOT::VecOps::RVec<fastjet::PseudoJet>& in);
+
     /** Get jet p. Details. */
     ROOT::VecOps::RVec<float> get_p(const ROOT::VecOps::RVec<fastjet::PseudoJet>& in);
 
