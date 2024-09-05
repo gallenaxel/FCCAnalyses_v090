@@ -6,11 +6,11 @@ processList = {
 
 
         # SIGNALS
-        # "exoticHiggs_scalar_ms20GeV_sine-5" : {},
-        "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
-        # "exoticHiggs_scalar_ms20GeV_sine-7" : {},
-        # "exoticHiggs_scalar_ms60GeV_sine-5" : {},
-        # "exoticHiggs_scalar_ms60GeV_sine-6" : {},    
+        #"exoticHiggs_scalar_ms20GeV_sine-5" : {},
+        # "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
+        # #"exoticHiggs_scalar_ms20GeV_sine-7" : {},
+        # #"exoticHiggs_scalar_ms60GeV_sine-5" : {},
+        # #"exoticHiggs_scalar_ms60GeV_sine-6" : {},    
         # "exoticHiggs_scalar_ms60GeV_sine-7" : {},
     
 
@@ -77,7 +77,7 @@ processList = {
         # 'wzp6_ee_nunuH_Huu_ecm240':{'chunks':20},
 
         # # ZZ Backgrounds
-        # 'wzp6_ee_eeH_HZZ_ecm240':{},
+        'wzp6_ee_eeH_HZZ_ecm240':{},
         # 'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':20},
         # 'wzp6_ee_qqH_HZZ_ecm240':{'chunks':20},
         # 'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':20},
@@ -97,18 +97,19 @@ processList = {
 #Production tag. This points to the yaml files for getting sample statistics
 #Mandatory when running over EDM4Hep centrally produced events
 #Comment out when running over privately produced events
-#prodTag     = "FCCee/winter2023/IDEA/"
+prodTag     = "FCCee/winter2023/IDEA/"
 
 
 #Input directory
 #Comment out when running over centrally produced events
 #Mandatory when running over privately produced events
-inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
+#inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
 
 
 #Optional: output directory, default is local dir
 # outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
 # outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_repo_test/"
+#outputDir = "R15/"
 
 
 
@@ -212,6 +213,8 @@ class RDFanalysis():
             .Define("RecoPartiles_wo_muons",  "ReconstructedParticle::remove(ReconstructedParticles,  RecoMuons)")
             .Define("RecoParticles_wo_leptons", "ReconstructedParticle::remove(RecoPartiles_wo_muons,  RecoElectrons)")
 
+            #TODO: Add Z boson demand, two muons or two electrons in Z mass window
+
             # Jet clustering
             .Define("RP_px",          "ReconstructedParticle::get_px(RecoParticles_wo_leptons)")
             .Define("RP_py",          "ReconstructedParticle::get_py(RecoParticles_wo_leptons)")
@@ -223,7 +226,7 @@ class RDFanalysis():
             # build pseudo jets with the RP
             .Define("pseudo_jets",  "JetClusteringUtils::set_pseudoJets(RP_px, RP_py, RP_pz, RP_e)")
 
-            # run jet clustering with the reconstructed particles without leptons, inputs: R=0.4, inclusive, pT cut of 1 GeV, sorted by E, E-scheme, anti-kt
+            # run jet clustering with the reconstructed particles without leptons, inputs: R=X, inclusive, pT cut of 1 GeV, sorted by E, E-scheme, anti-kt
             .Define("FCCAnalysesJets_ee_genkt",  "JetClustering::clustering_ee_genkt(0.4, 0, 1, 1, 0, -1)(pseudo_jets)")
             .Define("jets_ee_genkt",  "JetClusteringUtils::get_pseudoJets( FCCAnalysesJets_ee_genkt )")
 
