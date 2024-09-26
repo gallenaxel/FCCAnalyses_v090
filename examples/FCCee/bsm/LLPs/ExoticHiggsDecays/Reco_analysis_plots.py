@@ -7,44 +7,60 @@ intLumi        = 7.2e+06 #in pb-1
 ###If scaleSig or scaleBack is not defined, plots will be normalized to 1
 #scaleSig       = 0.
 #scaleBack      = 0.
-ana_tex        = ''#'e^{+}e^{-} #rightarrow Z H, Z #rightarrow l^{+}l^{-}, H #rightarrow q #bar{q}'
+ana_tex        = 'e^{+}e^{-} #rightarrow Z H, Z #rightarrow l^{\pm}l^{\mp}, H #rightarrow ss #rightarrow 4b'
 delphesVersion = '3.4.2'
 energy         = 240
 collider       = 'FCC-ee'
-inputDir       = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/poster_backgrounds/poster_final_binning/'
+inputDir       = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/final/'
 formats        = ['pdf']
 yaxis          = ['lin','log']
-#yaxis          = ['log']
-#ymin = 0.01
-#ytitle = "DVs"
 stacksig       = ['nostack']#,'stack']
 #stackbkg       = ['nostack']
-outdir         = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Plots/full_ZZ_ZH_WW_binning/'
+outdir         = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/plots/'
 splitLeg       = False
 
 variables = [
 
     #gen variables
-    "n_tracks",
-    "n_RecoedPrimaryTracks",
-    'n_seltracks_trackCut_DVs',
+#    "n_tracks",
+#    "n_RecoedPrimaryTracks",
+    "n_seltracks_DVs",
     'n_trks_seltracks_DVs',
+
+    "DV_evt_seltracks_normchi2",
+
     'invMass_seltracks_DVs',
-    #"DV_evt_seltracks_chi2",
-    "Reco_seltracks_DVs_Lxy",
-    "Reco_seltracks_trackCut_DVs_Lxyz",
-    #"DV_evt_seltracks_normchi2",
-    "n_merged_DVs",
-    'n_trks_merged_DVs',
-    'invMass_merged_DVs',
-    #"merged_DVs_chi2",
-    #"merged_DVs_normchi2",
-    "Reco_DVs_merged_Lxy",
-    "Reco_DVs_merged_Lxyz",
-    'n_RecoElectrons',
+    "invMass_seltracks_DVs_zoom",
+
+    "Reco_seltracks_DVs_Lxyz_01800",
+    "Reco_seltracks_DVs_Lxyz_02000",
+    "Reco_seltracks_DVs_Lxyz_zoom",
+
     "Reco_ee_invMass",
-    'n_RecoMuons',
     "Reco_mumu_invMass",
+
+    'n_RecoElectrons',
+    'n_RecoMuons',
+
+    "n_electrons_sel_iso",
+    "n_muons_sel_iso",
+
+    #"Reco_seltracks_DVs_Lxy",
+    #"Reco_seltracks_trackCut_DVs_Lxyz",
+    #"Reco_seltracks_trackCut_DVs_Lxyz_zoom",
+    #"n_seltracks_fullVertexSel_DVs",
+    #"n_trks_seltracks_fullVertexSel_DVs",
+    #"invMass_seltracks_fullVertexSel_DVs",
+    #"DV_evt_seltracks_fullVertexSel_normchi2",
+    #"Reco_seltracks_fullVertexSel_DVs_Lxyz",
+    # "n_merged_DVs",
+    # 'n_trks_merged_DVs',
+    # 'invMass_merged_DVs',
+    # "merged_DVs_chi2",
+    # "merged_DVs_normchi2",
+    # "Reco_DVs_merged_Lxy",
+    # "Reco_DVs_merged_Lxyz",
+
              ]
 
     
@@ -52,30 +68,45 @@ variables = [
 selections = {}
 selections['ExoticHiggs']  = [
     "selNone",
-    "preSel",
-    #"preSel+ntracks",
-    "selZ",
-    "selZ+nDVs_seltracks",
-    #"selZ+nDVs_merge",
+    "only_exactly_two_leptons",
+    "pre-selection",
+    "pre-selection+full_DV_sel",
+    "pre-selection+track_DV_sel",
 ]
 
 extralabel = {}
 extralabel['selNone'] = "No selection"
-extralabel['preSel'] = ""
-extralabel['selZ'] = "selZ only"
-extralabel['selZ+nDVs_seltracks'] = ""
-extralabel['selZ+nDVs_merge'] = "selZ + DV merging"
+extralabel['only_exactly_two_leptons'] = "Two Leptons"
+extralabel['pre-selection'] = "Pre-selection"
+extralabel['pre-selection+full_DV_sel'] = "Pre-selection + Full DV selection"
+extralabel["pre-selection+track_DV_sel"] = "Pre-selection + ntrks > 2"
+
+linestyle = {}
+
+## Signal
+
+linestyle['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = 1
+linestyle['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = 1
+linestyle['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = 1
+linestyle['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = 2
+linestyle['exoticHiggs_scalar_ms60GeV_sine-6_240912'] = 2
+linestyle['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = 2
 
 colors = {}
 
 ## Signal
 
-colors['exoticHiggs_scalar_ms20GeV_sine-5'] = ROOT.kCyan+4
-colors['exoticHiggs_scalar_ms20GeV_sine-6'] = ROOT.kMagenta-8
-colors['exoticHiggs_scalar_ms20GeV_sine-7'] = ROOT.kCyan-8
-colors['exoticHiggs_scalar_ms60GeV_sine-5'] = ROOT.kCyan+4
-colors['exoticHiggs_scalar_ms60GeV_sine-6'] = ROOT.kMagenta-8
-colors['exoticHiggs_scalar_ms60GeV_sine-7'] = ROOT.kCyan-8
+colors['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = ROOT.kCyan+2
+colors['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = ROOT.kMagenta-6
+colors['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = ROOT.kCyan-6
+
+colors['exoticHiggs_scalar_ms40GeV_sine-5_240912'] = ROOT.kCyan-5
+colors['exoticHiggs_scalar_ms40GeV_sine-6_240912'] = ROOT.kMagenta-10
+colors['exoticHiggs_scalar_ms40GeV_sine-7_240912'] = ROOT.kCyan-10
+
+colors['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = ROOT.kCyan+4
+colors['exoticHiggs_scalar_ms60GeV_sine-6_240912'] = ROOT.kMagenta-8
+colors['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = ROOT.kCyan-8
 
 ## Backgrounds
 colors['ZH'] = ROOT.kCyan-6
@@ -83,29 +114,23 @@ colors['p8_ee_WW_ecm240'] = ROOT.kRed-3
 colors['p8_ee_ZZ_ecm240'] = ROOT.kGreen-5
 
 # The one used for testing
-#colors['wzp6_ee_eeH_Hbb_ecm240'] = ROOT.kRed+5
-
-linestyle = {}
-
-## Signal
-
-linestyle['exoticHiggs_scalar_ms20GeV_sine-5'] = 1
-linestyle['exoticHiggs_scalar_ms20GeV_sine-6'] = 1
-linestyle['exoticHiggs_scalar_ms20GeV_sine-7'] = 1
-linestyle['exoticHiggs_scalar_ms60GeV_sine-5'] = 2
-linestyle['exoticHiggs_scalar_ms60GeV_sine-6'] = 2
-linestyle['exoticHiggs_scalar_ms60GeV_sine-7'] = 2
+colors['wzp6_ee_eeH_Hbb_ecm240'] = ROOT.kRed-10
 
 
 plots = {}
 plots['ExoticHiggs'] ={
     'signal':{
-                    #  'exoticHiggs_scalar_ms20GeV_sine-5':['exoticHiggs_scalar_ms20GeV_sine-5'],
-                     'exoticHiggs_scalar_ms20GeV_sine-6':['exoticHiggs_scalar_ms20GeV_sine-6'],
-                    #  'exoticHiggs_scalar_ms20GeV_sine-7':['exoticHiggs_scalar_ms20GeV_sine-7'],
-                    #  'exoticHiggs_scalar_ms60GeV_sine-5':['exoticHiggs_scalar_ms60GeV_sine-5'],
-                    #  'exoticHiggs_scalar_ms60GeV_sine-6':['exoticHiggs_scalar_ms60GeV_sine-6'],
-                    #  'exoticHiggs_scalar_ms60GeV_sine-7':['exoticHiggs_scalar_ms60GeV_sine-7'],
+                     #'exoticHiggs_scalar_ms20GeV_sine-5_240912':['exoticHiggs_scalar_ms20GeV_sine-5_240912'],
+                     'exoticHiggs_scalar_ms20GeV_sine-6_240912':['exoticHiggs_scalar_ms20GeV_sine-6_240912'],
+                     #'exoticHiggs_scalar_ms20GeV_sine-7_240912':['exoticHiggs_scalar_ms20GeV_sine-7_240912'],
+
+                     #'exoticHiggs_scalar_ms40GeV_sine-5_240912':['exoticHiggs_scalar_ms40GeV_sine-5_240912'],
+                     #'exoticHiggs_scalar_ms40GeV_sine-6_240912':['exoticHiggs_scalar_ms40GeV_sine-6_240912'],
+                     #'exoticHiggs_scalar_ms40GeV_sine-7_240912':['exoticHiggs_scalar_ms40GeV_sine-7_240912'],
+
+                     'exoticHiggs_scalar_ms60GeV_sine-5_240912':['exoticHiggs_scalar_ms60GeV_sine-5_240912'],
+                     'exoticHiggs_scalar_ms60GeV_sine-6_240912':['exoticHiggs_scalar_ms60GeV_sine-6_240912'],
+                     #'exoticHiggs_scalar_ms60GeV_sine-7_240912':['exoticHiggs_scalar_ms60GeV_sine-7_240912'],
             },
             
 'backgrounds':{
@@ -137,7 +162,7 @@ plots['ExoticHiggs'] ={
                     # 'wzp6_ee_ccH_Hss_ecm240':['wzp6_ee_ccH_Hss_ecm240'],
                     # 'wzp6_ee_ccH_Htautau_ecm240':['wzp6_ee_ccH_Htautau_ecm240'],
 
-                    #'wzp6_ee_eeH_Hbb_ecm240':['wzp6_ee_eeH_Hbb_ecm240'],
+                    # 'wzp6_ee_eeH_Hbb_ecm240':['wzp6_ee_eeH_Hbb_ecm240'],
                     # 'wzp6_ee_eeH_Hcc_ecm240':['wzp6_ee_eeH_Hcc_ecm240'],
                     # 'wzp6_ee_eeH_Hgg_ecm240':['wzp6_ee_eeH_Hgg_ecm240'],
                     #'wzp6_ee_eeH_Hmumu_ecm240':['wzp6_ee_eeH_Hmumu_ecm240'],
@@ -185,13 +210,17 @@ plots['ExoticHiggs'] ={
 
 
 legend = {}
-legend['exoticHiggs_scalar_ms20GeV_sine-5'] = r'm_s=20GeV, sin\theta=1e-5'
-legend['exoticHiggs_scalar_ms20GeV_sine-6'] = r'm20GeV-sin\theta=1e^{-6}'
-legend['exoticHiggs_scalar_ms20GeV_sine-7'] = r'm_s=20GeV, sin\theta=1e-7'
+legend['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = r'm20GeV-sin\theta=1e^{-5}'
+legend['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = r'm20GeV-sin\theta=1e^{-6}'
+legend['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = r'm20GeV-sin\theta=1e^{-7}'
 
-legend['exoticHiggs_scalar_ms60GeV_sine-5'] = r'm_s=60GeV, sin\theta=1e-5'
-legend['exoticHiggs_scalar_ms60GeV_sine-6'] = r'm_s=60GeV, sin\theta=1e-6'
-legend['exoticHiggs_scalar_ms60GeV_sine-7'] = r'm_s=60GeV, sin\theta=1e-7'
+legend['exoticHiggs_scalar_ms40GeV_sine-5_240912'] = r'm40GeV-sin\theta=1e^{-5}'
+legend['exoticHiggs_scalar_ms40GeV_sine-6_240912'] = r'm40GeV-sin\theta=1e^{-6}'
+legend['exoticHiggs_scalar_ms40GeV_sine-7_240912'] = r'm40GeV-sin\theta=1e^{-7}'
+
+legend['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = r'm60GeV-sin\theta=1e^{-5}'
+legend['exoticHiggs_scalar_ms60GeV_sine-6_240912'] = r'm60GeV-sin\theta=1e^{-6}'
+legend['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = r'm60GeV-sin\theta=1e^{-7}'
 
 legend['p8_ee_WW_ecm240'] = 'WW'
 legend['p8_ee_ZZ_ecm240'] = 'ZZ'
@@ -215,7 +244,7 @@ legend['ZH'] = r'ZH, H \rightarrow SM'
 # legend['wzp6_ee_ccH_Hmumu_ecm240'] = 'Z(cc), H(mumu)'
 # legend['wzp6_ee_ccH_Hss_ecm240'] = 'Z(cc), H(ss)'
 # legend['wzp6_ee_ccH_Htautau_ecm240'] = 'Z(cc), H(tautau)'
-# legend['wzp6_ee_eeH_Hbb_ecm240'] = 'Z(ee), H(bb)'
+legend['wzp6_ee_eeH_Hbb_ecm240'] = 'Z(ee), H(bb)'
 # legend['wzp6_ee_eeH_Hcc_ecm240'] = 'Z(ee), H(cc)'
 # legend['wzp6_ee_eeH_Hgg_ecm240'] = 'Z(ee), H(gg)'
 # legend['wzp6_ee_eeH_Hmumu_ecm240'] = 'Z(ee), H(mumu)'
