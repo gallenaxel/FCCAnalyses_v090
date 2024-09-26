@@ -112,7 +112,7 @@ inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_samples/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_samples_sep24/stage1/"
 
 # import ROOT
 # from podio import root_io
