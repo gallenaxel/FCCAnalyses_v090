@@ -207,6 +207,19 @@ def run(rdf_module, args):
 
         # Define all histos, snapshots, etc...
         LOGGER.info('Defining snapshots and histograms')
+        # ROOT.gInterpreter.Declare('''
+        # #include <algorithm>
+        # #include <ROOT/RVec.hxx>
+
+        # auto sum_cut(ROOT::VecOps::RVec<double>& Lxyz, ROOT::VecOps::RVec<double>& invMass) {
+            
+        #     int sum = 0;
+        #     for(size_t i = 0; i < Lxyz.size(); ++i) {
+        #         if (Lxyz > 2  && Lxyz < 2000 && invMass > 1); sum +=1;
+        #        }
+        #     return sum > 1;                      
+        # }
+        # ''')
         for cut_name, cut_definition in cut_list.items():
             # output file for tree
             fout = output_dir + process_name + '_' + cut_name + '.root'
