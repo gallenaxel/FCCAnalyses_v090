@@ -1,9 +1,10 @@
 
 #Input directory where the files produced at the stage1 level are
-inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_FINAL/"
+#inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_FINAL/"
+inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_SIGNAL_FINAL/"
 
 #Output directory where the files produced at the final-selection level are
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/poster_backgrounds/poster_final_binning/"
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/final/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -20,102 +21,107 @@ processList = {
 
         #'test':{}
         #privately-produced signals 
-        # 'exoticHiggs_scalar_ms20GeV_sine-5':{},
-        # 'exoticHiggs_scalar_ms20GeV_sine-6':{},
-        # 'exoticHiggs_scalar_ms20GeV_sine-7':{},
-        # 'exoticHiggs_scalar_ms60GeV_sine-5':{},
-        # 'exoticHiggs_scalar_ms60GeV_sine-6':{},
-        # 'exoticHiggs_scalar_ms60GeV_sine-7':{},
+        'exoticHiggs_scalar_ms20GeV_sine-5_240912':{},
+        'exoticHiggs_scalar_ms20GeV_sine-6_240912':{},
+        'exoticHiggs_scalar_ms20GeV_sine-7_240912':{},
+        'exoticHiggs_scalar_ms40GeV_sine-5_240912':{},
+        'exoticHiggs_scalar_ms40GeV_sine-6_240912':{},
+        'exoticHiggs_scalar_ms40GeV_sine-7_240912':{},
+        'exoticHiggs_scalar_ms60GeV_sine-5_240912':{},
+        'exoticHiggs_scalar_ms60GeV_sine-6_240912':{},
+        'exoticHiggs_scalar_ms60GeV_sine-7_240912':{},
 
-        # #centrally produced backgrounds
-        # ## ss Backgrounds
-        # 'wzp6_ee_ssH_Hbb_ecm240':{},
-        # 'wzp6_ee_ssH_Hcc_ecm240':{},
-        # 'wzp6_ee_ssH_Hgg_ecm240':{},
-        # 'wzp6_ee_ssH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ssH_Hss_ecm240':{},
-        # 'wzp6_ee_ssH_Htautau_ecm240':{},
+        #centrally produced backgrounds
+        # ss Backgrounds
+        'wzp6_ee_ssH_Hbb_ecm240':{},
+        'wzp6_ee_ssH_Hcc_ecm240':{},
+        'wzp6_ee_ssH_Hgg_ecm240':{},
+        'wzp6_ee_ssH_Hmumu_ecm240':{},
+        'wzp6_ee_ssH_Hss_ecm240':{},
+        'wzp6_ee_ssH_Htautau_ecm240':{},
 
-        # ## bb Backgrounds
-        # 'wzp6_ee_bbH_Hbb_ecm240':{},
-        # 'wzp6_ee_bbH_Hcc_ecm240':{},
-        # 'wzp6_ee_bbH_Hgg_ecm240':{},
-        # 'wzp6_ee_bbH_Hmumu_ecm240':{},
-        # 'wzp6_ee_bbH_Hss_ecm240':{},
-        # 'wzp6_ee_bbH_Htautau_ecm240':{},
+        ## bb Backgrounds
+        'wzp6_ee_bbH_Hbb_ecm240':{},
+        'wzp6_ee_bbH_Hcc_ecm240':{},
+        'wzp6_ee_bbH_Hgg_ecm240':{},
+        'wzp6_ee_bbH_Hmumu_ecm240':{},
+        'wzp6_ee_bbH_Hss_ecm240':{},
+        'wzp6_ee_bbH_Htautau_ecm240':{},
     
 
-        # ## cc Backgrounds
-        # 'wzp6_ee_ccH_Hbb_ecm240':{},
-        # 'wzp6_ee_ccH_Hcc_ecm240':{},
-        # 'wzp6_ee_ccH_Hgg_ecm240':{},
-        # 'wzp6_ee_ccH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ccH_Hss_ecm240':{},
-        # 'wzp6_ee_ccH_Htautau_ecm240':{},
+        ## cc Backgrounds
+        'wzp6_ee_ccH_Hbb_ecm240':{},
+        'wzp6_ee_ccH_Hcc_ecm240':{},
+        'wzp6_ee_ccH_Hmumu_ecm240':{},
+        'wzp6_ee_ccH_Hss_ecm240':{},
+        'wzp6_ee_ccH_Htautau_ecm240':{},
 
 
-        # ## ee Backgrounds
-        # 'wzp6_ee_eeH_Hbb_ecm240':{},
-        # 'wzp6_ee_eeH_Hcc_ecm240':{},
-        # 'wzp6_ee_eeH_Hgg_ecm240':{},
-        # 'wzp6_ee_eeH_Hmumu_ecm240':{},
-        # 'wzp6_ee_eeH_Hss_ecm240':{},
-        # 'wzp6_ee_eeH_Htautau_ecm240':{},
+        ## ee Backgrounds
+        'wzp6_ee_eeH_Hbb_ecm240':{},
+        'wzp6_ee_eeH_Hcc_ecm240':{},
+        'wzp6_ee_eeH_Hgg_ecm240':{},
+        'wzp6_ee_eeH_Hmumu_ecm240':{},
+        'wzp6_ee_eeH_Hss_ecm240':{},
+        'wzp6_ee_eeH_Htautau_ecm240':{},
 
 
-        # ## mumu Backgrounds
-        # 'wzp6_ee_mumuH_Hbb_ecm240':{},
-        # 'wzp6_ee_mumuH_Hcc_ecm240':{},
-        # 'wzp6_ee_mumuH_Hgg_ecm240':{},
-        # 'wzp6_ee_mumuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_mumuH_Hss_ecm240':{},
-        # 'wzp6_ee_mumuH_Htautau_ecm240':{},
+        ## mumu Backgrounds
+        'wzp6_ee_mumuH_Hbb_ecm240':{},
+        'wzp6_ee_mumuH_Hcc_ecm240':{},
+        'wzp6_ee_mumuH_Hgg_ecm240':{},
+        'wzp6_ee_mumuH_Hmumu_ecm240':{},
+        'wzp6_ee_mumuH_Hss_ecm240':{},
+        'wzp6_ee_mumuH_Htautau_ecm240':{},
 
-        # ## tautau Backgrounds
-        # 'wzp6_ee_tautauH_Hbb_ecm240':{},
-        # 'wzp6_ee_tautauH_Hcc_ecm240':{},
-        # 'wzp6_ee_tautauH_Hgg_ecm240':{},
-        # 'wzp6_ee_tautauH_Hmumu_ecm240':{},
-        # 'wzp6_ee_tautauH_Hss_ecm240':{},
-        # 'wzp6_ee_tautauH_Htautau_ecm240':{},
+        ## tautau Backgrounds
+        'wzp6_ee_tautauH_Hbb_ecm240':{},
+        'wzp6_ee_tautauH_Hcc_ecm240':{},
+        'wzp6_ee_tautauH_Hgg_ecm240':{},
+        'wzp6_ee_tautauH_Hmumu_ecm240':{},
+        'wzp6_ee_tautauH_Hss_ecm240':{},
+        'wzp6_ee_tautauH_Htautau_ecm240':{},
 
-        # ## nunu Backgrounds
-        # 'wzp6_ee_nunuH_Hbb_ecm240':{},
-        # 'wzp6_ee_nunuH_Hcc_ecm240':{},
-        # 'wzp6_ee_nunuH_Hdd_ecm240':{},
-        # 'wzp6_ee_nunuH_Hgg_ecm240':{},
-        # 'wzp6_ee_nunuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_nunuH_Hss_ecm240':{},
-        # 'wzp6_ee_nunuH_Htautau_ecm240':{},
-        # 'wzp6_ee_nunuH_Huu_ecm240':{},
+        ## nunu Backgrounds
+        'wzp6_ee_nunuH_Hbb_ecm240':{},
+        'wzp6_ee_nunuH_Hcc_ecm240':{},
+        'wzp6_ee_nunuH_Hdd_ecm240':{},
+        'wzp6_ee_nunuH_Hgg_ecm240':{},
+        'wzp6_ee_nunuH_Hmumu_ecm240':{},
+        'wzp6_ee_nunuH_Hss_ecm240':{},
+        'wzp6_ee_nunuH_Htautau_ecm240':{},
+        'wzp6_ee_nunuH_Huu_ecm240':{},
 
-        # ## ZZ Backgrounds
-        # 'wzp6_ee_eeH_HZZ_ecm240':{},
-        # 'wzp6_ee_mumuH_HZZ_ecm240':{},
-        # 'wzp6_ee_qqH_HZZ_ecm240':{},
-        # 'wzp6_ee_tautauH_HZZ_ecm240':{},
+        ## ZZ Backgrounds
+        'wzp6_ee_eeH_HZZ_ecm240':{},
+        'wzp6_ee_mumuH_HZZ_ecm240':{},
+        'wzp6_ee_qqH_HZZ_ecm240':{},
+        'wzp6_ee_tautauH_HZZ_ecm240':{},
 
-        # ## WW Backgrounds
-        # 'wzp6_ee_eeH_HWW_ecm240':{},
-        # 'wzp6_ee_mumuH_HWW_ecm240':{},
-        # 'wzp6_ee_qqH_HWW_ecm240':{},
-        # 'wzp6_ee_tautauH_HWW_ecm240':{},
+        ## WW Backgrounds
+        'wzp6_ee_eeH_HWW_ecm240':{},
+        'wzp6_ee_mumuH_HWW_ecm240':{},
+        'wzp6_ee_qqH_HWW_ecm240':{},
+        'wzp6_ee_tautauH_HWW_ecm240':{},
 
-        # # ## Other
-        # 'p8_ee_WW_ecm240':{},
-        # 'p8_ee_ZZ_ecm240':{},
+        # ## Other
+        'p8_ee_WW_ecm240':{},
+        'p8_ee_ZZ_ecm240':{},
 
 }
 
 ###Dictionary for prettier names of processes (optional)
 processLabels = {
     # #signals
-    'exoticHiggs_scalar_ms20GeV_sine-5': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-5}$",
-    'exoticHiggs_scalar_ms20GeV_sine-6': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-6}$",
-    'exoticHiggs_scalar_ms20GeV_sine-7': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-7}$",
-    'exoticHiggs_scalar_ms60GeV_sine-5': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-5}$",
-    'exoticHiggs_scalar_ms60GeV_sine-6': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-6}$",
-    'exoticHiggs_scalar_ms60GeV_sine-7': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-7}$",
+    'exoticHiggs_scalar_ms20GeV_sine-5_240912': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-5}$",
+    'exoticHiggs_scalar_ms20GeV_sine-6_240912': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-6}$",
+    'exoticHiggs_scalar_ms20GeV_sine-7_240912': "$m_S$ = 20 GeV, sin $\theta = 1 * 10^{-7}$",
+    'exoticHiggs_scalar_ms40GeV_sine-5_240912': "$m_S$ = 40 GeV, sin $\theta = 1 * 10^{-5}$",
+    'exoticHiggs_scalar_ms40GeV_sine-6_240912': "$m_S$ = 40 GeV, sin $\theta = 1 * 10^{-6}$",
+    'exoticHiggs_scalar_ms40GeV_sine-7_240912': "$m_S$ = 40 GeV, sin $\theta = 1 * 10^{-7}$",    
+    'exoticHiggs_scalar_ms60GeV_sine-5_240912': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-5}$",
+    'exoticHiggs_scalar_ms60GeV_sine-6_240912': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-6}$",
+    'exoticHiggs_scalar_ms60GeV_sine-7_240912': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-7}$",
 
     # #backgrounds
     ## ss Backgrounds
@@ -202,12 +208,17 @@ procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 procDictAdd={
    
-    'exoticHiggs_scalar_ms20GeV_sine-5': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms20GeV_sine-6': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms20GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.858e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms60GeV_sine-5': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms60GeV_sine-6': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms60GeV_sine-7': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.618e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 7.666e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 7.666e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 7.666e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+
+    'exoticHiggs_scalar_ms40GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 6.218e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms40GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 6.218e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms40GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 6.218e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+
+    'exoticHiggs_scalar_ms60GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.267e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.267e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 2.267e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
     'wzp6_ee_nunuH_Hbb_ecm240' : {'numberOfEvents': 1200000, 'sumOfWeights': 1200000, 'crossSection': 0.0269, 'kfactor': 1.0, 'matchingEfficiency': 1.0},
     'wzp6_ee_nunuH_Hcc_ecm240' : {'numberOfEvents': 1100000, 'sumOfWeights': 1100000, 'crossSection': 0.001335, 'kfactor': 1.0, 'matchingEfficiency': 1.0},
@@ -268,10 +279,29 @@ procDictAdd={
 
 
 #Number of CPUs to use
-nCPUS = 2
+nCPUS = 4
 
 #produces ROOT TTrees, default is False
 doTree = False
+
+#include <algorithm> // Needed for std::any_of
+import ROOT
+ROOT.gInterpreter.Declare('''
+#include <algorithm>
+#include <ROOT/RVec.hxx>
+
+auto sepFunc (ROOT::VecOps::RVec<int> n_tracks, ROOT::VecOps::RVec<double> distanceDV, ROOT::VecOps::RVec<double> invMassDV, ROOT::VecOps::RVec<double> chi2DV,  int n_tracks_min, double distance_min, double distance_max, double inv_mass_min, double chi2_max) {
+    int sum = 0;
+    for (int i=0; i < invMassDV.size(); i++){
+        if ((n_tracks.at(i) > n_tracks_min) && (invMassDV.at(i) > inv_mass_min) && (distanceDV.at(i) > distance_min) && (distanceDV.at(i) < distance_max) && (chi2DV.at(i) < chi2_max)) {
+            sum+=1;
+        }
+    }
+    return sum>1;
+}
+                      
+''')
+
 
 ###Dictionnay of the list of cuts. The key is the name of the selection that will be added to the output file
 cutList = {
@@ -279,12 +309,11 @@ cutList = {
     "selNone": "n_tracks > -1",
 
     # For event selection
-    "preSel": "((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) || ((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1)))",
+    "only_exactly_two_leptons": "((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) || ((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1)))",
+    "pre-selection" : "(((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))",
+    "pre-selection+full_DV_sel" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))) && (sepFunc(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 4., 2000., 2., 5.))",
+    "pre-selection+track_DV_sel" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))) && (sepFunc(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 0.0, 10000., 0., 9.))",
 
-    "selZ": "(Reco_ee_invMass > 70 && Reco_ee_invMass < 110) || (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110)",                   
-    "selZ+nDVs_seltracks": "((Reco_ee_invMass > 70 && Reco_ee_invMass < 110) || (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110)) && n_seltracks_fullVertexSel_DVs >= 1",
-    "selZ+nDVs_seltracks+LxyzCut": "((Reco_ee_invMass > 70 && Reco_ee_invMass < 110) || (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110)) && n_seltracks_fullVertexSel_DVs >= 1 && Reco_seltracks_trackCut_DVs_Lxyz.at(0) > 50",
-    #"selZ+nDVs_merge": "((Reco_ee_invMass > 70 && Reco_ee_invMass < 110) || (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110)) && n_merged_fullVertexSel_DVs >= 1",
 }
 
 ###Dictionary for prettier names of cuts (optional)
@@ -293,39 +322,39 @@ cutLabels = {
     "selNone": "Before selection",
 
     # For event selection
-    "preSel": "Exactly 2 oppositely charged leptons",
-    "selZ": "70 < $m_{ll}$ < 110 GeV",
-    "selZ+nDVs_seltracks": "n DVs $\geq$ 2",
-    "selZ+nDVs_seltracks+LxyzCut" : "r$_{PV-DV} > 50$"
-    #"selZ+nDVs_merge": "n DVs $\geq$ 2 (merged)",
+    "only_exactly_two_leptons": "Exactly 2 oppositely charged leptons",
+    "pre-selection" : "pre-selection",
+    "pre-selection+full_DV_sel" : "pre-selection + Full DV-selection",
+    "pre-selection+track_DV_sel" : "pre-selection + ntracks $> 2$"
 }
 
 ###Dictionary for the ouput variable/hitograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
 
 histoList = {
-    "n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
-    "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
-    'n_seltracks_trackCut_DVs':             {"name":"n_seltracks_trackCut_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
-    'n_trks_seltracks_DVs':                 {"name":'n_trks_seltracks_DVs',                "title":"Number of tracks from the DVs",                                "bin":30, "xmin":1.5, "xmax":29.5},
-    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":-0.5, "xmax":39.5},
+    #"n_DVs": {"name":'countDVs(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 4., 2000., 2., 5.)',                "title":"Number of DVs",                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
+    #"n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
+    #"n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
     #"DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
-    "Reco_seltracks_DVs_Lxy":               {"name":"Reco_seltracks_DVs_Lxy",              "title":"Transverse distance between PV and DVs [mm]",                  "bin":50, "xmin":0, "xmax":2000},
-    "Reco_seltracks_trackCut_DVs_Lxyz":     {"name":"Reco_seltracks_trackCut_DVs_Lxyz",    "title":"Distance between PV and DVs [mm]",                             "bin":30, "xmin":0, "xmax":2000, "ymin":0.001, "ytitle":"DVs"},
-    #"DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"The normalised #chi^{2} distribution of the DVs",              "bin":40, "xmin":0, "xmax":10},
-    "n_merged_DVs":                         {"name":"n_merged_DVs",                        "title":"Number of DVs",                                                "bin":10, "xmin":-0.5, "xmax":9.5},
-    'n_trks_merged_DVs':                    {"name":'n_trks_merged_DVs',                   "title":"Number of tracks from the DVs from sel tracks + merge",        "bin":30, "xmin":1.5, "xmax":29.5},
+    
+    'n_seltracks_DVs':             {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
+    'n_trks_seltracks_DVs':                 {"name":'n_trks_seltracks_DVs',                "title":"DV track multiplicity",                                "bin":13, "xmin":1.5, "xmax":15},
 
-    'invMass_merged_DVs':                   {"name":'invMass_merged_DVs',                  "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":-0.5, "xmax":39.5},
-    #"merged_DVs_chi2":                     {"name":"merged_DVs_chi2",                     "title":"The #chi^{2} distribution of the merged DVs",                  "bin":100, "xmin":-0.5, "xmax":11.5},
-    #"merged_DVs_normchi2":                 {"name":"merged_DVs_normchi2",                 "title":"The normalised #chi^{2} distribution of the merged DVs",       "bin":40, "xmin":0, "xmax":10},
-    "Reco_DVs_merged_Lxy":                  {"name":"Reco_DVs_merged_Lxy",                 "title":"Transverse distance between PV and DVs [mm]",                  "bin":50, "xmin":0, "xmax":2000},
-    "Reco_DVs_merged_Lxyz":                 {"name":"Reco_DVs_merged_Lxyz",                "title":"Distance between PV and DVs [mm]",                             "bin":50, "xmin":0, "xmax":2000},
+    "DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
+    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":40},
+    'invMass_seltracks_DVs_zoom':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":5},
 
-    'n_RecoElectrons':                      {"name":'n_RecoElectrons',                     "title": "Number of reconstructed electrons",                           "bin":10,"xmin":-0.5,"xmax":9.5},
-    'n_electrons_sel_iso':                  {"name":'n_electrons_sel_iso',                 "title": "Number of isolated electrons",                                "bin":10,"xmin":-0.5,"xmax":9.5},
-    "Reco_ee_invMass":                      {"name":"Reco_ee_invMass",                     "title": "Invariant mass of reconstructed e- e+ [GeV]",                 "bin":30,"xmin":50,"xmax":150, "ymin":0.001},
-    'n_RecoMuons':                          {"name":'n_RecoMuons',                         "title": "Number of reconstructed muons",                               "bin":10,"xmin":-0.5,"xmax":9.5},
-    'n_muons_sel_iso':                      {"name":'n_muons_sel_iso',                     "title": "Number of isolated muons",                                    "bin":10,"xmin":-0.5,"xmax":9.5},
-    "Reco_mumu_invMass":                    {"name":"Reco_mumu_invMass",                   "title": "Invariant mass of reconstructed #mu- #mu+ [GeV]",             "bin":100,"xmin":50,"xmax":150, "ymin":0.001},    
+    "Reco_seltracks_DVs_Lxyz_01800":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":60, "xmin":0, "xmax":1800, "ymin":0.001},
+    "Reco_seltracks_DVs_Lxyz_02000":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
+    
+    "Reco_seltracks_DVs_Lxyz_zoom":     {"name":"Reco_seltracks_DVs_Lxyz","title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":100, "ymin":0.001},
+
+    'n_RecoElectrons':                      {"name":'n_RecoElectrons',                     "title": "Number of reco. electrons",                           "bin":10,"xmin":-0.5,"xmax":9.5},
+    'n_RecoMuons':                          {"name":'n_RecoMuons',                         "title": "Number of reco. muons",                               "bin":10,"xmin":-0.5,"xmax":9.5},
+    
+    'n_electrons_sel_iso':                  {"name":'n_electrons_sel_iso',                 "title": "Number of reco. iso. electrons",                                "bin":10,"xmin":-0.5,"xmax":9.5},    
+    'n_muons_sel_iso':                      {"name":'n_muons_sel_iso',                     "title": "Number of reco. iso. muons",                                    "bin":10,"xmin":-0.5,"xmax":9.5},
+
+    "Reco_ee_invMass":                      {"name":"Reco_ee_invMass",                     "title": "Invariant mass of reconstructed e- e+ [GeV]",                 "bin":50,"xmin":50,"xmax":150, "ymin":0.001},
+    "Reco_mumu_invMass":                    {"name":"Reco_mumu_invMass",                   "title": "Invariant mass of reconstructed #mu- #mu+ [GeV]",             "bin":50,"xmin":50,"xmax":150, "ymin":0.001},    
 
 }
