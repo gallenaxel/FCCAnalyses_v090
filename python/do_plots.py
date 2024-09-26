@@ -277,9 +277,9 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
     except AttributeError:
         LOGGER.debug('No scale signal, using 1.')
         param.scaleSig = scaleSig
-
+    ylabel = 'Events'
     if 'AAAyields' in var:
-        drawStack(var, 'events', leg, lt, rt, param.formats,
+        drawStack(var, ylabel, leg, lt, rt, param.formats,
                   param.outdir+"/"+sel, False, True, histos, colors,
                   param.ana_tex, extralab, scaleSig, customLabel, nsig,
                   nbkg, leg2, yields, plotStatUnc)
@@ -287,12 +287,12 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
 
     if 'stack' in param.stacksig:
         if 'lin' in param.yaxis:
-            drawStack(var+"_stack_lin", 'events', leg, lt, rt, param.formats,
+            drawStack(var+"_stack_lin", ylabel, leg, lt, rt, param.formats,
                       param.outdir+"/"+sel, False, True, histos, colors,
                       param.ana_tex, extralab, scaleSig, customLabel, nsig,
                       nbkg, leg2, yields, plotStatUnc)
         if 'log' in param.yaxis:
-            drawStack(var+"_stack_log", 'events', leg, lt, rt, param.formats,
+            drawStack(var+"_stack_log", ylabel, leg, lt, rt, param.formats,
                       param.outdir+"/"+sel, True, True, histos, colors,
                       param.ana_tex, extralab, scaleSig, customLabel, nsig,
                       nbkg, leg2, yields, plotStatUnc)
@@ -302,12 +302,12 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
 
     if 'nostack' in param.stacksig:
         if 'lin' in param.yaxis:
-            drawStack(var+"_nostack_lin", 'events', leg, lt, rt, param.formats,
+            drawStack(var+"_nostack_lin", ylabel, leg, lt, rt, param.formats,
                       param.outdir+"/"+sel, False, False, histos, colors,
                       param.ana_tex, extralab, scaleSig, customLabel, nsig,
                       nbkg, leg2, yields, plotStatUnc)
         if 'log' in param.yaxis:
-            drawStack(var+"_nostack_log", 'events', leg, lt, rt, param.formats,
+            drawStack(var+"_nostack_log", ylabel, leg, lt, rt, param.formats,
                       param.outdir+"/"+sel, True, False, histos, colors,
                       param.ana_tex, extralab, scaleSig, customLabel, nsig,
                       nbkg, leg2, yields, plotStatUnc)
@@ -398,7 +398,7 @@ def runPlotsHistmaker(hName, param, plotCfg):
         colors.append(param.colors[b])
 
     xtitle = plotCfg['xtitle'] if 'xtitle' in plotCfg else ""
-    ytitle = plotCfg['ytitle'] if 'ytitle' in plotCfg else "DVs"
+    ytitle = plotCfg['ytitle'] if 'ytitle' in plotCfg else "number of DVs"
     xmin = plotCfg['xmin'] if 'xmin' in plotCfg else -1
     xmax = plotCfg['xmax'] if 'xmax' in plotCfg else -1
     ymin = plotCfg['ymin'] if 'ymin' in plotCfg else -1
@@ -630,8 +630,8 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
     latex.SetTextSize(0.035)
     latex.DrawLatex(0.18, 0.76, text)
 
-    text = '#bf{#it{' + ana_tex + '}}'
-    latex.SetTextSize(0.04)
+    text = '#it{' + ana_tex + '}'
+    latex.SetTextSize(0.02)
     latex.DrawLatex(0.18, 0.71, text)
 
     text = '#bf{#it{' + extralab + '}}'
