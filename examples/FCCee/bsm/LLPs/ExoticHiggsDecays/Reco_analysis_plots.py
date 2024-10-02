@@ -11,12 +11,12 @@ ana_tex        = 'e^{+}e^{-} #rightarrow Z H, Z #rightarrow l^{\pm}l^{\mp}, H #r
 delphesVersion = '3.4.2'
 energy         = 240
 collider       = 'FCC-ee'
-inputDir       = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/final/'
+inputDir       = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final/'
 formats        = ['pdf']
 yaxis          = ['lin','log']
 stacksig       = ['nostack']#,'stack']
 #stackbkg       = ['nostack']
-outdir         = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/plots/'
+outdir         = '/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/plots/'
 splitLeg       = False
 
 variables = [
@@ -26,24 +26,30 @@ variables = [
 #    "n_RecoedPrimaryTracks",
     "n_seltracks_DVs",
     'n_trks_seltracks_DVs',
+    'n_trks_2tracks_DVs',
 
     "DV_evt_seltracks_normchi2",
+    "DV_evt_gt2tracks_normchi2",
 
     'invMass_seltracks_DVs',
-    "invMass_seltracks_DVs_zoom",
+    'invMass_gt2tracks_DVs',
 
-    "Reco_seltracks_DVs_Lxyz_01800",
     "Reco_seltracks_DVs_Lxyz_02000",
-    "Reco_seltracks_DVs_Lxyz_zoom",
+    "Reco_gt2tracks_DVs_Lxyz_02000",
 
-    "Reco_ee_invMass",
-    "Reco_mumu_invMass",
+    # "invMass_seltracks_DVs_zoom",
 
-    'n_RecoElectrons',
-    'n_RecoMuons',
+    # "Reco_seltracks_DVs_Lxyz_01800",
+    # "Reco_seltracks_DVs_Lxyz_zoom",
 
-    "n_electrons_sel_iso",
-    "n_muons_sel_iso",
+    # "Reco_ee_invMass",
+    # "Reco_mumu_invMass",
+
+    # 'n_RecoElectrons',
+    # 'n_RecoMuons',
+
+    # "n_electrons_sel_iso",
+    # "n_muons_sel_iso",
 
     #"Reco_seltracks_DVs_Lxy",
     #"Reco_seltracks_trackCut_DVs_Lxyz",
@@ -71,7 +77,7 @@ selections['ExoticHiggs']  = [
     "only_exactly_two_leptons",
     "pre-selection",
     "pre-selection+full_DV_sel",
-    "pre-selection+track_DV_sel",
+    "pre-selection_nTracks",
 ]
 
 extralabel = {}
@@ -79,7 +85,7 @@ extralabel['selNone'] = "No selection"
 extralabel['only_exactly_two_leptons'] = "Two Leptons"
 extralabel['pre-selection'] = "Pre-selection"
 extralabel['pre-selection+full_DV_sel'] = "Pre-selection + Full DV selection"
-extralabel["pre-selection+track_DV_sel"] = "Pre-selection + ntrks > 2"
+extralabel["pre-selection_nTracks"] = "Pre-selection + ntrks > 2"
 
 linestyle = {}
 
@@ -148,7 +154,7 @@ plots['ExoticHiggs'] ={
                     # 'wzp6_ee_ssH_Hss_ecm240':['wzp6_ee_ssH_Hss_ecm240'],
                     # 'wzp6_ee_ssH_Htautau_ecm240':['wzp6_ee_ssH_Htautau_ecm240'],
 
-                    #'wzp6_ee_bbH_Hbb_ecm240':['wzp6_ee_bbH_Hbb_ecm240'],
+                    # 'wzp6_ee_bbH_Hbb_ecm240':['wzp6_ee_bbH_Hbb_ecm240'],
                     # 'wzp6_ee_bbH_Hcc_ecm240':['wzp6_ee_bbH_Hcc_ecm240'],
                     # 'wzp6_ee_bbH_Hgg_ecm240':['wzp6_ee_bbH_Hgg_ecm240'],
                     # 'wzp6_ee_bbH_Hmumu_ecm240':['wzp6_ee_bbH_Hmumu_ecm240'],

@@ -3,8 +3,8 @@
 #inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_FINAL/"
 inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_SIGNAL_FINAL/"
 
-#Output directory where the files produced at the final-selection level are
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_sep25_ISR_ForNote_all/final/"
+#Output directory where the files produced at the final-selection level are #ISR_ForNote_all
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -284,26 +284,9 @@ nCPUS = 4
 #produces ROOT TTrees, default is False
 doTree = False
 
-#include <algorithm> // Needed for std::any_of
-import ROOT
-ROOT.gInterpreter.Declare('''
-#include <algorithm>
-#include <ROOT/RVec.hxx>
+     
 
-auto sepFunc (ROOT::VecOps::RVec<int> n_tracks, ROOT::VecOps::RVec<double> distanceDV, ROOT::VecOps::RVec<double> invMassDV, ROOT::VecOps::RVec<double> chi2DV,  int n_tracks_min, double distance_min, double distance_max, double inv_mass_min, double chi2_max) {
-    int sum = 0;
-    for (int i=0; i < invMassDV.size(); i++){
-        if ((n_tracks.at(i) > n_tracks_min) && (invMassDV.at(i) > inv_mass_min) && (distanceDV.at(i) > distance_min) && (distanceDV.at(i) < distance_max) && (chi2DV.at(i) < chi2_max)) {
-            sum+=1;
-        }
-    }
-    return sum>1;
-}
-                      
-''')
-
-
-###Dictionnay of the list of cuts. The key is the name of the selection that will be added to the output file
+##Dictionnay of the list of cuts. The key is the name of the selection that will be added to the output file
 cutList = {
     # For plotting
     "selNone": "n_tracks > -1",
@@ -311,8 +294,9 @@ cutList = {
     # For event selection
     "only_exactly_two_leptons": "((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) || ((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1)))",
     "pre-selection" : "(((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))",
-    "pre-selection+full_DV_sel" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))) && (sepFunc(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 4., 2000., 2., 5.))",
-    "pre-selection+track_DV_sel" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))) && (sepFunc(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 0.0, 10000., 0., 9.))",
+    "pre-selection_nTracks" : "(((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))",
+    "pre-selection+full_DV_sel" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (Reco_ee_invMass > 70 && Reco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (Reco_mumu_invMass > 70 && Reco_mumu_invMass < 110))) && (Sum(n_trks_seltracks_DVs>2&&Reco_seltracks_DVs_Lxyz>4&&Reco_seltracks_DVs_Lxyz<2000&&invMass_seltracks_DVs>2&&DV_evt_seltracks_normchi2<5))>1",
+
 
 }
 
@@ -324,28 +308,40 @@ cutLabels = {
     # For event selection
     "only_exactly_two_leptons": "Exactly 2 oppositely charged leptons",
     "pre-selection" : "pre-selection",
+    "pre-selection_nTracks" : "pre-selection + ntracks $> 2$",
     "pre-selection+full_DV_sel" : "pre-selection + Full DV-selection",
-    "pre-selection+track_DV_sel" : "pre-selection + ntracks $> 2$"
 }
 
-###Dictionary for the ouput variable/hitograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
+defineList={
+   "n_trks_gt2tracks_DVs":"n_trks_seltracks_DVs[n_trks_seltracks_DVs>2]",
+    "DV_evt_gt2tracks_normchi2":"DV_evt_seltracks_normchi2[n_trks_seltracks_DVs>2]",
+    "invMass_gt2tracks_DVs":"invMass_seltracks_DVs[n_trks_seltracks_DVs>2]",
+    "Reco_gt2tracks_DVs_Lxyz":"Reco_seltracks_DVs_Lxyz[n_trks_seltracks_DVs>2]",
+}
+
+###Dictionary for the ouput variable/histograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
 
 histoList = {
-    #"n_DVs": {"name":'countDVs(n_trks_seltracks_DVs, Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs, DV_evt_seltracks_normchi2,  2, 4., 2000., 2., 5.)',                "title":"Number of DVs",                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
     #"n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
     #"n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
     #"DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
     
-    'n_seltracks_DVs':             {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
-    'n_trks_seltracks_DVs':                 {"name":'n_trks_seltracks_DVs',                "title":"DV track multiplicity",                                "bin":13, "xmin":1.5, "xmax":15},
-
+    'n_seltracks_DVs': {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
+    'n_trks_seltracks_DVs': {"name":'n_trks_seltracks_DVs',                "title":"DV track multiplicity",                                "bin":13, "xmin":1.5, "xmax":15},
+    'n_trks_2tracks_DVs': {"name":'n_trks_gt2tracks_DVs',                "title":"DV track multiplicity", "bin":13, "xmin":1.5, "xmax":15},
+   
     "DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
+    "DV_evt_gt2tracks_normchi2":           {"name":"DV_evt_gt2tracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
+
     'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":40},
+    'invMass_gt2tracks_DVs':                {"name":'invMass_gt2tracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":40},
+
     'invMass_seltracks_DVs_zoom':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":5},
 
     "Reco_seltracks_DVs_Lxyz_01800":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":60, "xmin":0, "xmax":1800, "ymin":0.001},
     "Reco_seltracks_DVs_Lxyz_02000":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
-    
+    "Reco_gt2tracks_DVs_Lxyz_02000":     {"name":"Reco_gt2tracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
+
     "Reco_seltracks_DVs_Lxyz_zoom":     {"name":"Reco_seltracks_DVs_Lxyz","title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":100, "ymin":0.001},
 
     'n_RecoElectrons':                      {"name":'n_RecoElectrons',                     "title": "Number of reco. electrons",                           "bin":10,"xmin":-0.5,"xmax":9.5},
