@@ -213,7 +213,7 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
             legCoord = [0.60, 0.60 - legsize, 0.88, 0.62]
         leg2 = None
 
-    leg = ROOT.TLegend(0.6, 0.64, 0.8, 0.84)
+    leg = ROOT.TLegend(0.58, 0.54, 0.8, 0.84)
     leg.SetFillColor(0)
     leg.SetFillStyle(0)
     leg.SetLineColor(0)
@@ -630,12 +630,12 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
     latex.SetTextSize(0.035)
     latex.DrawLatex(0.18, 0.76, text)
 
-    text = '#it{' + ana_tex + '}'
-    latex.SetTextSize(0.02)
+    text = '#bf{#it{' + ana_tex + '}}'
+    latex.SetTextSize(0.025)
     latex.DrawLatex(0.18, 0.71, text)
 
     text = '#bf{#it{' + extralab + '}}'
-    latex.SetTextSize(0.025)
+    latex.SetTextSize(0.03)
     latex.DrawLatex(0.18, 0.66, text)
 
     text = '#bf{#it{' + 'Signal scale=' + str(scaleSig)+'}}'
