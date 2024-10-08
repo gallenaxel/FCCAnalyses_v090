@@ -114,7 +114,7 @@ inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_samples_oct3/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct8/stage1/"
 
 # import ROOT
 # from podio import root_io
@@ -306,18 +306,19 @@ class RDFanalysis():
             
             # select tracks with pT > 1 GeV
             .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(1)(_EFlowTrack_trackStates)')
+            
             # select tracks with |d0 |> 2 mm
             .Define('sel_tracks', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
             
-
             # find the DVs with sel pt and d0
             .Define("DV_evt_seltracks", "VertexFinderLCFIPlus::get_SV_event(sel_tracks, _EFlowTrack_trackStates, PrimaryVertexObject, true, 9., 40., 5.)")
+
             # number of DVs
             .Define('n_seltracks_DVs', 'VertexingUtils::get_n_SV(DV_evt_seltracks)')
 
-
             # number of tracks from the DVs
             .Define('n_trks_seltracks_DVs', 'VertexingUtils::get_VertexNtrk(DV_evt_seltracks)')
+
             # invariant mass at the DVs (assuming the tracks to be pions)
             .Define('invMass_seltracks_DVs', 'VertexingUtils::get_invM(DV_evt_seltracks)')
 
@@ -329,76 +330,6 @@ class RDFanalysis():
             .Define("Reco_seltracks_DVs_Lxy","VertexingUtils::get_dxy_SV(DV_evt_seltracks, PrimaryVertexObject)")
             .Define("Reco_seltracks_DVs_Lxyz","VertexingUtils::get_d3d_SV(DV_evt_seltracks, PrimaryVertexObject)")
 
-            # get DVs from selected tracks with at least 3 tracks
-            .Define("seltracks_trackCut_DVs", "VertexingUtils::cutTracksDVs(DV_evt_seltracks, n_trks_seltracks_DVs)")
-            # some related variables
-            .Define('n_seltracks_trackCut_DVs', 'VertexingUtils::get_n_SV(seltracks_trackCut_DVs)')
-            .Define('n_trks_seltracks_trackCut_DVs', 'VertexingUtils::get_VertexNtrk(seltracks_trackCut_DVs)')
-            .Define('invMass_seltracks_trackCut_DVs', 'VertexingUtils::get_invM(seltracks_trackCut_DVs)')
-            .Define("DV_evt_seltracks_trackCut_normchi2","VertexingUtils::get_norm_chi2_SV(seltracks_trackCut_DVs)") # DV chi2 (normalised)
-            .Define("Reco_seltracks_trackCut_DVs_Lxyz","VertexingUtils::get_d3d_SV(seltracks_trackCut_DVs, PrimaryVertexObject)")
-
-            # get DVs with full vertex selection
-            .Define("seltracks_fullVertexSel_DVs", "VertexingUtils::vertexSelDVs(DV_evt_seltracks, n_trks_seltracks_DVs, invMass_seltracks_DVs, Reco_seltracks_DVs_Lxyz, 2, 4., 2000., 1.)")
-            # some related variables
-            .Define('n_seltracks_fullVertexSel_DVs', 'VertexingUtils::get_n_SV(seltracks_fullVertexSel_DVs)')
-            .Define('n_trks_seltracks_fullVertexSel_DVs', 'VertexingUtils::get_VertexNtrk(seltracks_fullVertexSel_DVs)')
-            .Define('invMass_seltracks_fullVertexSel_DVs', 'VertexingUtils::get_invM(seltracks_fullVertexSel_DVs)')
-            .Define("DV_evt_seltracks_fullVertexSel_normchi2","VertexingUtils::get_norm_chi2_SV(seltracks_fullVertexSel_DVs)") # DV chi2 (normalised)
-            .Define("Reco_seltracks_fullVertexSel_DVs_Lxyz","VertexingUtils::get_d3d_SV(seltracks_fullVertexSel_DVs, PrimaryVertexObject)")
-
-            # get DVs with full vertex selection
-            .Define("seltracks_fullVertexSel_lowDist_DVs", "VertexingUtils::vertexSelDVs(DV_evt_seltracks, n_trks_seltracks_DVs, invMass_seltracks_DVs, Reco_seltracks_DVs_Lxyz, 2, 2., 2000., 1.)")
-            # some related variables
-            .Define('n_seltracks_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_n_SV(seltracks_fullVertexSel_lowDist_DVs)')
-            .Define('n_trks_seltracks_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_VertexNtrk(seltracks_fullVertexSel_lowDist_DVs)')
-            .Define('invMass_seltracks_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_invM(seltracks_fullVertexSel_lowDist_DVs)')
-            .Define("DV_evt_seltracks_fullVertexSel_lowDist_normchi2","VertexingUtils::get_norm_chi2_SV(seltracks_fullVertexSel_lowDist_DVs)") # DV chi2 (normalised)
-            .Define("Reco_seltracks_fullVertexSel_lowDist_DVs_Lxyz","VertexingUtils::get_d3d_SV(seltracks_fullVertexSel_lowDist_DVs, PrimaryVertexObject)")
-            
-            # merge vertices with position within 10*error-of-position, get the tracks from the merged vertices and refit
-            .Define('merged_DVs', 'VertexingUtils::mergeVertices(DV_evt_seltracks, _EFlowTrack_trackStates)')
-            # number of merged DVs
-            .Define("n_merged_DVs", "VertexingUtils::get_n_SV(merged_DVs)")
-            # number of tracks from the merged DVs
-            .Define('n_trks_merged_DVs', 'VertexingUtils::get_VertexNtrk(merged_DVs)')
-            # invariant mass at the merged DVs
-            .Define('invMass_merged_DVs', 'VertexingUtils::get_invM(merged_DVs)')
-
-            # get the chi2 distributions of the merged DVs
-            .Define("merged_DVs_chi2",    "VertexingUtils::get_chi2_SV(merged_DVs)")
-            .Define("merged_DVs_normchi2","VertexingUtils::get_norm_chi2_SV(merged_DVs)") # DV chi2 (normalised)
-
-            # get the decay radius of all the merged DVs
-            .Define("Reco_DVs_merged_Lxy","VertexingUtils::get_dxy_SV(merged_DVs, PrimaryVertexObject)")
-            .Define("Reco_DVs_merged_Lxyz","VertexingUtils::get_d3d_SV(merged_DVs, PrimaryVertexObject)")
-
-            # get merged DVs with at least 3 tracks
-            .Define("merged_trackCut_DVs", "VertexingUtils::cutTracksDVs(merged_DVs, n_trks_merged_DVs)")
-            # some related variables
-            .Define('n_merged_trackCut_DVs', 'VertexingUtils::get_n_SV(merged_trackCut_DVs)')
-            .Define('n_trks_merged_trackCut_DVs', 'VertexingUtils::get_VertexNtrk(merged_trackCut_DVs)')
-            .Define('invMass_merged_trackCut_DVs', 'VertexingUtils::get_invM(merged_trackCut_DVs)')
-            .Define("DV_evt_merged_trackCut_normchi2","VertexingUtils::get_norm_chi2_SV(merged_trackCut_DVs)") # DV chi2 (normalised)
-            .Define("Reco_merged_trackCut_DVs_Lxyz","VertexingUtils::get_d3d_SV(merged_trackCut_DVs, PrimaryVertexObject)")
-
-            # get merged DVs with full vertex selection
-            .Define("merged_fullVertexSel_DVs", "VertexingUtils::vertexSelDVs(merged_DVs, n_trks_merged_DVs, invMass_merged_DVs, Reco_DVs_merged_Lxyz, 2, 4., 2000., 1.)")
-            # some related variables
-            .Define('n_merged_fullVertexSel_DVs', 'VertexingUtils::get_n_SV(merged_fullVertexSel_DVs)')
-            .Define('n_trks_merged_fullVertexSel_DVs', 'VertexingUtils::get_VertexNtrk(merged_fullVertexSel_DVs)')
-            .Define('invMass_merged_fullVertexSel_DVs', 'VertexingUtils::get_invM(merged_fullVertexSel_DVs)')
-            .Define("DV_evt_merged_fullVertexSel_normchi2","VertexingUtils::get_norm_chi2_SV(merged_fullVertexSel_DVs)") # DV chi2 (normalised)
-            .Define("Reco_merged_fullVertexSel_DVs_Lxyz","VertexingUtils::get_d3d_SV(merged_fullVertexSel_DVs, PrimaryVertexObject)")
-
-            # get merged DVs with full vertex selection, lower threshold for distance
-            .Define("merged_fullVertexSel_lowDist_DVs", "VertexingUtils::vertexSelDVs(merged_DVs, n_trks_merged_DVs, invMass_merged_DVs, Reco_DVs_merged_Lxyz, 2, 2., 2000., 1.)")
-            # some related variables
-            .Define('n_merged_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_n_SV(merged_fullVertexSel_lowDist_DVs)')
-            .Define('n_trks_merged_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_VertexNtrk(merged_fullVertexSel_lowDist_DVs)')
-            .Define('invMass_merged_fullVertexSel_lowDist_DVs', 'VertexingUtils::get_invM(merged_fullVertexSel_lowDist_DVs)')
-            .Define("DV_evt_merged_fullVertexSel_lowDist_normchi2","VertexingUtils::get_norm_chi2_SV(merged_fullVertexSel_lowDist_DVs)") # DV chi2 (normalised)
-            .Define("Reco_merged_fullVertexSel_lowDist_DVs_Lxyz","VertexingUtils::get_d3d_SV(merged_fullVertexSel_lowDist_DVs, PrimaryVertexObject)")
             
             # Reconstructed electrons and muons
 
@@ -421,12 +352,21 @@ class RDFanalysis():
             .Define("electrons_sel_iso", "sel_iso(0.12)(RecoElectrons, electrons_iso)")
             .Define("n_electrons_sel_iso", "electrons_sel_iso.size()")
 
+            # some kinematics of the isolated reconstructed electrons and positrons
+            .Define("isoRecoElectron_e", "ReconstructedParticle::get_e(electrons_sel_iso)")
+            .Define("isoRecoElectron_p", "ReconstructedParticle::get_p(electrons_sel_iso)")
+            .Define("isoRecoElectron_pt", "ReconstructedParticle::get_pt(electrons_sel_iso)")
+            .Define("isoRecoElectron_px", "ReconstructedParticle::get_px(electrons_sel_iso)")
+            .Define("isoRecoElectron_py", "ReconstructedParticle::get_py(electrons_sel_iso)")
+            .Define("isoRecoElectron_pz", "ReconstructedParticle::get_pz(electrons_sel_iso)")
+            .Define("isoRecoElectron_charge",  "ReconstructedParticle::get_charge(electrons_sel_iso)")
+
             # finding the invariant mass of the reconstructed electron and positron pair
-            .Define("Reco_ee_energy", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso > 1) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) return (RecoElectron_e.at(0) + RecoElectron_e.at(1)); else return float(-1.);")
-            .Define("Reco_ee_px", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso > 1) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) return (RecoElectron_px.at(0) + RecoElectron_px.at(1)); else return float(-1.);")
-            .Define("Reco_ee_py", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso > 1) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) return (RecoElectron_py.at(0) + RecoElectron_py.at(1)); else return float(-1.);")
-            .Define("Reco_ee_pz", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso > 1) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) return (RecoElectron_pz.at(0) + RecoElectron_pz.at(1)); else return float(-1.);")
-            .Define("Reco_ee_invMass", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso > 1) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) return sqrt(Reco_ee_energy*Reco_ee_energy - Reco_ee_px*Reco_ee_px - Reco_ee_py*Reco_ee_py - Reco_ee_pz*Reco_ee_pz ); else return float(-1.);")
+            .Define("isoReco_ee_energy", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso == 2) && (isoRecoElectron_charge.at(0) != isoRecoElectron_charge.at(1))) return (isoRecoElectron_e.at(0) + isoRecoElectron_e.at(1)); else return float(-1.);")
+            .Define("isoReco_ee_px", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso == 2) && (isoRecoElectron_charge.at(0) != isoRecoElectron_charge.at(1))) return (isoRecoElectron_px.at(0) + isoRecoElectron_px.at(1)); else return float(-1.);")
+            .Define("isoReco_ee_py", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso == 2) && (isoRecoElectron_charge.at(0) != isoRecoElectron_charge.at(1))) return (isoRecoElectron_py.at(0) + isoRecoElectron_py.at(1)); else return float(-1.);")
+            .Define("isoReco_ee_pz", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso == 2) && (isoRecoElectron_charge.at(0) != isoRecoElectron_charge.at(1))) return (isoRecoElectron_pz.at(0) + isoRecoElectron_pz.at(1)); else return float(-1.);")
+            .Define("isoReco_ee_invMass", "if ((n_RecoElectrons>1) && (n_electrons_sel_iso == 2) && (isoRecoElectron_charge.at(0) != isoRecoElectron_charge.at(1))) return sqrt(isoReco_ee_energy*isoReco_ee_energy - isoReco_ee_px*isoReco_ee_px - isoReco_ee_py*isoReco_ee_py - isoReco_ee_pz*isoReco_ee_pz ); else return float(-1.);")
 
 
             # Muons
@@ -448,49 +388,22 @@ class RDFanalysis():
             .Define("muons_sel_iso", "sel_iso(0.25)(RecoMuons, muons_iso)")
             .Define("n_muons_sel_iso", "muons_sel_iso.size()")
 
+            # some kinematics of the isolated reconstructed muons
+            .Define("isoRecoMuon_e",      "ReconstructedParticle::get_e(muons_sel_iso)")
+            .Define("isoRecoMuon_p",      "ReconstructedParticle::get_p(muons_sel_iso)")
+            .Define("isoRecoMuon_pt",      "ReconstructedParticle::get_pt(muons_sel_iso)")
+            .Define("isoRecoMuon_px",      "ReconstructedParticle::get_px(muons_sel_iso)")
+            .Define("isoRecoMuon_py",      "ReconstructedParticle::get_py(muons_sel_iso)")
+            .Define("isoRecoMuon_pz",      "ReconstructedParticle::get_pz(muons_sel_iso)")
+            .Define("isoRecoMuon_charge",  "ReconstructedParticle::get_charge(muons_sel_iso)")
+
             # finding the invariant mass of the reconstructed muon pair
-            .Define("Reco_mumu_energy", "if ((n_RecoMuons>1) && (n_muons_sel_iso > 1) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) return (RecoMuon_e.at(0) + RecoMuon_e.at(1)); else return float(-1.);")
-            .Define("Reco_mumu_px", "if ((n_RecoMuons>1) && (n_muons_sel_iso > 1) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) return (RecoMuon_px.at(0) + RecoMuon_px.at(1)); else return float(-1.);")
-            .Define("Reco_mumu_py", "if ((n_RecoMuons>1) && (n_muons_sel_iso > 1) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) return (RecoMuon_py.at(0) + RecoMuon_py.at(1)); else return float(-1.);")
-            .Define("Reco_mumu_pz", "if ((n_RecoMuons>1) && (n_muons_sel_iso > 1) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) return (RecoMuon_pz.at(0) + RecoMuon_pz.at(1)); else return float(-1.);")
-            .Define("Reco_mumu_invMass", "if ((n_RecoMuons>1) && (n_muons_sel_iso > 1) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) return sqrt(Reco_mumu_energy*Reco_mumu_energy - Reco_mumu_px*Reco_mumu_px - Reco_mumu_py*Reco_mumu_py - Reco_mumu_pz*Reco_mumu_pz ); else return float(-1.);")
+            .Define("isoReco_mumu_energy", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_e.at(0) + isoRecoMuon_e.at(1)); else return float(-1.);")
+            .Define("isoReco_mumu_px", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_px.at(0) + isoRecoMuon_px.at(1)); else return float(-1.);")
+            .Define("isoReco_mumu_py", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_py.at(0) + isoRecoMuon_py.at(1)); else return float(-1.);")
+            .Define("isoReco_mumu_pz", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_pz.at(0) + isoRecoMuon_pz.at(1)); else return float(-1.);")
+            .Define("isoReco_mumu_invMass", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return sqrt(isoRecoMuon_mumu_energy*isoRecoMuon_mumu_energy - isoRecoMuon_mumu_px*isoRecoMuon_mumu_px - isoRecoMuon_mumu_py*isoRecoMuon_mumu_py - isoRecoMuon_mumu_pz*isoRecoMuon_mumu_pz ); else return float(-1.);")
 
-
-            # Remove the leptons from the collection of reconstructed particles to re-cluster to jets
-            .Define("RecoPartiles_wo_muons",  "ReconstructedParticle::remove(ReconstructedParticles,  RecoMuons)")
-            .Define("RecoParticles_wo_leptons", "ReconstructedParticle::remove(RecoPartiles_wo_muons,  RecoElectrons)")
-
-            # Jet clustering
-            .Define("RP_px",          "ReconstructedParticle::get_px(RecoParticles_wo_leptons)")
-            .Define("RP_py",          "ReconstructedParticle::get_py(RecoParticles_wo_leptons)")
-            .Define("RP_pz",          "ReconstructedParticle::get_pz(RecoParticles_wo_leptons)")
-            .Define("RP_e",           "ReconstructedParticle::get_e(RecoParticles_wo_leptons)")
-            .Define("RP_m",           "ReconstructedParticle::get_mass(RecoParticles_wo_leptons)")
-            .Define("RP_q",           "ReconstructedParticle::get_charge(RecoParticles_wo_leptons)")
-
-            # build pseudo jets with the RP
-            .Define("pseudo_jets",  "JetClusteringUtils::set_pseudoJets(RP_px, RP_py, RP_pz, RP_e)")
-
-            # run jet clustering with the reconstructed particles without leptons, inputs: R=0.4, inclusive, pT cut of 1 GeV, sorted by E, E-scheme, anti-kt
-            .Define("FCCAnalysesJets_ee_genkt",  "JetClustering::clustering_ee_genkt(0.4, 0, 1, 1, 0, -1)(pseudo_jets)")
-            .Define("jets_ee_genkt",  "JetClusteringUtils::get_pseudoJets( FCCAnalysesJets_ee_genkt )")
-            # access the jets kinematics :
-            .Define("jets_e",        "JetClusteringUtils::get_e(jets_ee_genkt)")
-            .Define("jets_px",       "JetClusteringUtils::get_px(jets_ee_genkt)")
-            .Define("jets_py",       "JetClusteringUtils::get_py(jets_ee_genkt)")
-            .Define("jets_pz",       "JetClusteringUtils::get_pz(jets_ee_genkt)")
-            .Define("jets_pt",       "JetClusteringUtils::get_pt(jets_ee_genkt)")
-            .Define("jets_m",        "JetClusteringUtils::get_m(jets_ee_genkt)")
-
-
-            #.Define("mm_Units","bool mm_Units = true;")
-            #.Define("DV_fourVec_trackParams", "if ((n_trks_seltracks_DVs == 2) && (DV_evt_seltracks_trackCut_normchi2 < 0.01)) return (VertexingUtils::get_trackParam(DV_evt_seltracks, true)); else return float(-1.);")
-            #.Define("DV_fourVec_trackParams", "if ((n_trks_seltracks_DVs.at(0) == 2) && (DV_evt_seltracks_trackCut_normchi2.at(0) < 0.01)) return (get_trackParams(EFlowTrack_1)); else return float(-1.);")
-            #.Define("DV_fourVec_pT", "if ((n_trks_seltracks_DVs.at(0) == 2) && (DV_evt_seltracks_trackCut_normchi2.at(0) < 0.01)) return ('VertexingUtils::sel_pt_tracks(1)(EFlowTrack_1)'); else return float(-1.);")
-            
-            # # Number of DVs with distance and invariant mass selection applied
-            # .Define("filter_n_DVs_seltracks", "filter_n_DVs(Reco_seltracks_DVs_Lxyz, invMass_seltracks_DVs)")
-            # .Define("filter_n_DVs_merge", "filter_n_DVs(Reco_DVs_merged_Lxyz, invMass_merged_DVs)")
 
         )
         return df2
@@ -500,9 +413,11 @@ class RDFanalysis():
     #Mandatory: output function, please make sure you return the branchlist as a python list
     def output():
         branchList = [
+            ################### TRACKS #####################
             "n_tracks",
             "n_RecoedPrimaryTracks",
-
+            'sel_tracks',
+            ################### DV LEVEL #####################
             'n_seltracks_DVs',
             'n_trks_seltracks_DVs',
             'invMass_seltracks_DVs',
@@ -510,53 +425,8 @@ class RDFanalysis():
             "DV_evt_seltracks_normchi2",
             "Reco_seltracks_DVs_Lxy",
             "Reco_seltracks_DVs_Lxyz",
-
-            "n_seltracks_trackCut_DVs",
-            'n_trks_seltracks_trackCut_DVs',
-            'invMass_seltracks_trackCut_DVs',
-            "DV_evt_seltracks_trackCut_normchi2",
-            "Reco_seltracks_trackCut_DVs_Lxyz",
-
-            "n_seltracks_fullVertexSel_DVs",
-            'n_trks_seltracks_fullVertexSel_DVs',
-            'invMass_seltracks_fullVertexSel_DVs',
-            "DV_evt_seltracks_fullVertexSel_normchi2",
-            "Reco_seltracks_fullVertexSel_DVs_Lxyz",
-
-            "n_seltracks_fullVertexSel_lowDist_DVs",
-            'n_trks_seltracks_fullVertexSel_lowDist_DVs',
-            'invMass_seltracks_fullVertexSel_lowDist_DVs',
-            "DV_evt_seltracks_fullVertexSel_lowDist_normchi2",
-            "Reco_seltracks_fullVertexSel_lowDist_DVs_Lxyz",
-
-            "n_merged_DVs",
-            'n_trks_merged_DVs',
-            'invMass_merged_DVs',
-            "merged_DVs_chi2",
-            "merged_DVs_normchi2",
-            "Reco_DVs_merged_Lxy",
-            "Reco_DVs_merged_Lxyz",
-
-            "n_merged_trackCut_DVs",
-            'n_trks_merged_trackCut_DVs',
-            'invMass_merged_trackCut_DVs',
-            "DV_evt_merged_trackCut_normchi2",
-            "Reco_merged_trackCut_DVs_Lxyz",
-
-            "n_merged_fullVertexSel_DVs",
-            'n_trks_merged_fullVertexSel_DVs',
-            'invMass_merged_fullVertexSel_DVs',
-            "DV_evt_merged_fullVertexSel_normchi2",
-            "Reco_merged_fullVertexSel_DVs_Lxyz",
-
-            "n_merged_fullVertexSel_lowDist_DVs",
-            'n_trks_merged_fullVertexSel_lowDist_DVs',
-            'invMass_merged_fullVertexSel_lowDist_DVs',
-            "DV_evt_merged_fullVertexSel_lowDist_normchi2",
-            "Reco_merged_fullVertexSel_lowDist_DVs_Lxyz",
-
+            ################### ELECTRONS #####################
             'n_RecoElectrons',
-            "n_electrons_sel_iso",
             "RecoElectron_e",
             "RecoElectron_p",
             "RecoElectron_pt",
@@ -564,9 +434,18 @@ class RDFanalysis():
             "RecoElectron_py",
             "RecoElectron_pz",
             "RecoElectron_charge",
-            "Reco_ee_invMass",
+            #------------------ ISO -------------------------#
+            "n_electrons_sel_iso",
+            "isoRecoElectron_e",
+            "isoRecoElectron_p",
+            "isoRecoElectron_pt",
+            "isoRecoElectron_px",
+            "isoRecoElectron_py",
+            "isoRecoElectron_pz",
+            "isoRecoElectron_charge",
+            "isoReco_ee_invMass",
+            ################### MUONS #####################
             'n_RecoMuons',
-            "n_muons_sel_iso",
             "RecoMuon_e",
             "RecoMuon_p",
             "RecoMuon_pt",
@@ -574,15 +453,17 @@ class RDFanalysis():
             "RecoMuon_py",
             "RecoMuon_pz",
             "RecoMuon_charge",
-            "Reco_mumu_invMass",
-
-            "jets_e",
-            "jets_px",
-            "jets_py",
-            "jets_pz",
-            "jets_m",
-            
-
+            #------------------ ISO -------------------------#
+            "n_muons_sel_iso",
+            "isoRecoMuon_e",
+            "isoRecoMuon_p",
+            "isoRecoMuon_pt",
+            "isoRecoMuon_px",
+            "isoRecoMuon_py",
+            "isoRecoMuon_pz",
+            "isoRecoMuon_charge",
+            "isoReco_mumu_invMass",
+            ########################################
 
         ]
         return branchList
