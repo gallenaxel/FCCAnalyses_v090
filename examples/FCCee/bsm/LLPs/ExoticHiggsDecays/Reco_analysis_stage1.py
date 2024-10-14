@@ -6,18 +6,18 @@ processList = {
 
 
         ## SIGNALS
-        "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
-        "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
-        "exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
-        "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
-        "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
-        "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
-        "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
-        "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
-        "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
+        # "exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
+        # "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
+        # "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
+        # "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
     
-        "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
-        "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
+        # "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
+        # "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
 
         ## BACKGROUNDS
         # ss Backgrounds
@@ -47,7 +47,7 @@ processList = {
 
 
         # # ee Backgrounds
-        # 'wzp6_ee_eeH_Hbb_ecm240':{'chunks':50},
+        'wzp6_ee_eeH_Hbb_ecm240':{'chunks':50},
         # 'wzp6_ee_eeH_Hcc_ecm240':{'chunks':20},
         # 'wzp6_ee_eeH_Hgg_ecm240':{'chunks':20},
         # 'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':20},
@@ -103,18 +103,18 @@ processList = {
 #Production tag. This points to the yaml files for getting sample statistics
 #Mandatory when running over EDM4Hep centrally produced events
 #Comment out when running over privately produced events
-#prodTag     = "FCCee/winter2023/IDEA/"
+prodTag     = "FCCee/winter2023/IDEA/"
 
 
 #Input directory
 #Comment out when running over centrally produced events
 #Mandatory when running over privately produced events
 #inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
-inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes_240912/"
+#inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes_240912/"
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct14_iso_signal/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct14_iso_bkg/stage1/"
 
 # import ROOT
 # from podio import root_io
@@ -275,24 +275,21 @@ class RDFanalysis():
         df2 = (
             df
 
-            .Alias("Particle1", "_Particle_daughters.index")
-            .Alias("MCRecoAssociations0", "_MCRecoAssociations_rec.index")
-            .Alias("MCRecoAssociations1", "_MCRecoAssociations_sim.index")
-
-            # MC event primary vertex
-            .Define("MC_PrimaryVertex",  "FCCAnalyses::MCParticle::get_EventPrimaryVertex(21)( Particle )" )
+            .Alias("Particle1", "Particle#1.index")
+            .Alias("MCRecoAssociations0", "MCRecoAssociations#0.index")
+            .Alias("MCRecoAssociations1", "MCRecoAssociations#1.index")
 
             # number of tracks
-            .Define("n_tracks","ReconstructedParticle2Track::getTK_n(_EFlowTrack_trackStates)")
+            .Define("n_tracks","ReconstructedParticle2Track::getTK_n(EFlowTrack_1)")
 
             # Vertex fitting
 
             # First, reconstruct a vertex from all tracks 
             # Input parameters are 1 = primary vertex, _EFlowTrack_trackStates contains all tracks, bool beamspotconstraint = true, bsc sigma x/y/z
-            .Define("VertexObject_allTracks",  "VertexFitterSimple::VertexFitter_Tk ( 1, _EFlowTrack_trackStates, true, 4.5, 20e-3, 300)")
+            .Define("VertexObject_allTracks",  "VertexFitterSimple::VertexFitter_Tk ( 1, EFlowTrack_1, true, 4.5, 20e-3, 300)")
 
             # Select the tracks that are reconstructed  as primaries
-            .Define("RecoedPrimaryTracks",  "VertexFitterSimple::get_PrimaryTracks( _EFlowTrack_trackStates, true, 4.5, 20e-3, 300, 0., 0., 0.)")
+            .Define("RecoedPrimaryTracks",  "VertexFitterSimple::get_PrimaryTracks( EFlowTrack_1, true, 4.5, 20e-3, 300, 0., 0., 0.)")
             .Define("n_RecoedPrimaryTracks",  "ReconstructedParticle2Track::getTK_n( RecoedPrimaryTracks )")
 
             # the final primary vertex :
@@ -300,18 +297,18 @@ class RDFanalysis():
             .Define("PrimaryVertex",   "VertexingUtils::get_VertexData( PrimaryVertexObject )")
 
             # the secondary tracks
-            .Define("SecondaryTracks", "VertexFitterSimple::get_NonPrimaryTracks( _EFlowTrack_trackStates, RecoedPrimaryTracks)")
+            .Define("SecondaryTracks", "VertexFitterSimple::get_NonPrimaryTracks( EFlowTrack_1, RecoedPrimaryTracks)")
 
             # Displaced vertex reconstruction
             
             # select tracks with pT > 1 GeV
-            .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(1)(_EFlowTrack_trackStates)')
+            .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(1)(EFlowTrack_1)')
             
             # select tracks with |d0 |> 2 mm
             .Define('sel_tracks', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
             
             # find the DVs with sel pt and d0
-            .Define("DV_evt_seltracks", "VertexFinderLCFIPlus::get_SV_event(sel_tracks, _EFlowTrack_trackStates, PrimaryVertexObject, true, 9., 40., 5.)")
+            .Define("DV_evt_seltracks", "VertexFinderLCFIPlus::get_SV_event(sel_tracks, EFlowTrack_1, PrimaryVertexObject, true, 9., 40., 5.)")
 
             # number of DVs
             .Define('n_seltracks_DVs', 'VertexingUtils::get_n_SV(DV_evt_seltracks)')
@@ -334,7 +331,7 @@ class RDFanalysis():
             # Reconstructed electrons and muons
 
             # Electrons
-            .Alias('Electron0', 'Electron_objIdx.index')
+            .Alias('Electron0', 'Electron#0.index')
             .Define('RecoElectrons',  'ReconstructedParticle::get(Electron0, ReconstructedParticles)') 
             .Define('n_RecoElectrons',  'ReconstructedParticle::get_n(RecoElectrons)') #count how many electrons are in the event in total
 
@@ -370,7 +367,7 @@ class RDFanalysis():
 
 
             # Muons
-            .Alias('Muon0', 'Muon_objIdx.index')
+            .Alias('Muon0', 'Muon#0.index')
             .Define('RecoMuons',  'ReconstructedParticle::get(Muon0, ReconstructedParticles)')
             .Define('n_RecoMuons',  'ReconstructedParticle::get_n(RecoMuons)') #count how many muons are in the event in total
 
