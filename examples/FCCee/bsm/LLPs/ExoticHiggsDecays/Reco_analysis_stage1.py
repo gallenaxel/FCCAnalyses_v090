@@ -6,15 +6,15 @@ processList = {
 
 
         ## SIGNALS
-        # "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
-        # "exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
-        # "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
-        # "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
-        # "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
+        "exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
+        "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
+        "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
+        "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
     
         "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
         "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
@@ -114,7 +114,7 @@ inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct8/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct14_iso_signal/stage1/"
 
 # import ROOT
 # from podio import root_io
@@ -402,7 +402,7 @@ class RDFanalysis():
             .Define("isoReco_mumu_px", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_px.at(0) + isoRecoMuon_px.at(1)); else return float(-1.);")
             .Define("isoReco_mumu_py", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_py.at(0) + isoRecoMuon_py.at(1)); else return float(-1.);")
             .Define("isoReco_mumu_pz", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return (isoRecoMuon_pz.at(0) + isoRecoMuon_pz.at(1)); else return float(-1.);")
-            .Define("isoReco_mumu_invMass", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return sqrt(isoRecoMuon_mumu_energy*isoRecoMuon_mumu_energy - isoRecoMuon_mumu_px*isoRecoMuon_mumu_px - isoRecoMuon_mumu_py*isoRecoMuon_mumu_py - isoRecoMuon_mumu_pz*isoRecoMuon_mumu_pz ); else return float(-1.);")
+            .Define("isoReco_mumu_invMass", "if ((n_RecoMuons>1) && (n_muons_sel_iso == 2) && (isoRecoMuon_charge.at(0) != isoRecoMuon_charge.at(1))) return sqrt(isoReco_mumu_energy*isoReco_mumu_energy - isoReco_mumu_px*isoReco_mumu_px - isoReco_mumu_py*isoReco_mumu_py - isoReco_mumu_pz*isoReco_mumu_pz ); else return float(-1.);")
 
 
         )
