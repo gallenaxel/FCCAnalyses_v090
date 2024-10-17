@@ -1,11 +1,11 @@
 
 #Input directory where the files produced at the stage1 level are
 #inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_SIGNAL_FINAL/"
-inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct14_iso_signal/stage1/"
+inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_16_signals/stage1/"
 
 #Output directory where the files produced at the final-selection level are #ISR_ForNote_all
 #outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final_binningFix/"
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct14_iso_signal/final/"
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_16_signals/final/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -20,8 +20,8 @@ saveTabular = True
 #Mandatory: List of processes
 processList = {
 
-        # #'test':{}
-        # #privately-produced signals 
+        #'test':{}
+        #privately-produced signals 
         'exoticHiggs_scalar_ms20GeV_sine-5_240912':{},
         'exoticHiggs_scalar_ms20GeV_sine-6_240912':{},
         'exoticHiggs_scalar_ms20GeV_sine-7_240912':{},
@@ -40,82 +40,82 @@ processList = {
         "exoticHiggs_scalar_ms55GeV_sine-6_241014":{},
         "exoticHiggs_scalar_ms55GeV_sin3e-7_241014":{},
 
-        # #centrally produced backgrounds
-        # # ss Backgrounds
-        # 'wzp6_ee_ssH_Hbb_ecm240':{},
-        # 'wzp6_ee_ssH_Hcc_ecm240':{},
-        # 'wzp6_ee_ssH_Hgg_ecm240':{},
-        # 'wzp6_ee_ssH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ssH_Hss_ecm240':{},
-        # 'wzp6_ee_ssH_Htautau_ecm240':{},
+        #centrally produced backgrounds
+        # ss Backgrounds
+        'wzp6_ee_ssH_Hbb_ecm240':{},
+        'wzp6_ee_ssH_Hcc_ecm240':{},
+        'wzp6_ee_ssH_Hgg_ecm240':{},
+        'wzp6_ee_ssH_Hmumu_ecm240':{},
+        'wzp6_ee_ssH_Hss_ecm240':{},
+        'wzp6_ee_ssH_Htautau_ecm240':{},
 
-        # ## bb Backgrounds
-        # 'wzp6_ee_bbH_Hbb_ecm240':{},
-        # 'wzp6_ee_bbH_Hcc_ecm240':{},
-        # 'wzp6_ee_bbH_Hgg_ecm240':{},
-        # 'wzp6_ee_bbH_Hmumu_ecm240':{},
-        # 'wzp6_ee_bbH_Hss_ecm240':{},
-        # 'wzp6_ee_bbH_Htautau_ecm240':{},
+        ## bb Backgrounds
+        'wzp6_ee_bbH_Hbb_ecm240':{},
+        'wzp6_ee_bbH_Hcc_ecm240':{},
+        'wzp6_ee_bbH_Hgg_ecm240':{},
+        'wzp6_ee_bbH_Hmumu_ecm240':{},
+        'wzp6_ee_bbH_Hss_ecm240':{},
+        'wzp6_ee_bbH_Htautau_ecm240':{},
     
 
-        # ## cc Backgrounds
-        # 'wzp6_ee_ccH_Hbb_ecm240':{},
-        # 'wzp6_ee_ccH_Hcc_ecm240':{},
-        # 'wzp6_ee_ccH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ccH_Hss_ecm240':{},
-        # 'wzp6_ee_ccH_Htautau_ecm240':{},
+        ## cc Backgrounds
+        'wzp6_ee_ccH_Hbb_ecm240':{},
+        'wzp6_ee_ccH_Hcc_ecm240':{},
+        'wzp6_ee_ccH_Hmumu_ecm240':{},
+        'wzp6_ee_ccH_Hss_ecm240':{},
+        'wzp6_ee_ccH_Htautau_ecm240':{},
 
 
-        # ## ee Backgrounds
-        # 'wzp6_ee_eeH_Hbb_ecm240':{},
-        # 'wzp6_ee_eeH_Hcc_ecm240':{},
-        # 'wzp6_ee_eeH_Hgg_ecm240':{},
-        # 'wzp6_ee_eeH_Hmumu_ecm240':{},
-        # 'wzp6_ee_eeH_Hss_ecm240':{},
-        # 'wzp6_ee_eeH_Htautau_ecm240':{},
+        ## ee Backgrounds
+        'wzp6_ee_eeH_Hbb_ecm240':{},
+        'wzp6_ee_eeH_Hcc_ecm240':{},
+        'wzp6_ee_eeH_Hgg_ecm240':{},
+        'wzp6_ee_eeH_Hmumu_ecm240':{},
+        'wzp6_ee_eeH_Hss_ecm240':{},
+        'wzp6_ee_eeH_Htautau_ecm240':{},
 
 
-        # ## mumu Backgrounds
-        # 'wzp6_ee_mumuH_Hbb_ecm240':{},
-        # 'wzp6_ee_mumuH_Hcc_ecm240':{},
-        # 'wzp6_ee_mumuH_Hgg_ecm240':{},
-        # 'wzp6_ee_mumuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_mumuH_Hss_ecm240':{},
-        # 'wzp6_ee_mumuH_Htautau_ecm240':{},
+        ## mumu Backgrounds
+        'wzp6_ee_mumuH_Hbb_ecm240':{},
+        'wzp6_ee_mumuH_Hcc_ecm240':{},
+        'wzp6_ee_mumuH_Hgg_ecm240':{},
+        'wzp6_ee_mumuH_Hmumu_ecm240':{},
+        'wzp6_ee_mumuH_Hss_ecm240':{},
+        'wzp6_ee_mumuH_Htautau_ecm240':{},
 
-        # ## tautau Backgrounds
-        # 'wzp6_ee_tautauH_Hbb_ecm240':{},
-        # 'wzp6_ee_tautauH_Hcc_ecm240':{},
-        # 'wzp6_ee_tautauH_Hgg_ecm240':{},
-        # 'wzp6_ee_tautauH_Hmumu_ecm240':{},
-        # 'wzp6_ee_tautauH_Hss_ecm240':{},
-        # 'wzp6_ee_tautauH_Htautau_ecm240':{},
+        ## tautau Backgrounds
+        'wzp6_ee_tautauH_Hbb_ecm240':{},
+        'wzp6_ee_tautauH_Hcc_ecm240':{},
+        'wzp6_ee_tautauH_Hgg_ecm240':{},
+        'wzp6_ee_tautauH_Hmumu_ecm240':{},
+        'wzp6_ee_tautauH_Hss_ecm240':{},
+        'wzp6_ee_tautauH_Htautau_ecm240':{},
 
-        # ## nunu Backgrounds
-        # 'wzp6_ee_nunuH_Hbb_ecm240':{},
-        # 'wzp6_ee_nunuH_Hcc_ecm240':{},
-        # 'wzp6_ee_nunuH_Hdd_ecm240':{},
-        # 'wzp6_ee_nunuH_Hgg_ecm240':{},
-        # 'wzp6_ee_nunuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_nunuH_Hss_ecm240':{},
-        # 'wzp6_ee_nunuH_Htautau_ecm240':{},
-        # 'wzp6_ee_nunuH_Huu_ecm240':{},
+        ## nunu Backgrounds
+        'wzp6_ee_nunuH_Hbb_ecm240':{},
+        'wzp6_ee_nunuH_Hcc_ecm240':{},
+        'wzp6_ee_nunuH_Hdd_ecm240':{},
+        'wzp6_ee_nunuH_Hgg_ecm240':{},
+        'wzp6_ee_nunuH_Hmumu_ecm240':{},
+        'wzp6_ee_nunuH_Hss_ecm240':{},
+        'wzp6_ee_nunuH_Htautau_ecm240':{},
+        'wzp6_ee_nunuH_Huu_ecm240':{},
 
-        # ## ZZ Backgrounds
-        # 'wzp6_ee_eeH_HZZ_ecm240':{},
-        # 'wzp6_ee_mumuH_HZZ_ecm240':{},
-        # 'wzp6_ee_qqH_HZZ_ecm240':{},
-        # 'wzp6_ee_tautauH_HZZ_ecm240':{},
+        ## ZZ Backgrounds
+        'wzp6_ee_eeH_HZZ_ecm240':{},
+        'wzp6_ee_mumuH_HZZ_ecm240':{},
+        'wzp6_ee_qqH_HZZ_ecm240':{},
+        'wzp6_ee_tautauH_HZZ_ecm240':{},
 
-        # ## WW Backgrounds
-        # 'wzp6_ee_eeH_HWW_ecm240':{},
-        # 'wzp6_ee_mumuH_HWW_ecm240':{},
-        # 'wzp6_ee_qqH_HWW_ecm240':{},
-        # 'wzp6_ee_tautauH_HWW_ecm240':{},
+        ## WW Backgrounds
+        'wzp6_ee_eeH_HWW_ecm240':{},
+        'wzp6_ee_mumuH_HWW_ecm240':{},
+        'wzp6_ee_qqH_HWW_ecm240':{},
+        'wzp6_ee_tautauH_HWW_ecm240':{},
 
-        # # ## Other
-        # 'p8_ee_WW_ecm240':{},
-        # 'p8_ee_ZZ_ecm240':{},
+        # ## Other
+        'p8_ee_WW_ecm240':{},
+        'p8_ee_ZZ_ecm240':{},
 
 }
 
@@ -137,10 +137,10 @@ processLabels = {
     'exoticHiggs_scalar_ms60GeV_sine-6_240912': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-6}$",
     'exoticHiggs_scalar_ms60GeV_sine-7_240912': "$m_S$ = 60 GeV, sin $\theta = 1 * 10^{-7}$",
     
-    'exoticHiggs_scalar_ms50GeV_sin3e-6_240912': "$m_S$ = 50 GeV, sin $\theta = 3 * 10^{-6}$",
-    'exoticHiggs_scalar_ms50GeV_sin3e-7_240912': "$m_S$ = 50 GeV, sin $\theta = 3 * 10^{-7}$",
-    'exoticHiggs_scalar_ms55GeV_sine-6_240912':  "$m_S$ = 55 GeV, sin $\theta = 1 * 10^{-6}$",
-    'exoticHiggs_scalar_ms55GeV_sin3e-7_240912': "$m_S$ = 55 GeV, sin $\theta = 3 * 10^{-7}$",
+    'exoticHiggs_scalar_ms50GeV_sin3e-6_241014': "$m_S$ = 50 GeV, sin $\theta = 3 * 10^{-6}$",
+    'exoticHiggs_scalar_ms50GeV_sin3e-7_241014': "$m_S$ = 50 GeV, sin $\theta = 3 * 10^{-7}$",
+    'exoticHiggs_scalar_ms55GeV_sine-6_241014':  "$m_S$ = 55 GeV, sin $\theta = 1 * 10^{-6}$",
+    'exoticHiggs_scalar_ms55GeV_sin3e-7_241014': "$m_S$ = 55 GeV, sin $\theta = 3 * 10^{-7}$",
     
 
 
@@ -244,11 +244,11 @@ procDictAdd={
     "exoticHiggs_scalar_ms20GeV_sin3e-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  1.1499e-5, "kfactor": 1.0, "matchingEfficiency": 1.0},
     "exoticHiggs_scalar_ms50GeV_sine-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    "exoticHiggs_scalar_ms50GeV_sin3e-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    "exoticHiggs_scalar_ms50GeV_sin3e-7_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms50GeV_sin3e-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms50GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    "exoticHiggs_scalar_ms55GeV_sine-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    "exoticHiggs_scalar_ms55GeV_sin3e-7_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms55GeV_sine-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms55GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
 
 
@@ -354,9 +354,9 @@ defineList={
 ###Dictionary for the ouput variable/histograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
 
 histoList = {
-    #"n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
-    #"n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
-    #"DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
+    "n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
+    "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
+    "DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
     
     'n_seltracks_DVs': {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
     'n_trks_seltracks_DVs': {"name":'n_trks_seltracks_DVs',                "title":"DV track multiplicity",                                "bin":13, "xmin":1.5, "xmax":15},
