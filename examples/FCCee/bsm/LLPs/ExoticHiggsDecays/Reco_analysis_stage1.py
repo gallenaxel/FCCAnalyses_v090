@@ -30,80 +30,80 @@ processList = {
         ## BACKGROUNDS
         # ss Backgrounds
         #'wzp6_ee_ssH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_ssH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_ssH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_ssH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_ssH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_ssH_Htautau_ecm240':{'chunks':20},
+        # 'wzp6_ee_ssH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_ssH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_ssH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_ssH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_ssH_Htautau_ecm240':{'chunks':20},
 
-        # bb Backgrounds
-        'wzp6_ee_bbH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_bbH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_bbH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_bbH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_bbH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_bbH_Htautau_ecm240':{'chunks':20},
+        # # bb Backgrounds
+        # 'wzp6_ee_bbH_Hbb_ecm240':{'chunks':20},
+        # 'wzp6_ee_bbH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_bbH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_bbH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_bbH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_bbH_Htautau_ecm240':{'chunks':20},
     
 
-        # cc Backgrounds
-        'wzp6_ee_ccH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_ccH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_ccH_Hgg_ecm240':{'chunks':250},
-        'wzp6_ee_ccH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_ccH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_ccH_Htautau_ecm240':{'chunks':20},
+        # # cc Backgrounds
+        # 'wzp6_ee_ccH_Hbb_ecm240':{'chunks':20},
+        # 'wzp6_ee_ccH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_ccH_Hgg_ecm240':{'chunks':250},
+        # 'wzp6_ee_ccH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_ccH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_ccH_Htautau_ecm240':{'chunks':20},
 
 
-        # ee Backgrounds
-        'wzp6_ee_eeH_Hbb_ecm240':{'chunks':50},
-        'wzp6_ee_eeH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_eeH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_eeH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_eeH_Htautau_ecm240':{'chunks':20},
+        # # ee Backgrounds
+        # 'wzp6_ee_eeH_Hbb_ecm240':{'chunks':50},
+        # 'wzp6_ee_eeH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_eeH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_eeH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_eeH_Htautau_ecm240':{'chunks':20},
 
 
-        # mumu Backgrounds
-        'wzp6_ee_mumuH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_Htautau_ecm240':{'chunks':20},
+        # # mumu Backgrounds
+        # 'wzp6_ee_mumuH_Hbb_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_Htautau_ecm240':{'chunks':20},
 
-        # tautau Backgrounds
-        'wzp6_ee_tautauH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_Htautau_ecm240':{'chunks':20},
+        # # tautau Backgrounds
+        # 'wzp6_ee_tautauH_Hbb_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_Htautau_ecm240':{'chunks':20},
 
-        # nunu Backgrounds
-        'wzp6_ee_nunuH_Hbb_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Hcc_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Hdd_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Hgg_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Hmumu_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Hss_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Htautau_ecm240':{'chunks':20},
-        'wzp6_ee_nunuH_Huu_ecm240':{'chunks':20},
+        # # nunu Backgrounds
+        # 'wzp6_ee_nunuH_Hbb_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Hcc_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Hdd_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Hgg_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Hmumu_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Hss_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Htautau_ecm240':{'chunks':20},
+        # 'wzp6_ee_nunuH_Huu_ecm240':{'chunks':20},
 
-        # ZZ Backgrounds
-        'wzp6_ee_eeH_HZZ_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':20},
-        'wzp6_ee_qqH_HZZ_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':20},
+        # # ZZ Backgrounds
+        # 'wzp6_ee_eeH_HZZ_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':20},
+        # 'wzp6_ee_qqH_HZZ_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':20},
 
-        # WW Backgrounds
-        'wzp6_ee_eeH_HWW_ecm240':{'chunks':20},
-        'wzp6_ee_mumuH_HWW_ecm240':{'chunks':20},
-        'wzp6_ee_qqH_HWW_ecm240':{'chunks':20},
-        'wzp6_ee_tautauH_HWW_ecm240':{'chunks':20},
+        # # WW Backgrounds
+        # 'wzp6_ee_eeH_HWW_ecm240':{'chunks':20},
+        # 'wzp6_ee_mumuH_HWW_ecm240':{'chunks':20},
+        # 'wzp6_ee_qqH_HWW_ecm240':{'chunks':20},
+        # 'wzp6_ee_tautauH_HWW_ecm240':{'chunks':20},
 
         # Other
-        'p8_ee_WW_ecm240':{'chunks':100},
-        'p8_ee_ZZ_ecm240':{'chunks':100},
+        'p8_ee_WW_ecm240':{'chunks':200},
+        #'p8_ee_ZZ_ecm240':{'chunks':100},
                 
 
 }
@@ -122,7 +122,7 @@ prodTag     = "FCCee/winter2023/IDEA/"
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_16_bkg/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_26_WW/stage1/"
 
 # import ROOT
 # from podio import root_io
