@@ -1,11 +1,11 @@
 
 #Input directory where the files produced at the stage1 level are
 #inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_SIGNAL_FINAL/"
-inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_16_signals/stage1/"
+inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_iso_newLumi_bkg_sig_oct30/stage1/"
 
 #Output directory where the files produced at the final-selection level are #ISR_ForNote_all
 #outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final_binningFix/"
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_16_signals/final/"
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_iso_newLumi_bkg_sig_dec3_newCrossSec/final/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -21,7 +21,7 @@ saveTabular = True
 processList = {
 
         #'test':{}
-        #privately-produced signals 
+        # #privately-produced signals 
         'exoticHiggs_scalar_ms20GeV_sine-5_240912':{},
         'exoticHiggs_scalar_ms20GeV_sine-6_240912':{},
         'exoticHiggs_scalar_ms20GeV_sine-7_240912':{},
@@ -40,82 +40,82 @@ processList = {
         "exoticHiggs_scalar_ms55GeV_sine-6_241014":{},
         "exoticHiggs_scalar_ms55GeV_sin3e-7_241014":{},
 
-        #centrally produced backgrounds
-        # ss Backgrounds
-        'wzp6_ee_ssH_Hbb_ecm240':{},
-        'wzp6_ee_ssH_Hcc_ecm240':{},
-        'wzp6_ee_ssH_Hgg_ecm240':{},
-        'wzp6_ee_ssH_Hmumu_ecm240':{},
-        'wzp6_ee_ssH_Hss_ecm240':{},
-        'wzp6_ee_ssH_Htautau_ecm240':{},
+        # #centrally produced backgrounds
+        # # ss Backgrounds
+        # 'wzp6_ee_ssH_Hbb_ecm240':{},
+        # 'wzp6_ee_ssH_Hcc_ecm240':{},
+        # 'wzp6_ee_ssH_Hgg_ecm240':{},
+        # 'wzp6_ee_ssH_Hmumu_ecm240':{},
+        # 'wzp6_ee_ssH_Hss_ecm240':{},
+        # 'wzp6_ee_ssH_Htautau_ecm240':{},
 
-        ## bb Backgrounds
-        'wzp6_ee_bbH_Hbb_ecm240':{},
-        'wzp6_ee_bbH_Hcc_ecm240':{},
-        'wzp6_ee_bbH_Hgg_ecm240':{},
-        'wzp6_ee_bbH_Hmumu_ecm240':{},
-        'wzp6_ee_bbH_Hss_ecm240':{},
-        'wzp6_ee_bbH_Htautau_ecm240':{},
+        # ## bb Backgrounds
+        # 'wzp6_ee_bbH_Hbb_ecm240':{},
+        # 'wzp6_ee_bbH_Hcc_ecm240':{},
+        # 'wzp6_ee_bbH_Hgg_ecm240':{},
+        # 'wzp6_ee_bbH_Hmumu_ecm240':{},
+        # 'wzp6_ee_bbH_Hss_ecm240':{},
+        # 'wzp6_ee_bbH_Htautau_ecm240':{},
     
 
-        ## cc Backgrounds
-        'wzp6_ee_ccH_Hbb_ecm240':{},
-        'wzp6_ee_ccH_Hcc_ecm240':{},
-        'wzp6_ee_ccH_Hmumu_ecm240':{},
-        'wzp6_ee_ccH_Hss_ecm240':{},
-        'wzp6_ee_ccH_Htautau_ecm240':{},
+        # ## cc Backgrounds
+        # 'wzp6_ee_ccH_Hbb_ecm240':{},
+        # 'wzp6_ee_ccH_Hcc_ecm240':{},
+        # 'wzp6_ee_ccH_Hmumu_ecm240':{},
+        # 'wzp6_ee_ccH_Hss_ecm240':{},
+        # 'wzp6_ee_ccH_Htautau_ecm240':{},
 
 
-        ## ee Backgrounds
-        'wzp6_ee_eeH_Hbb_ecm240':{},
-        'wzp6_ee_eeH_Hcc_ecm240':{},
-        'wzp6_ee_eeH_Hgg_ecm240':{},
-        'wzp6_ee_eeH_Hmumu_ecm240':{},
-        'wzp6_ee_eeH_Hss_ecm240':{},
-        'wzp6_ee_eeH_Htautau_ecm240':{},
+        # ## ee Backgrounds
+        # 'wzp6_ee_eeH_Hbb_ecm240':{},
+        # 'wzp6_ee_eeH_Hcc_ecm240':{},
+        # 'wzp6_ee_eeH_Hgg_ecm240':{},
+        # 'wzp6_ee_eeH_Hmumu_ecm240':{},
+        # 'wzp6_ee_eeH_Hss_ecm240':{},
+        # 'wzp6_ee_eeH_Htautau_ecm240':{},
 
 
-        ## mumu Backgrounds
-        'wzp6_ee_mumuH_Hbb_ecm240':{},
-        'wzp6_ee_mumuH_Hcc_ecm240':{},
-        'wzp6_ee_mumuH_Hgg_ecm240':{},
-        'wzp6_ee_mumuH_Hmumu_ecm240':{},
-        'wzp6_ee_mumuH_Hss_ecm240':{},
-        'wzp6_ee_mumuH_Htautau_ecm240':{},
+        # ## mumu Backgrounds
+        # 'wzp6_ee_mumuH_Hbb_ecm240':{},
+        # 'wzp6_ee_mumuH_Hcc_ecm240':{},
+        # 'wzp6_ee_mumuH_Hgg_ecm240':{},
+        # 'wzp6_ee_mumuH_Hmumu_ecm240':{},
+        # 'wzp6_ee_mumuH_Hss_ecm240':{},
+        # 'wzp6_ee_mumuH_Htautau_ecm240':{},
 
-        ## tautau Backgrounds
-        'wzp6_ee_tautauH_Hbb_ecm240':{},
-        'wzp6_ee_tautauH_Hcc_ecm240':{},
-        'wzp6_ee_tautauH_Hgg_ecm240':{},
-        'wzp6_ee_tautauH_Hmumu_ecm240':{},
-        'wzp6_ee_tautauH_Hss_ecm240':{},
-        'wzp6_ee_tautauH_Htautau_ecm240':{},
+        # ## tautau Backgrounds
+        # 'wzp6_ee_tautauH_Hbb_ecm240':{},
+        # 'wzp6_ee_tautauH_Hcc_ecm240':{},
+        # 'wzp6_ee_tautauH_Hgg_ecm240':{},
+        # 'wzp6_ee_tautauH_Hmumu_ecm240':{},
+        # 'wzp6_ee_tautauH_Hss_ecm240':{},
+        # 'wzp6_ee_tautauH_Htautau_ecm240':{},
 
-        ## nunu Backgrounds
-        'wzp6_ee_nunuH_Hbb_ecm240':{},
-        'wzp6_ee_nunuH_Hcc_ecm240':{},
-        'wzp6_ee_nunuH_Hdd_ecm240':{},
-        'wzp6_ee_nunuH_Hgg_ecm240':{},
-        'wzp6_ee_nunuH_Hmumu_ecm240':{},
-        'wzp6_ee_nunuH_Hss_ecm240':{},
-        'wzp6_ee_nunuH_Htautau_ecm240':{},
-        'wzp6_ee_nunuH_Huu_ecm240':{},
+        # ## nunu Backgrounds
+        # 'wzp6_ee_nunuH_Hbb_ecm240':{},
+        # 'wzp6_ee_nunuH_Hcc_ecm240':{},
+        # 'wzp6_ee_nunuH_Hdd_ecm240':{},
+        # 'wzp6_ee_nunuH_Hgg_ecm240':{},
+        # 'wzp6_ee_nunuH_Hmumu_ecm240':{},
+        # 'wzp6_ee_nunuH_Hss_ecm240':{},
+        # 'wzp6_ee_nunuH_Htautau_ecm240':{},
+        # 'wzp6_ee_nunuH_Huu_ecm240':{},
 
-        ## ZZ Backgrounds
-        'wzp6_ee_eeH_HZZ_ecm240':{},
-        'wzp6_ee_mumuH_HZZ_ecm240':{},
-        'wzp6_ee_qqH_HZZ_ecm240':{},
-        'wzp6_ee_tautauH_HZZ_ecm240':{},
+        # ## ZZ Backgrounds
+        # 'wzp6_ee_eeH_HZZ_ecm240':{},
+        # 'wzp6_ee_mumuH_HZZ_ecm240':{},
+        # 'wzp6_ee_qqH_HZZ_ecm240':{},
+        # 'wzp6_ee_tautauH_HZZ_ecm240':{},
 
-        ## WW Backgrounds
-        'wzp6_ee_eeH_HWW_ecm240':{},
-        'wzp6_ee_mumuH_HWW_ecm240':{},
-        'wzp6_ee_qqH_HWW_ecm240':{},
-        'wzp6_ee_tautauH_HWW_ecm240':{},
+        # ## WW Backgrounds
+        # 'wzp6_ee_eeH_HWW_ecm240':{},
+        # 'wzp6_ee_mumuH_HWW_ecm240':{},
+        # 'wzp6_ee_qqH_HWW_ecm240':{},
+        # 'wzp6_ee_tautauH_HWW_ecm240':{},
 
         # ## Other
-        'p8_ee_WW_ecm240':{},
-        'p8_ee_ZZ_ecm240':{},
+        # 'p8_ee_WW_ecm240':{},
+        # 'p8_ee_ZZ_ecm240':{},
 
 }
 
@@ -229,26 +229,26 @@ procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 procDictAdd={
    
-    'exoticHiggs_scalar_ms20GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 1.1499e-5, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms20GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 1.1499e-5, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms20GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 1.1499e-5, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.024e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.024e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms20GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.024e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    'exoticHiggs_scalar_ms40GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms40GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms40GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 9.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms40GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 11.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms40GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 11.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms40GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 11.327e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    'exoticHiggs_scalar_ms60GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 3.4005e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms60GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 3.4005e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    'exoticHiggs_scalar_ms60GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 3.4005e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-5_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.256e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-6_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.256e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    'exoticHiggs_scalar_ms60GeV_sine-7_240912': {"numberOfEvents": 10000, "sumOfWeights": 10000, "crossSection": 8.256e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
     
-    "exoticHiggs_scalar_ms20GeV_sin3e-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  1.1499e-5, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    "exoticHiggs_scalar_ms50GeV_sine-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms20GeV_sin3e-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  9.024e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms50GeV_sine-6_241002": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  12.122e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    "exoticHiggs_scalar_ms50GeV_sin3e-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    "exoticHiggs_scalar_ms50GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  7.284e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms50GeV_sin3e-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  12.122e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms50GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  12.122e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
-    "exoticHiggs_scalar_ms55GeV_sine-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
-    "exoticHiggs_scalar_ms55GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  5.7675e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms55GeV_sine-6_241014": {"numberOfEvents":10000, "sumOfWeight": 10000,  "crossSection":  11.500e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
+    "exoticHiggs_scalar_ms55GeV_sin3e-7_241014": {"numberOfEvents":10000, "sumOfWeight": 10000, "crossSection":  11.500e-6, "kfactor": 1.0, "matchingEfficiency": 1.0},
 
 
 
