@@ -1,11 +1,11 @@
 
 #Input directory where the files produced at the stage1 level are
 #inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/ZH_ZZ_WW_SIGNAL_FINAL/"
-inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_iso_newLumi_bkg_sig_oct30/stage1/"
+inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_comb/stage1/"
 
 #Output directory where the files produced at the final-selection level are #ISR_ForNote_all
 #outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final_binningFix/"
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_iso_newLumi_bkg_sig_dec3_newCrossSec/final/"
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_comb/final/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -40,82 +40,82 @@ processList = {
         "exoticHiggs_scalar_ms55GeV_sine-6_241014":{},
         "exoticHiggs_scalar_ms55GeV_sin3e-7_241014":{},
 
-        # #centrally produced backgrounds
-        # # ss Backgrounds
-        # 'wzp6_ee_ssH_Hbb_ecm240':{},
-        # 'wzp6_ee_ssH_Hcc_ecm240':{},
-        # 'wzp6_ee_ssH_Hgg_ecm240':{},
-        # 'wzp6_ee_ssH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ssH_Hss_ecm240':{},
-        # 'wzp6_ee_ssH_Htautau_ecm240':{},
+        #centrally produced backgrounds
+        # ss Backgrounds
+        'wzp6_ee_ssH_Hbb_ecm240':{},
+        'wzp6_ee_ssH_Hcc_ecm240':{},
+        'wzp6_ee_ssH_Hgg_ecm240':{},
+        'wzp6_ee_ssH_Hmumu_ecm240':{},
+        'wzp6_ee_ssH_Hss_ecm240':{},
+        'wzp6_ee_ssH_Htautau_ecm240':{},
 
-        # ## bb Backgrounds
-        # 'wzp6_ee_bbH_Hbb_ecm240':{},
-        # 'wzp6_ee_bbH_Hcc_ecm240':{},
-        # 'wzp6_ee_bbH_Hgg_ecm240':{},
-        # 'wzp6_ee_bbH_Hmumu_ecm240':{},
-        # 'wzp6_ee_bbH_Hss_ecm240':{},
-        # 'wzp6_ee_bbH_Htautau_ecm240':{},
+        ## bb Backgrounds
+        'wzp6_ee_bbH_Hbb_ecm240':{},
+        'wzp6_ee_bbH_Hcc_ecm240':{},
+        'wzp6_ee_bbH_Hgg_ecm240':{},
+        'wzp6_ee_bbH_Hmumu_ecm240':{},
+        'wzp6_ee_bbH_Hss_ecm240':{},
+        'wzp6_ee_bbH_Htautau_ecm240':{},
     
 
-        # ## cc Backgrounds
-        # 'wzp6_ee_ccH_Hbb_ecm240':{},
-        # 'wzp6_ee_ccH_Hcc_ecm240':{},
-        # 'wzp6_ee_ccH_Hmumu_ecm240':{},
-        # 'wzp6_ee_ccH_Hss_ecm240':{},
-        # 'wzp6_ee_ccH_Htautau_ecm240':{},
+        ## cc Backgrounds
+        'wzp6_ee_ccH_Hbb_ecm240':{},
+        'wzp6_ee_ccH_Hcc_ecm240':{},
+        'wzp6_ee_ccH_Hmumu_ecm240':{},
+        'wzp6_ee_ccH_Hss_ecm240':{},
+        'wzp6_ee_ccH_Htautau_ecm240':{},
 
 
-        # ## ee Backgrounds
-        # 'wzp6_ee_eeH_Hbb_ecm240':{},
-        # 'wzp6_ee_eeH_Hcc_ecm240':{},
-        # 'wzp6_ee_eeH_Hgg_ecm240':{},
-        # 'wzp6_ee_eeH_Hmumu_ecm240':{},
-        # 'wzp6_ee_eeH_Hss_ecm240':{},
-        # 'wzp6_ee_eeH_Htautau_ecm240':{},
+        ## ee Backgrounds
+        'wzp6_ee_eeH_Hbb_ecm240':{},
+        'wzp6_ee_eeH_Hcc_ecm240':{},
+        'wzp6_ee_eeH_Hgg_ecm240':{},
+        'wzp6_ee_eeH_Hmumu_ecm240':{},
+        'wzp6_ee_eeH_Hss_ecm240':{},
+        'wzp6_ee_eeH_Htautau_ecm240':{},
 
 
-        # ## mumu Backgrounds
-        # 'wzp6_ee_mumuH_Hbb_ecm240':{},
-        # 'wzp6_ee_mumuH_Hcc_ecm240':{},
-        # 'wzp6_ee_mumuH_Hgg_ecm240':{},
-        # 'wzp6_ee_mumuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_mumuH_Hss_ecm240':{},
-        # 'wzp6_ee_mumuH_Htautau_ecm240':{},
+        ## mumu Backgrounds
+        'wzp6_ee_mumuH_Hbb_ecm240':{},
+        'wzp6_ee_mumuH_Hcc_ecm240':{},
+        'wzp6_ee_mumuH_Hgg_ecm240':{},
+        'wzp6_ee_mumuH_Hmumu_ecm240':{},
+        'wzp6_ee_mumuH_Hss_ecm240':{},
+        'wzp6_ee_mumuH_Htautau_ecm240':{},
 
-        # ## tautau Backgrounds
-        # 'wzp6_ee_tautauH_Hbb_ecm240':{},
-        # 'wzp6_ee_tautauH_Hcc_ecm240':{},
-        # 'wzp6_ee_tautauH_Hgg_ecm240':{},
-        # 'wzp6_ee_tautauH_Hmumu_ecm240':{},
-        # 'wzp6_ee_tautauH_Hss_ecm240':{},
-        # 'wzp6_ee_tautauH_Htautau_ecm240':{},
+        ## tautau Backgrounds
+        'wzp6_ee_tautauH_Hbb_ecm240':{},
+        'wzp6_ee_tautauH_Hcc_ecm240':{},
+        'wzp6_ee_tautauH_Hgg_ecm240':{},
+        'wzp6_ee_tautauH_Hmumu_ecm240':{},
+        'wzp6_ee_tautauH_Hss_ecm240':{},
+        'wzp6_ee_tautauH_Htautau_ecm240':{},
 
-        # ## nunu Backgrounds
-        # 'wzp6_ee_nunuH_Hbb_ecm240':{},
-        # 'wzp6_ee_nunuH_Hcc_ecm240':{},
-        # 'wzp6_ee_nunuH_Hdd_ecm240':{},
-        # 'wzp6_ee_nunuH_Hgg_ecm240':{},
-        # 'wzp6_ee_nunuH_Hmumu_ecm240':{},
-        # 'wzp6_ee_nunuH_Hss_ecm240':{},
-        # 'wzp6_ee_nunuH_Htautau_ecm240':{},
-        # 'wzp6_ee_nunuH_Huu_ecm240':{},
+        ## nunu Backgrounds
+        'wzp6_ee_nunuH_Hbb_ecm240':{},
+        'wzp6_ee_nunuH_Hcc_ecm240':{},
+        'wzp6_ee_nunuH_Hdd_ecm240':{},
+        'wzp6_ee_nunuH_Hgg_ecm240':{},
+        'wzp6_ee_nunuH_Hmumu_ecm240':{},
+        'wzp6_ee_nunuH_Hss_ecm240':{},
+        'wzp6_ee_nunuH_Htautau_ecm240':{},
+        'wzp6_ee_nunuH_Huu_ecm240':{},
 
-        # ## ZZ Backgrounds
-        # 'wzp6_ee_eeH_HZZ_ecm240':{},
-        # 'wzp6_ee_mumuH_HZZ_ecm240':{},
-        # 'wzp6_ee_qqH_HZZ_ecm240':{},
-        # 'wzp6_ee_tautauH_HZZ_ecm240':{},
+        ## ZZ Backgrounds
+        'wzp6_ee_eeH_HZZ_ecm240':{},
+        'wzp6_ee_mumuH_HZZ_ecm240':{},
+        'wzp6_ee_qqH_HZZ_ecm240':{},
+        'wzp6_ee_tautauH_HZZ_ecm240':{},
 
-        # ## WW Backgrounds
-        # 'wzp6_ee_eeH_HWW_ecm240':{},
-        # 'wzp6_ee_mumuH_HWW_ecm240':{},
-        # 'wzp6_ee_qqH_HWW_ecm240':{},
-        # 'wzp6_ee_tautauH_HWW_ecm240':{},
+        ## WW Backgrounds
+        'wzp6_ee_eeH_HWW_ecm240':{},
+        'wzp6_ee_mumuH_HWW_ecm240':{},
+        'wzp6_ee_qqH_HWW_ecm240':{},
+        'wzp6_ee_tautauH_HWW_ecm240':{},
 
-        # ## Other
-        # 'p8_ee_WW_ecm240':{},
-        # 'p8_ee_ZZ_ecm240':{},
+        ## Other
+        'p8_ee_WW_ecm240':{},
+        'p8_ee_ZZ_ecm240':{},
 
 }
 
@@ -374,6 +374,9 @@ histoList = {
     "Reco_gt2tracks_DVs_Lxyz_02000":     {"name":"Reco_gt2tracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":2000, "ymin":0.001},
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":200, "ymin":0.001},
+    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom040": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":20, "xmin":0, "xmax":40, "ymin":0.001},
+    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_15": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":15, "xmin":0, "xmax":120, "ymin":0.001},
+    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_30": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":120, "ymin":0.001},
 
 
     "Reco_seltracks_DVs_Lxyz_zoom":     {"name":"Reco_seltracks_DVs_Lxyz","title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":100, "ymin":0.001},
@@ -386,7 +389,7 @@ histoList = {
     'n_electrons_sel_iso':                  {"name":'n_electrons_sel_iso',                 "title": "Number of reco. iso. electrons",                                "bin":10,"xmin":-0.5,"xmax":9.5},    
     'n_muons_sel_iso':                      {"name":'n_muons_sel_iso',                     "title": "Number of reco. iso. muons",                                    "bin":10,"xmin":-0.5,"xmax":9.5},
 
-    "isoReco_ee_invMass":                      {"name":"isoReco_ee_invMass",                     "title": "Invariant mass of reco. iso. e^{-} e^{+} [GeV]",                 "bin":50,"xmin":50,"xmax":150},
-    "isoReco_mumu_invMass":                    {"name":"isoReco_mumu_invMass",                   "title": "Invariant mass of reco. iso. #mu^{-} #mu^{+} [GeV]",             "bin":50,"xmin":50,"xmax":150},    
+    "isoReco_ee_invMass":                      {"name":"isoReco_ee_invMass",                     "title": "m_{ll} [GeV]",                 "bin":50,"xmin":50,"xmax":150},
+    "isoReco_mumu_invMass":                    {"name":"isoReco_mumu_invMass",                   "title": "m_{ll} [GeV]",             "bin":50,"xmin":50,"xmax":150},    
 
 }
