@@ -86,6 +86,8 @@ def create_condor_config(log_dir: str,
 
     cfg += '+AccountingGroup = "%s"\n' % get_element(rdf_module, 'compGroup')
 
+    #cfg += '+AccountingGroup = “group_u_FCC.local_gen"'
+
     cfg += 'RequestCpus      = %i\n' % get_element(rdf_module, "nCPUS")
 
     cfg += 'queue filename matching files'
@@ -499,10 +501,10 @@ def run_local(rdf_module, infile_list, args):
     else:
         LOGGER.info('Number of local events: %s', f'{nevents_local:,}')
 
-    output_dir = get_element(rdf_module, "outputDir")
+    output_dir = get_element(rdf_module, "outputDirEos")
     if not args.batch:
         if os.path.isabs(args.output):
-            LOGGER.warning('Provided output path is absolute, "outputDir" '
+            LOGGER.warning('Provided output path is absolute, "outputDirEos" '
                            'from analysis script will be ignored!')
         outfile_path = os.path.join(output_dir, args.output)
     else:
@@ -572,9 +574,9 @@ def run_stages(args, rdf_module, anapath):
     initialize(args, rdf_module, anapath)
 
     # Check if outputDir exist and if not create it
-    output_dir = get_element(rdf_module, "outputDir")
-    if not os.path.exists(output_dir) and output_dir:
-        os.system(f'mkdir -p {output_dir}')
+    # output_dir = get_element(rdf_module, "outputDir")
+    # if not os.path.exists(output_dir) and output_dir:
+    #     os.system(f'mkdir -p {output_dir}')
 
     # Check if outputDir exist and if not create it
     output_dir_eos = get_element(rdf_module, "outputDirEos")
@@ -653,7 +655,7 @@ def run_stages(args, rdf_module, anapath):
 
         # Create directory if more than 1 chunk
         if chunks > 1:
-            output_directory = os.path.join(output_dir, output_stem)
+            output_directory = os.path.join(output_dir_eos, output_stem)
 
             if not os.path.exists(output_directory):
                 os.system(f'mkdir -p {output_directory}')
@@ -696,7 +698,7 @@ def run_histmaker(args, rdf_module, anapath):
     proc_dict = get_process_dict(proc_dict_location)
 
     # check if outputDir exist and if not create it
-    output_dir = get_element(rdf_module, "outputDir")
+    output_dir = get_element(rdf_module, "outputDirEos")
     if not os.path.exists(output_dir) and output_dir != '':
         os.system(f'mkdir -p {output_dir}')
 
