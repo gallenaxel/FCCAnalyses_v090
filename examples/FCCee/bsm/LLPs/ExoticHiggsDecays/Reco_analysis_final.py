@@ -5,7 +5,7 @@ inputDir = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/F
 
 #Output directory where the files produced at the final-selection level are #ISR_ForNote_all
 #outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/Paper_oct2_nTracks_Fix_all/final_binningFix/"
-outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_comb/final_test/"
+outputDir  = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/FINAL_comb/final_no_lowerRcut/"
 
 
 # #Integrated luminosity for scaling number of events (required only if setting doScale to true)
@@ -325,10 +325,10 @@ cutList = {
 
     # For event selection
     "only_exactly_two_leptons": "((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) || ((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1)))",
-    "Z-mass criteria" : "(((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))",
-    "detector-volume" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz>4&&Reco_seltracks_DVs_Lxyz<2000))>1",
-    "ntracks" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz>4&&Reco_seltracks_DVs_Lxyz<2000&&n_trks_seltracks_DVs>2))>1",
-    "DV_invMass" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz>4&&Reco_seltracks_DVs_Lxyz<2000&&n_trks_seltracks_DVs>2&&invMass_seltracks_DVs>2))>1",
+    "Z-mass" : "(((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))",
+    "detector-volume" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz<2000))>1",
+    "ntracks" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz<2000&&n_trks_seltracks_DVs>2))>1",
+    "DV_invMass" : "((((n_RecoElectrons >= 2) && (n_electrons_sel_iso == 2) && (RecoElectron_charge.at(0) != RecoElectron_charge.at(1))) && (isoReco_ee_invMass > 70 && isoReco_ee_invMass < 110)) || (((n_RecoMuons >= 2) && (n_muons_sel_iso == 2) && (RecoMuon_charge.at(0) != RecoMuon_charge.at(1))) && (isoReco_mumu_invMass > 70 && isoReco_mumu_invMass < 110))) && (Sum(Reco_seltracks_DVs_Lxyz<2000&&n_trks_seltracks_DVs>2&&invMass_seltracks_DVs>2))>1",
 
 
 }
@@ -340,10 +340,10 @@ cutLabels = {
 
     # For event selection
     "only_exactly_two_leptons": "Exactly 2 oppositely charged leptons",
-    "Z-mass criteria" : "70<mll<110 GeV",
-    "detector-volume" : "4<r<2000",
-    "ntracks" : "n_trk < 2",
-    "DV_invMass" : "m_DV < 2",
+    "Z-mass" : r"$70<m_{ll}<110$ GeV",
+    "detector-volume" : r"$r<2000$",
+    "ntracks" : r"$n_{trk} < 2$",
+    "DV_invMass" : r"$m_{DV} < 2$",
 
 }
 
@@ -353,7 +353,7 @@ defineList={
     "invMass_gt2tracks_DVs":"invMass_seltracks_DVs[n_trks_seltracks_DVs>2]",
     "Reco_gt2tracks_DVs_Lxyz":"Reco_seltracks_DVs_Lxyz[n_trks_seltracks_DVs>2]",
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz":"Reco_seltracks_DVs_Lxyz[n_trks_seltracks_DVs>2&&invMass_seltracks_DVs>2]",
-    "n_DV_fullsel":"(Sum(n_trks_seltracks_DVs>2&&Reco_seltracks_DVs_Lxyz>4&&Reco_seltracks_DVs_Lxyz<2000&&invMass_seltracks_DVs>2&&DV_evt_seltracks_normchi2<5))"
+    "n_DV_fullsel":"(Sum(n_trks_seltracks_DVs>2&&Reco_seltracks_DVs_Lxyz<2000&&invMass_seltracks_DVs>2))"
 }
 
 ###Dictionary for the ouput variable/histograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
