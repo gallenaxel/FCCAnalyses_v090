@@ -15,6 +15,7 @@ import ROOT  # type: ignore
 ROOT.gROOT.SetBatch(True)
 ROOT.gStyle.SetOptStat(0)
 ROOT.gStyle.SetOptTitle(0)
+sys.stdout.reconfigure(encoding='utf-8')
 
 
 LOGGER = logging.getLogger('FCCAnalyses.plot')
@@ -212,8 +213,8 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
             LOGGER.debug('No legCoord, using default one...')
             legCoord = [0.60, 0.60 - legsize, 0.88, 0.62]
         leg2 = None
-
-    leg = ROOT.TLegend(0.58, 0.54, 0.8, 0.84)
+    #x1, y1, x2, y2
+    leg = ROOT.TLegend(0.62, 0.58, 0.84, 0.88)
     leg.SetFillColor(0)
     leg.SetFillStyle(0)
     leg.SetLineColor(0)
@@ -254,16 +255,16 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
         colors.append(param.colors[b])
 
     intLumiab = param.intLumi/1e+06
-    intLumi = f'L = {intLumiab:.1f} ab^{{-1}}'
+    intLumi = f'{intLumiab:.1f} ab^{{-1}}'
     if hasattr(param, "intLumiLabel"):
         intLumi = getattr(param, "intLumiLabel")
 
     lt = 'FCCAnalyses: FCC-hh Simulation (Delphes)'
-    rt = f'#sqrt{{s}} = {param.energy:.1f} TeV,   L = {intLumi}'
+    rt = f'#sqrt{{s}} = {param.energy:.0f} TeV,   L = {intLumi}'
 
     if 'ee' in param.collider:
-        lt = 'FCC-ee Simulation (Delphes)'
-        rt = f'#sqrt{{s}} = {param.energy:.1f} GeV,   {intLumi}'
+        lt = f'FCC-ee Simulation'
+        rt = f'{param.energy:.0f} GeV, {intLumi}'
 
     customLabel = ""
     try:
@@ -401,7 +402,7 @@ def runPlotsHistmaker(hName, param, plotCfg):
     ytitle = plotCfg['ytitle'] if 'ytitle' in plotCfg else "number of DVs"
     xmin = plotCfg['xmin'] if 'xmin' in plotCfg else -1
     xmax = plotCfg['xmax'] if 'xmax' in plotCfg else -1
-    ymin = plotCfg['ymin'] if 'ymin' in plotCfg else -1
+    ymin = plotCfg['ymin'] if 'ymin' in plotCfg else 0.01
     ymax = plotCfg['ymax'] if 'ymax' in plotCfg else -1
     stack = plotCfg['stack'] if 'stack' in plotCfg else False
     logy = plotCfg['logy'] if 'logy' in plotCfg else False
@@ -417,8 +418,8 @@ def runPlotsHistmaker(hName, param, plotCfg):
     rt = f'#sqrt{{s}} = {param.energy:.1f} TeV,   L = {intLumi}'
 
     if 'ee' in param.collider:
-        lt = 'FCC-ee Simulation (Delphes)'
-        rt = f'#sqrt{{s}} = {param.energy:.1f} GeV,   {intLumi}'
+        lt = 'FCC-ee Simulation'
+        rt = f'#sqrt{{s}} = {param.energy:.0f} GeV,   {intLumi}'
 
     customLabel = ""
     try:
@@ -459,7 +460,7 @@ def runPlotsHistmaker(hName, param, plotCfg):
 def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
               logY, stacksig, histos, colors, ana_tex, extralab, scaleSig,
               customLabel, nsig, nbkg, legend2=None, yields=None,
-              plotStatUnc=False, xmin=-1, xmax=-1, ymin=-1, ymax=-1,
+              plotStatUnc=False, xmin=-1, xmax=8, ymin=0.01, ymax=100000000000,
               xtitle=""):
 
     canvas = ROOT.TCanvas(name, name, 800, 800)
@@ -482,6 +483,13 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
             ylabel += f' / {bwidth} {unit}'
         else:
             ylabel += f' / {bwidth:.2f} {unit}'
+    mm_unit = "mm"
+    if mm_unit in str(histos[0].GetXaxis().GetTitle()):
+        bwidth = sumhistos.GetBinWidth(1)
+        if bwidth.is_integer():
+            ylabel += f' / {bwidth} {mm_unit}'
+        else:
+            ylabel += f' / {bwidth:.2f} {mm_unit}'
 
     nbins = 1 if not isinstance(xtitle, list) else len(xtitle)
     h_dummy = ROOT.TH1D("h_dummy", "", nbins, 0, nbins)
@@ -597,7 +605,7 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
         LOGGER.error('Log scale can\'t start at: %i', ymin)
         sys.exit(3)
     h_dummy.SetMaximum(ymax)
-    h_dummy.SetMinimum(0.001)
+    h_dummy.SetMinimum(ymin)
 
     legend.Draw()
     if legend2 is not None:
@@ -606,37 +614,42 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
     latex = ROOT.TLatex()
     latex.SetNDC()
     latex.SetTextAlign(31)
-    latex.SetTextSize(0.04)
+    latex.SetTextSize(0.05)
 
     text = '#it{' + leftText + '}'
-    latex.DrawLatex(0.90, 0.94, text)
+    latex.DrawLatex(0.90, 0.92, text)
 
     text = '#it{'+customLabel+'}'
     latex.SetTextAlign(12)
     latex.SetNDC(ROOT.kTRUE)
-    latex.SetTextSize(0.04)
+    latex.SetTextSize(0.05)
     latex.DrawLatex(0.18, 0.85, text)
 
-    rightText = re.split(",", rightText)
-    text = '#bf{#it{' + rightText[0] + '}}'
+    #rightText = re.split(",", rightText)
+    #text = '#bf{#it{' + rightText[0] + '}}'
 
     latex.SetTextAlign(12)
     latex.SetNDC(ROOT.kTRUE)
     latex.SetTextSize(0.04)
     latex.DrawLatex(0.18, 0.81, text)
 
-    rightText[1] = rightText[1].replace("   ", "")
-    text = '#bf{#it{' + rightText[1] + '}}'
+    #rightText[1] = rightText[1].replace("   ", "")
+    text = '#bf{' + rightText + '}'
     latex.SetTextSize(0.035)
-    latex.DrawLatex(0.18, 0.76, text)
+    latex.DrawLatex(0.18, 0.86, text)
 
     text = '#bf{#it{' + ana_tex + '}}'
-    latex.SetTextSize(0.025)
-    latex.DrawLatex(0.18, 0.71, text)
+    latex.SetTextSize(0.032)
+    latex.DrawLatex(0.18, 0.81, text)
 
-    text = '#bf{#it{' + extralab + '}}'
-    latex.SetTextSize(0.03)
-    latex.DrawLatex(0.18, 0.66, text)
+    text = '#bf{' + extralab + '}'
+    latex.SetTextSize(0.032)
+    latex.DrawLatex(0.18, 0.76, text)
+
+    # otherlab = r"N_{trk} > 2, m_{ch} > 2 GeV"
+    # text = '#bf{' + otherlab + '}'
+    # latex.SetTextSize(0.032)
+    # latex.DrawLatex(0.18, 0.71, text)
 
     text = '#bf{#it{' + 'Signal scale=' + str(scaleSig)+'}}'
     latex.SetTextSize(0.025)
