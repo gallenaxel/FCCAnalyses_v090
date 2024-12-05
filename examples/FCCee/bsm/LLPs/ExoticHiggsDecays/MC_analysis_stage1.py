@@ -1,6 +1,6 @@
 #import ROOT
 
-analysesList = ['ExoticHiggsDecays_analysis_code']
+#analysesList = ['ExoticHiggsDecays_analysis_code']
 
 #testfile="/afs/cern.ch/work/u/uvandevo/exoticHiggs_scalar_ms20GeV_sine-5.root"
 
@@ -8,31 +8,42 @@ analysesList = ['ExoticHiggsDecays_analysis_code']
 processList = {
 
         #privately-produced signals
-        #'exoticHiggs_scalar_ms20GeV_sine-5':{},
-        #'exoticHiggs_scalar_ms20GeV_sine-6':{},
-        #'exoticHiggs_scalar_ms20GeV_sine-7':{},
-        #'exoticHiggs_scalar_ms60GeV_sine-5':{},
-        #'exoticHiggs_scalar_ms60GeV_sine-6':{},
-        #'exoticHiggs_scalar_ms60GeV_sine-7':{},
-        'wzp6_ee_eeH_Hbb_ecm240' : {'fraction':0.01},          
+        "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
+        #"exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
+        # "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
+        # "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
+        # "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
+        "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
+    
+        # "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
+        # "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
+
+
+        # "exoticHiggs_scalar_ms50GeV_sin3e-6_241014" : {'chunks':20},
+        # "exoticHiggs_scalar_ms50GeV_sin3e-7_241014" : {'chunks':20},
+        # "exoticHiggs_scalar_ms55GeV_sine-6_241014" : {'chunks':20},
+        # "exoticHiggs_scalar_ms55GeV_sin3e-7_241014" : {'chunks':20},         
 }
 
 #Production tag. This points to the yaml files for getting sample statistics
 #Mandatory when running over EDM4Hep centrally produced events
 #Comment out when running over privately produced events
-prodTag     = "FCCee/winter2023/IDEA/"
+#prodTag     = "FCCee/winter2023/IDEA/"
 
 #Input directory
 #Comment out when running over centrally produced events
 #Mandatory when running over privately produced events
 #inputDir = "/afs/cern.ch/work/u/uvandevo"
-#inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes/"
+inputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/output_MadgraphPythiaDelphes_240912/"
 
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/MC_output_stage1/"
-#outputDirEos = "/eos/experiment/fcc/ee/analyses/case-studies/bsm/LLPs/H_SS_4b/MC_output_stage1/"
-outputDir = "MC_output_stage1_v090/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/dec5_MC/stage1/"
+#outputDir = "MC_output_stage1_v090/"
 
 #Optional: ncpus, default is 4
 nCPUS       = 4
@@ -56,7 +67,7 @@ class RDFanalysis():
     def analysers(df):
         df2 = (
             df
-            .Alias("Particle1", "Particle#1.index")
+            .Alias("Particle1", "_Particle_daughters.index")
             # MC-particles/truth particles
 
             # select the generated electrons and positrons
@@ -144,7 +155,7 @@ class RDFanalysis():
             .Define('LxyHS2', 'return sqrt((b2_vertex_x - HS_vertex_x.at(1))*(b2_vertex_x - HS_vertex_x.at(1)) + (b2_vertex_y - HS_vertex_y.at(1))*(b2_vertex_y - HS_vertex_y.at(1)))')
 
             # get the transverse decay length of both scalars in a vector for each event
-            .Define('LxyHS', 'ExoticHiggsDecays_analysis_code::get_both_scalars(LxyHS1, LxyHS2)')
+            .Define('LxyHS', 'myUtils::get_both_scalars(LxyHS1, LxyHS2)')
 
             # the proper lifetime of the scalars given in [ns]
             .Define('lifetimeHS1', 'return (decayLengthHS1 * 1E-3 * AllGenHS_mass.at(0)/(3E8 * AllGenHS_e.at(0))*1E9)')
