@@ -197,7 +197,7 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
         legsize = 0.04*(len(hsignal))
         legsize2 = 0.04*(len(hbackgrounds))
         legCoord = [0.15, 0.60 - legsize, 0.50, 0.62]
-        leg2 = ROOT.TLegend(0.60, 0.60 - legsize2, 0.88, 0.62)
+        leg2 = ROOT.TLegend(0.20, 0.60 - legsize2, 0.48, 0.62)
         leg2.SetFillColor(0)
         leg2.SetFillStyle(0)
         leg2.SetLineColor(0)
@@ -214,7 +214,7 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
             legCoord = [0.60, 0.60 - legsize, 0.88, 0.62]
         leg2 = None
     #x1, y1, x2, y2
-    leg = ROOT.TLegend(0.62, 0.58, 0.84, 0.88)
+    leg = ROOT.TLegend(0.62, 0.66, 0.84, 0.88)
     leg.SetFillColor(0)
     leg.SetFillStyle(0)
     leg.SetLineColor(0)
@@ -278,7 +278,7 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
     except AttributeError:
         LOGGER.debug('No scale signal, using 1.')
         param.scaleSig = scaleSig
-    ylabel = 'Events'
+    ylabel = 'Truth particles'
     if 'AAAyields' in var:
         drawStack(var, ylabel, leg, lt, rt, param.formats,
                   param.outdir+"/"+sel, False, True, histos, colors,
@@ -460,7 +460,7 @@ def runPlotsHistmaker(hName, param, plotCfg):
 def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
               logY, stacksig, histos, colors, ana_tex, extralab, scaleSig,
               customLabel, nsig, nbkg, legend2=None, yields=None,
-              plotStatUnc=False, xmin=-1, xmax=8, ymin=0.01, ymax=100000000000,
+              plotStatUnc=False, xmin=-1, xmax=-1, ymin=-1, ymax=100000,
               xtitle=""):
 
     canvas = ROOT.TCanvas(name, name, 800, 800)
@@ -490,6 +490,13 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
             ylabel += f' / {bwidth} {mm_unit}'
         else:
             ylabel += f' / {bwidth:.2f} {mm_unit}'
+    ns_unit = "ns"
+    if ns_unit in str(histos[0].GetXaxis().GetTitle()):
+        bwidth = sumhistos.GetBinWidth(1)
+        if bwidth.is_integer():
+            ylabel += f' / {bwidth} {ns_unit}'
+        else:
+            ylabel += f' / {bwidth:.2f} {ns_unit}'
 
     nbins = 1 if not isinstance(xtitle, list) else len(xtitle)
     h_dummy = ROOT.TH1D("h_dummy", "", nbins, 0, nbins)
@@ -541,6 +548,8 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
         h = histos[i]
         h.SetLineWidth(3)
         h.SetLineColor(colors[i])
+        if (i == 0 or i == 3):
+            h.SetLineStyle(2)
         hStack.Add(h)
         hStackSig.Add(h)
 
@@ -555,7 +564,7 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
             hUnc_sig_bkg = formatStatUncHist(hStack.GetHists(), "sig_bkg")
             hUnc_sig_bkg.Draw("E2 SAME")
     else:
-        hStackBkg.Draw("HIST SAME")
+        #hStackBkg.Draw("HIST SAME")
         hStackSig.Draw("HIST SAME NOSTACK")
         if plotStatUnc:
             # bkg-only uncertainty
