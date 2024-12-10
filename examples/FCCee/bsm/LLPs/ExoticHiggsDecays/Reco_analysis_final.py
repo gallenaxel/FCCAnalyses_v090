@@ -22,26 +22,26 @@ processList = {
 
         #'test':{}
         # #privately-produced signals 
-        'exoticHiggs_scalar_ms20GeV_sine-5_240912':{},
+        #'exoticHiggs_scalar_ms20GeV_sine-5_240912':{},
         'exoticHiggs_scalar_ms20GeV_sine-6_240912':{},
-        'exoticHiggs_scalar_ms20GeV_sine-7_240912':{},
-        'exoticHiggs_scalar_ms40GeV_sine-5_240912':{},
-        'exoticHiggs_scalar_ms40GeV_sine-6_240912':{},
-        'exoticHiggs_scalar_ms40GeV_sine-7_240912':{},
-        'exoticHiggs_scalar_ms60GeV_sine-5_240912':{},
+        #'exoticHiggs_scalar_ms20GeV_sine-7_240912':{},
+        #'exoticHiggs_scalar_ms40GeV_sine-5_240912':{},
+        #'exoticHiggs_scalar_ms40GeV_sine-6_240912':{},
+        #'exoticHiggs_scalar_ms40GeV_sine-7_240912':{},
+        #'exoticHiggs_scalar_ms60GeV_sine-5_240912':{},
         'exoticHiggs_scalar_ms60GeV_sine-6_240912':{},
-        'exoticHiggs_scalar_ms60GeV_sine-7_240912':{},
+        #'exoticHiggs_scalar_ms60GeV_sine-7_240912':{},
         
-        "exoticHiggs_scalar_ms20GeV_sin3e-6_241002":{},
+        #"exoticHiggs_scalar_ms20GeV_sin3e-6_241002":{},
         "exoticHiggs_scalar_ms50GeV_sine-6_241002":{},
 
-        "exoticHiggs_scalar_ms50GeV_sin3e-6_241014":{},
-        "exoticHiggs_scalar_ms50GeV_sin3e-7_241014":{},
-        "exoticHiggs_scalar_ms55GeV_sine-6_241014":{},
-        "exoticHiggs_scalar_ms55GeV_sin3e-7_241014":{},
+        #"exoticHiggs_scalar_ms50GeV_sin3e-6_241014":{},
+        #"exoticHiggs_scalar_ms50GeV_sin3e-7_241014":{},
+        #"exoticHiggs_scalar_ms55GeV_sine-6_241014":{},
+        #"exoticHiggs_scalar_ms55GeV_sin3e-7_241014":{},
 
-        #centrally produced backgrounds
-        # ss Backgrounds
+        # #centrally produced backgrounds
+        # # ss Backgrounds
         'wzp6_ee_ssH_Hbb_ecm240':{},
         'wzp6_ee_ssH_Hcc_ecm240':{},
         'wzp6_ee_ssH_Hgg_ecm240':{},
@@ -359,32 +359,32 @@ defineList={
 ###Dictionary for the ouput variable/histograms. The key is the name of the variable in the output files. "name" is the name of the variable in the input file, "title" is the x-axis label of the histogram, "bin" the number of bins of the histogram, "xmin" the minimum x-axis value and "xmax" the maximum x-axis value.
 
 histoList = {
-    "n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
-    "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
-    "DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
+    # "n_tracks":                             {"name":"n_tracks",                            "title":"Number of reconstructed tracks",                               "bin":100, "xmin":-0.5,"xmax":99.5},
+    # "n_RecoedPrimaryTracks":                {"name":"n_RecoedPrimaryTracks",               "title": "Number of reconstructed primary tracks",                      "bin":10, "xmin":-0.5,"xmax":9.5},
+    # "DV_evt_seltracks_chi2":               {"name":"DV_evt_seltracks_chi2",               "title":"The #chi^{2} distribution of the DVs",                         "bin":100, "xmin":-0.5, "xmax":11.5},
     
-    'n_seltracks_DVs': {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
-    'n_trks_seltracks_DVs': {"name":'n_trks_seltracks_DVs',                "title":"DV track multiplicity",                                "bin":13, "xmin":1.5, "xmax":15},
-    'n_trks_2tracks_DVs': {"name":'n_trks_gt2tracks_DVs',                "title":"DV track multiplicity", "bin":13, "xmin":1.5, "xmax":15},
+    # 'n_seltracks_DVs': {"name":"n_seltracks_DVs",            "title":"Number of DVs",                                                "bin":12, "xmin":-0.5, "xmax":11.5, "ymin":0.001},
+    'n_trks_seltracks_DVs': {"name":'n_trks_seltracks_DVs',                "title":"N_{trks}",                                "bin":13, "xmin":1.5, "xmax":15},
+    # 'n_trks_2tracks_DVs': {"name":'n_trks_gt2tracks_DVs',                "title":"N_{trks}", "bin":13, "xmin":1.5, "xmax":15},
    
-    "DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
-    "DV_evt_gt2tracks_normchi2":           {"name":"DV_evt_gt2tracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
+    # "DV_evt_seltracks_normchi2":           {"name":"DV_evt_seltracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
+    # "DV_evt_gt2tracks_normchi2":           {"name":"DV_evt_gt2tracks_normchi2",           "title":"DV normalized #chi^{2} distribution",              "bin":45, "xmin":0, "xmax":9},
 
-    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":30, "xmin":0, "xmax":15},
-    'invMass_gt2tracks_DVs':                {"name":'invMass_gt2tracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":30, "xmin":0, "xmax":15},
+    'invMass_seltracks_DVs':                {"name":'invMass_seltracks_DVs',               "title":"m_{ch} [GeV]",                              "bin":30, "xmin":0, "xmax":15},
+    'invMass_gt2tracks_DVs':                {"name":'invMass_gt2tracks_DVs',               "title":"m_{ch} [GeV]",                              "bin":30, "xmin":0, "xmax":15},
 
-    'invMass_seltracks_DVs_zoom':                {"name":'invMass_seltracks_DVs',               "title":"Invariant mass at the DVs [GeV]",                              "bin":40, "xmin":0, "xmax":5},
+    # 'invMass_seltracks_DVs_zoom':                {"name":'invMass_seltracks_DVs',               "title":"m_{ch} [GeV]",                              "bin":40, "xmin":0, "xmax":5},
 
-    "Reco_seltracks_DVs_Lxyz_02000":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
-    "Reco_gt2tracks_DVs_Lxyz_02000":     {"name":"Reco_gt2tracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
+    "Reco_seltracks_DVs_Lxyz_02000":     {"name":"Reco_seltracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":2000, "ymin":0.001},
+    # "Reco_gt2tracks_DVs_Lxyz_02000":     {"name":"Reco_gt2tracks_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":50, "xmin":0, "xmax":2000, "ymin":0.001},
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":2000, "ymin":0.001},
-    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":200, "ymin":0.001},
-    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom040": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":20, "xmin":0, "xmax":40, "ymin":0.001},
+    # "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":25, "xmin":0, "xmax":200, "ymin":0.001},
+    # "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom040": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":20, "xmin":0, "xmax":40, "ymin":0.001},
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_15": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":15, "xmin":0, "xmax":120, "ymin":0.001},
-    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_30": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":120, "ymin":0.001},
+    # "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_30": {"name":"Reco_gt2tracksgt2GeVmass_DVs_Lxyz",    "title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":120, "ymin":0.001},
 
 
-    "Reco_seltracks_DVs_Lxyz_zoom":     {"name":"Reco_seltracks_DVs_Lxyz","title":"DV radius [mm]",                             "bin":30, "xmin":0, "xmax":100, "ymin":0.001},
+    "Reco_seltracks_DVs_Lxyz_zoom":     {"name":"Reco_seltracks_DVs_Lxyz","title":"DV radius [mm]",                             "bin":15, "xmin":0, "xmax":120, "ymin":0.001},
 
     "n_DV_fullsel" : {"name":"n_DV_fullsel", "title":"Number of DVs",                                                "bin":15, "xmin":-0.5, "xmax":14.5, "ymin":0.001},
 
