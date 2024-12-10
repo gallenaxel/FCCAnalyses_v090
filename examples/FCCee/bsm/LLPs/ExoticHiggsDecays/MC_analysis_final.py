@@ -84,7 +84,7 @@ histoList = {
 
     'LxyHS':                            {"name":'LxyHS',                         "title":"Genenrated transverse decay length [mm]",       "bin":100,"xmin":0 ,"xmax":1000},
     'decayLengthsHS':                   {"name":'decayLengthsHS',                "title":"Generated decay length [mm]",                   "bin":25,"xmin":0 ,"xmax":2000},
-    'lifetimeHS':                       {"name":'lifetimeHS',                    "title":"Generated mean lifetime #tau [ns]",            "bin":100,"xmin":0 ,"xmax":20},
+    'lifetimeHS':                       {"name":'lifetimeHS',                    "title":"Generated mean lifetime [ns]",            "bin":100,"xmin":0 ,"xmax":20},
     'lifetimeHSLAB':                    {"name":'lifetimeHSLAB',                "title":"Generated time distribution in LAB frame [ns]", "bin":100,"xmin":0 ,"xmax":20},
 
 }
