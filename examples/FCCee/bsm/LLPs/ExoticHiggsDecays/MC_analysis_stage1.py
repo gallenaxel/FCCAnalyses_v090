@@ -10,20 +10,21 @@ processList = {
         #privately-produced signals
         "exoticHiggs_scalar_ms20GeV_sine-5_240912" : {'chunks':20},
         "exoticHiggs_scalar_ms20GeV_sine-6_240912" : {'chunks':20},        
-        #"exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
-        # "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
-        # "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},    
-        # "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sine-7_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
+
+        "exoticHiggs_scalar_ms40GeV_sine-5_240912" : {'chunks':20},
+        "exoticHiggs_scalar_ms40GeV_sine-6_240912" : {'chunks':20},    
+        "exoticHiggs_scalar_ms40GeV_sine-7_240912" : {'chunks':20},  
+
+        "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
+        "exoticHiggs_scalar_ms50GeV_sin3e-6_241014" : {'chunks':20},
+        "exoticHiggs_scalar_ms50GeV_sin3e-7_241014" : {'chunks':20},
+
+        "exoticHiggs_scalar_ms60GeV_sine-5_240912" : {'chunks':20},
         "exoticHiggs_scalar_ms60GeV_sine-6_240912" : {'chunks':20},    
         "exoticHiggs_scalar_ms60GeV_sine-7_240912" : {'chunks':20},
     
-        # "exoticHiggs_scalar_ms20GeV_sin3e-6_241002" : {'chunks':20},
-        # "exoticHiggs_scalar_ms50GeV_sine-6_241002" : {'chunks':20},
-
-
-        # "exoticHiggs_scalar_ms50GeV_sin3e-6_241014" : {'chunks':20},
-        # "exoticHiggs_scalar_ms50GeV_sin3e-7_241014" : {'chunks':20},
         # "exoticHiggs_scalar_ms55GeV_sine-6_241014" : {'chunks':20},
         # "exoticHiggs_scalar_ms55GeV_sin3e-7_241014" : {'chunks':20},         
 }
