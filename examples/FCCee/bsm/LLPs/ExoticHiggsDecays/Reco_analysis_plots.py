@@ -26,22 +26,23 @@ variables = [
     # "n_seltracks_DVs",
     "n_DV_fullsel",
     
-    #'n_trks_seltracks_DVs',
+    'n_trks_seltracks_DVs',
     # 'n_trks_2tracks_DVs',
     
     # "DV_evt_seltracks_normchi2",
     #"DV_evt_gt2tracks_normchi2",
 
     # 'invMass_seltracks_DVs',
-    # 'invMass_gt2tracks_DVs',
+    'invMass_gt2tracks_DVs',
     # "invMass_seltracks_DVs_zoom",
 
-    # "Reco_gt2tracksgt2GeVmass_DVs_Lxyz",
-    # "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_15",
-    # "Reco_seltracks_DVs_Lxyz_zoom",
+    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz",
+    "Reco_gt2tracksgt2GeVmass_DVs_Lxyz_zoom0120_15",
+    #"Reco_seltracks_DVs_Lxyz_02000",
+    #"Reco_seltracks_DVs_Lxyz_zoom",
 
-    #"isoReco_ee_invMass",
-    #"isoReco_mumu_invMass",
+    "isoReco_ee_invMass",
+    "isoReco_mumu_invMass",
 
     # 'n_RecoElectrons',
     # 'n_RecoMuons',
@@ -64,11 +65,11 @@ selections['ExoticHiggs']  = [
 ]
 
 extralabel = {}
-extralabel['selNone'] = "No selection"
+extralabel['selNone'] = ""
 extralabel['only_exactly_two_leptons'] = r"e^{+}e^{-} selection"
 extralabel['Z-mass'] = r"Final event selection"
 extralabel['detector-volume'] = r"Event pre-selection"
-extralabel["ntracks"] = r"Event pre-selection, N_{trk} > 2"
+extralabel["ntracks"] = r"Event pre-selection, N_{trk} \geq 3"
 extralabel["DV_invMass"] = r"Event pre-selection"
 
 linestyle = {}
@@ -77,25 +78,25 @@ colors = {}
 
 ## Signal
 
-colors['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = ROOT.kCyan+2
+colors['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = ROOT.kRed+2
 colors['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = ROOT.kCyan-6
 colors['exoticHiggs_scalar_ms40GeV_sine-5_240912'] = ROOT.kCyan-5
 colors['exoticHiggs_scalar_ms40GeV_sine-6_240912'] = ROOT.kMagenta-10
 colors['exoticHiggs_scalar_ms40GeV_sine-7_240912'] = ROOT.kCyan-10
 colors['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = ROOT.kCyan+4
-colors['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = ROOT.kCyan-8
+colors['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = ROOT.kOrange+7
 colors["exoticHiggs_scalar_ms20GeV_sin3e-6_241002"] = ROOT.kBlue+3
 
 
 
-colors['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = ROOT.kRed+2#ROOT.kOrange+8#44#ROOT.kMagenta-6
-colors["exoticHiggs_scalar_ms50GeV_sine-6_241002"] = ROOT.kBlue+4#ROOT.kRed-3#46#ROOT.kBlue-6
-colors['exoticHiggs_scalar_ms60GeV_sine-6_240912'] = ROOT.kOrange+7#ROOT.kTeal+3#12#ROOT.kYellow-6
+colors['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = ROOT.kRed+2
+colors["exoticHiggs_scalar_ms50GeV_sine-6_241002"] = ROOT.kBlue+4
+colors['exoticHiggs_scalar_ms60GeV_sine-6_240912'] = ROOT.kOrange+7
 
 ## Backgrounds
-colors['ZH'] = ROOT.kGray+1#30
-colors['p8_ee_WW_ecm240'] = ROOT.kCyan-8#38#ROOT.kRed-3
-colors['p8_ee_ZZ_ecm240'] = ROOT.kMagenta-8#ROOT.kOrange-3#11#ROOT.kGreen-5
+colors['ZH'] = ROOT.kGray+1
+colors['p8_ee_WW_ecm240'] = ROOT.kCyan-8
+colors['p8_ee_ZZ_ecm240'] = ROOT.kMagenta-8
 
 # The one used for testing
 colors['wzp6_ee_eeH_Hbb_ecm240'] = ROOT.kRed-10
@@ -149,7 +150,7 @@ plots['ExoticHiggs'] ={
                     # 'wzp6_ee_ccH_Hss_ecm240':['wzp6_ee_ccH_Hss_ecm240'],
                     # 'wzp6_ee_ccH_Htautau_ecm240':['wzp6_ee_ccH_Htautau_ecm240'],
 
-                    # 'wzp6_ee_eeH_Hbb_ecm240':['wzp6_ee_eeH_Hbb_ecm240'],
+                    #'wzp6_ee_eeH_Hbb_ecm240':['wzp6_ee_eeH_Hbb_ecm240'],
                     # 'wzp6_ee_eeH_Hcc_ecm240':['wzp6_ee_eeH_Hcc_ecm240'],
                     # 'wzp6_ee_eeH_Hgg_ecm240':['wzp6_ee_eeH_Hgg_ecm240'],
                     #'wzp6_ee_eeH_Hmumu_ecm240':['wzp6_ee_eeH_Hmumu_ecm240'],
@@ -197,17 +198,17 @@ plots['ExoticHiggs'] ={
 
 
 legend = {}
-legend['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = r'20GeV,1\cdot10^{-5}'
-legend['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = r'20GeV,1\cdot10^{-7}'
+legend['exoticHiggs_scalar_ms20GeV_sine-5_240912'] = r'20 GeV, 1 \times10^{-5}'
+legend['exoticHiggs_scalar_ms20GeV_sine-7_240912'] = r'20 GeV, 1 \times10^{-7}'
+legend["exoticHiggs_scalar_ms20GeV_sin3e-6_241002"] = r'20 GeV, 3 \times10^{-6}'
 
-legend['exoticHiggs_scalar_ms40GeV_sine-5_240912'] = r'40GeV,1\cdot10^{-5}'
-legend['exoticHiggs_scalar_ms40GeV_sine-6_240912'] = r'40GeV,1\cdot10^{-6}'
-legend['exoticHiggs_scalar_ms40GeV_sine-7_240912'] = r'40GeV,1\cdot10^{-7}'
+legend['exoticHiggs_scalar_ms40GeV_sine-5_240912'] = r'40 GeV, 1 \times10^{-5}'
+legend['exoticHiggs_scalar_ms40GeV_sine-6_240912'] = r'40 GeV, 1 \times10^{-6}'
+legend['exoticHiggs_scalar_ms40GeV_sine-7_240912'] = r'40 GeV, 1 \times10^{-7}'
 
-legend['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = r'60GeV,1\cdot10^{-5}'
-legend['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = r'60GeV,1\cdot10^{-7}'
+legend['exoticHiggs_scalar_ms60GeV_sine-5_240912'] = r'60 GeV, 1 \times10^{-5}'
+legend['exoticHiggs_scalar_ms60GeV_sine-7_240912'] = r'60 GeV, 1 \times10^{-7}'
 
-legend["exoticHiggs_scalar_ms20GeV_sin3e-6_241002"] = r'20GeV,3\cdot10^{-6}'
 
 
 legend['exoticHiggs_scalar_ms20GeV_sine-6_240912'] = r'20 GeV, 1 \times10^{-6}'
@@ -218,7 +219,7 @@ legend['p8_ee_WW_ecm240'] = 'WW'
 legend['p8_ee_ZZ_ecm240'] = 'ZZ'
 legend['ZH'] = r'Zh, h \rightarrow SM'
 
-legend['wzp6_ee_ssH_Hbb_ecm240'] = 'Z(ss), H(bb)'
+#legend['wzp6_ee_ssH_Hbb_ecm240'] = 'Z(ss), H(bb)'
 # legend['wzp6_ee_ssH_Hcc_ecm240'] = 'Z(ss), H(cc)'
 # legend['wzp6_ee_ssH_Hgg_ecm240'] = 'Z(ss), H(gg)'
 # legend['wzp6_ee_ssH_Hmumu_ecm240'] = 'Z(ss), H(mumu)'
@@ -236,7 +237,7 @@ legend['wzp6_ee_ssH_Hbb_ecm240'] = 'Z(ss), H(bb)'
 # legend['wzp6_ee_ccH_Hmumu_ecm240'] = 'Z(cc), H(mumu)'
 # legend['wzp6_ee_ccH_Hss_ecm240'] = 'Z(cc), H(ss)'
 # legend['wzp6_ee_ccH_Htautau_ecm240'] = 'Z(cc), H(tautau)'
-legend['wzp6_ee_eeH_Hbb_ecm240'] = 'Z(ee), H(bb)'
+#legend['wzp6_ee_eeH_Hbb_ecm240'] = 'Z(ee), H(bb)'
 # legend['wzp6_ee_eeH_Hcc_ecm240'] = 'Z(ee), H(cc)'
 # legend['wzp6_ee_eeH_Hgg_ecm240'] = 'Z(ee), H(gg)'
 # legend['wzp6_ee_eeH_Hmumu_ecm240'] = 'Z(ee), H(mumu)'
