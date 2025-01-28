@@ -2,15 +2,46 @@ import ROOT
 from math import sqrt
 import AtlasStyle
 
-sampleList =["wzp6_ee_eeH_HZZ_ecm240","exoticHiggs_scalar_ms20GeV_sine-6"
-,"exoticHiggs_scalar_ms60GeV_sine-5"]
+#sampleList =["wzp6_ee_eeH_HZZ_ecm240.root","exoticHiggs_scalar_ms60GeV_sine-7","exoticHiggs_scalar_ms60GeV_sine-6","exoticHiggs_scalar_ms60GeV_sine-5",
+#            "exoticHiggs_scalar_ms20GeV_sine-7","exoticHiggs_scalar_ms20GeV_sine-6","exoticHiggs_scalar_ms20GeV_sine-5"]
+
+sampleList = ["wzp6_ee_eeH_HZZ_ecm240","exoticHiggs_scalar_ms20GeV_sine-6","exoticHiggs_scalar_ms60GeV_sine-7"]
+
+folder_prefix = "R04"
+
 histos={}
 
 for sample in sampleList:
     histos[sample]={}
 
-    f=ROOT.TFile("%s.root"%sample)
+    f=ROOT.TFile(folder_prefix+"/%s.root"%sample)
     t=f.Get("events")
+
+    ROOT.gROOT.SetBatch(True)
+    t.Draw("jets_e>>jetE%s(100,0,140)"%sample)
+    histos[sample]["jets_e"]=ROOT.gROOT.FindObject("jetE%s"%sample)
+    histos[sample]["jets_e"].SetDirectory(0)
+    histos[sample]["jets_e"].SetTitle("jets_e;Jet Energy [GeV];Normalized number of Jets")
+
+    t.Draw("jets_pt>>jetPt%s(100,0,140)"%sample)
+    histos[sample]["jets_pt"]=ROOT.gROOT.FindObject("jetPt%s"%sample)
+    histos[sample]["jets_pt"].SetDirectory(0)
+    histos[sample]["jets_pt"].SetTitle("jets_pt;Jet p_{T} [GeV];Normalized number of Jets")
+
+    t.Draw("jets_eta>>jetEta%s(100,-5,5)"%sample)
+    histos[sample]["jets_eta"]=ROOT.gROOT.FindObject("jetEta%s"%sample)
+    histos[sample]["jets_eta"].SetDirectory(0)
+    histos[sample]["jets_eta"].SetTitle("jets_eta;Jet \eta ;Normalized number of Jets")
+
+    t.Draw("jets_nJets>>nJets%s(21,-1,20)"%sample)
+    histos[sample]["jets_nJets"]=ROOT.gROOT.FindObject("nJets%s"%sample)
+    histos[sample]["jets_nJets"].SetDirectory(0)
+    histos[sample]["jets_nJets"].SetTitle("jets_nJets; Number of Jets ; Counts")
+
+    t.Draw("Sum$(jets_pt>20)>>nJets2%s(21,-1,20)"%sample)
+    histos[sample]["Sum$(jets_pt>20)"]=ROOT.gROOT.FindObject("nJets2%s"%sample)
+    histos[sample]["Sum$(jets_pt>20)"].SetDirectory(0)
+    histos[sample]["Sum$(jets_pt>20)"].SetTitle("Sum$(jets_pt>20); Number of Jets ; Counts")
 
     t.Draw("track_p>>hp%s(100,0,100)"%sample,"has_track")
     histos[sample]["track_p"]=ROOT.gROOT.FindObject("hp%s"%sample)
@@ -68,7 +99,7 @@ legend.SetBorderSize(0)
 legend.SetTextSize(0.035)
 legend.SetTextFont(42)
 
-for plot in ["track_p","track_d0","track_z0","track_d0sig","track_z0sig","track_d0cov","track_z0cov","prod_z","prod_r"]:
+for plot in ["jets_e","jets_pt","jets_eta","jets_nJets","Sum$(jets_pt>20)"]:#["track_p","track_d0","track_z0","track_d0sig","track_z0sig","track_d0cov","track_z0cov","prod_z","prod_r"]:
     drawopt="hist"
     colorind=1
     legend.Clear()
@@ -81,7 +112,7 @@ for plot in ["track_p","track_d0","track_z0","track_d0sig","track_z0sig","track_
         colorind+=1
         legend.AddEntry(histos[sample][plot],sample,"l")
     legend.Draw()
-    c.SaveAs("plots/overlay/%s.pdf"%plot)
+    c.SaveAs(folder_prefix+"/pt1/%s.pdf"%plot)
 
 
 
