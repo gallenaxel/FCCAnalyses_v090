@@ -6,91 +6,91 @@ processList = {
 
 
         # SIGNALS
-        #"exoticHiggs_scalar_ms20GeV_sine-5" : {},
+        # "exoticHiggs_scalar_ms20GeV_sine-5" : {},
         # "exoticHiggs_scalar_ms20GeV_sine-6" : {},        
-        # #"exoticHiggs_scalar_ms20GeV_sine-7" : {},
-        # #"exoticHiggs_scalar_ms60GeV_sine-5" : {},
-        # #"exoticHiggs_scalar_ms60GeV_sine-6" : {},    
+        # "exoticHiggs_scalar_ms20GeV_sine-7" : {},
+        # "exoticHiggs_scalar_ms60GeV_sine-5" : {},
+        # "exoticHiggs_scalar_ms60GeV_sine-6" : {},    
         # "exoticHiggs_scalar_ms60GeV_sine-7" : {},
     
 
-        ## BACKGROUNDS
+        # BACKGROUNDS
         # ss Backgrounds
-        # 'wzp6_ee_ssH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_ssH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_ssH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_ssH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_ssH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_ssH_Htautau_ecm240':{'chunks':20},
+        'wzp6_ee_ssH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_ssH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_ssH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_ssH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_ssH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_ssH_Htautau_ecm240':{'chunks':100},
 
-        # # bb Backgrounds
-        # 'wzp6_ee_bbH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_bbH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_bbH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_bbH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_bbH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_bbH_Htautau_ecm240':{'chunks':20},
+        # bb Backgrounds
+        'wzp6_ee_bbH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_bbH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_bbH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_bbH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_bbH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_bbH_Htautau_ecm240':{'chunks':100},
     
 
         # cc Backgrounds
-        # 'wzp6_ee_ccH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_ccH_Hcc_ecm240':{'chunks':20},
-        #'wzp6_ee_ccH_Hgg_ecm240':{'chunks':250},
-        # 'wzp6_ee_ccH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_ccH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_ccH_Htautau_ecm240':{'chunks':20},
+        'wzp6_ee_ccH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_ccH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_ccH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_ccH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_ccH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_ccH_Htautau_ecm240':{'chunks':100},
 
 
-        # # ee Backgrounds
-        # 'wzp6_ee_eeH_Hbb_ecm240':{},#{'chunks':20},
-        # 'wzp6_ee_eeH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_eeH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_eeH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_eeH_Htautau_ecm240':{'chunks':20},
+        # ee Backgrounds
+        'wzp6_ee_eeH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_eeH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_eeH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_eeH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_eeH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_eeH_Htautau_ecm240':{'chunks':100},
 
 
-        # # mumu Backgrounds
-        # 'wzp6_ee_mumuH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_Htautau_ecm240':{'chunks':20},
+        # mumu Backgrounds
+        'wzp6_ee_mumuH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_Htautau_ecm240':{'chunks':100},
 
-        # # tautau Backgrounds
-        # 'wzp6_ee_tautauH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_Htautau_ecm240':{'chunks':20},
+        # tautau Backgrounds
+        'wzp6_ee_tautauH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_Htautau_ecm240':{'chunks':100},
 
-        # # nunu Backgrounds
-        # 'wzp6_ee_nunuH_Hbb_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Hcc_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Hdd_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Hgg_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Hmumu_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Hss_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Htautau_ecm240':{'chunks':20},
-        # 'wzp6_ee_nunuH_Huu_ecm240':{'chunks':20},
+        # nunu Backgrounds
+        'wzp6_ee_nunuH_Hbb_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Hcc_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Hdd_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Hgg_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Hmumu_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Hss_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Htautau_ecm240':{'chunks':100},
+        'wzp6_ee_nunuH_Huu_ecm240':{'chunks':100},
 
-        # # ZZ Backgrounds
+        # ZZ Backgrounds
         'wzp6_ee_eeH_HZZ_ecm240':{},
-        # 'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':20},
-        # 'wzp6_ee_qqH_HZZ_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':20},
+        'wzp6_ee_mumuH_HZZ_ecm240':{'chunks':100},
+        'wzp6_ee_qqH_HZZ_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_HZZ_ecm240':{'chunks':100},
 
-        # # WW Backgrounds
-        # 'wzp6_ee_eeH_HWW_ecm240':{'chunks':20},
-        # 'wzp6_ee_mumuH_HWW_ecm240':{'chunks':20},
-        # 'wzp6_ee_qqH_HWW_ecm240':{'chunks':20},
-        # 'wzp6_ee_tautauH_HWW_ecm240':{'chunks':20},
+        # WW Backgrounds
+        'wzp6_ee_eeH_HWW_ecm240':{'chunks':100},
+        'wzp6_ee_mumuH_HWW_ecm240':{'chunks':100},
+        'wzp6_ee_qqH_HWW_ecm240':{'chunks':100},
+        'wzp6_ee_tautauH_HWW_ecm240':{'chunks':100},
 
-        # # Other
-        #'p8_ee_WW_ecm240':{'chunks':100},
-        #'p8_ee_ZZ_ecm240':{'chunks':100},
+        # Other
+        'p8_ee_WW_ecm240':{'chunks':100},
+        'p8_ee_ZZ_ecm240':{'chunks':100},
 }
 
 #/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/custom_process/
@@ -108,8 +108,8 @@ prodTag     = "FCCee/winter2023/IDEA/"
 
 #Optional: output directory, default is local dir
 # outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-# outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/new_repo_test/"
-#outputDir = "R15/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/track_test/"
+#outputDir = "R04/"
 
 
 
@@ -117,7 +117,7 @@ prodTag     = "FCCee/winter2023/IDEA/"
 nCPUS       = 8
 
 #Optional running on HTCondor, default is False
-runBatch    = False
+runBatch    = True
 
 userBatchConfig = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/user_config.sh"
 
@@ -127,33 +127,6 @@ batchQueue = "nextweek"
 #Optional computing account when running on HTCondor, default is group_u_FCC.local_gen
 compGroup = "group_u_FCC.local_gen"
 
-#USER DEFINED CODE
-# ROOT.gInterpreter.Declare("""
-# #include <cmath>
-# #include <vector>
-# #include <math.h>
-
-# #include "TLorentzVector.h"
-# #include "ROOT/RVec.hxx"
-# #include "edm4hep/ReconstructedParticleData.h"
-# #include "edm4hep/MCParticleData.h"
-# #include "edm4hep/ParticleIDData.h"
-# #include "ReconstructedParticle2MC.h"
-# #include "VertexingUtils.h"
-
-                          
-# using Vec_b = ROOT::VecOps::RVec<bool>;
-# using Vec_d = ROOT::VecOps::RVec<double>;
-# using Vec_f = ROOT::VecOps::RVec<float>;
-# using Vec_i = ROOT::VecOps::RVec<int>;
-# using Vec_ui = ROOT::VecOps::RVec<unsigned int>;
-
-# using rp = edm4hep::ReconstructedParticleData;
-# using Vec_rp = ROOT::VecOps::RVec<edm4hep::ReconstructedParticleData>;
-# using Vec_mc = ROOT::VecOps::RVec<edm4hep::MCParticleData>;
-# using Vec_tlv = ROOT::VecOps::RVec<TLorentzVector>;
-# """)
-# #END USER DEFINED CODE
 
 #Mandatory: RDFanalysis class where the use defines the operations on the TTree
 class RDFanalysis():
@@ -171,11 +144,16 @@ class RDFanalysis():
             # number of tracks
             .Define("n_tracks","ReconstructedParticle2Track::getTK_n(EFlowTrack_1)")
 
+            # select tracks with pT > 1 GeV
+            .Define('sel_tracks_pt', 'VertexingUtils::sel_pt_tracks(1)(EFlowTrack_1)')
+            # select tracks with |d0 |> 2 mm
+            .Define('sel_tracks', 'VertexingUtils::sel_d0_tracks(2)(sel_tracks_pt)')
+
             # Number of Jets
             .Define("n_jets", "ReconstructedParticle::get_n(Jet)")
 
             # all track impact parameters
-            .Define("track_p","ReconstructedParticle2Track::getRP2TRK_mom (ReconstructedParticles,EFlowTrack_1)")
+            .Define("track_p","ReconstructedParticle2Track::getRP2TRK_mom (ReconstructedParticles,sel_tracks)")
             .Define("track_d0","ReconstructedParticle2Track::getRP2TRK_D0 (ReconstructedParticles,EFlowTrack_1)")
             .Define("track_z0","ReconstructedParticle2Track::getRP2TRK_Z0 (ReconstructedParticles,EFlowTrack_1)")
             .Define("track_d0cov","ReconstructedParticle2Track::getRP2TRK_D0_cov (ReconstructedParticles,EFlowTrack_1)")
