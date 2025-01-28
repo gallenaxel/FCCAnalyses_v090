@@ -278,7 +278,7 @@ def runPlots(var, sel, param, hsignal, hbackgrounds, extralab, splitLeg,
     except AttributeError:
         LOGGER.debug('No scale signal, using 1.')
         param.scaleSig = scaleSig
-    ylabel = 'Events'
+    ylabel = 'DVs'
     if 'AAAyields' in var:
         drawStack(var, ylabel, leg, lt, rt, param.formats,
                   param.outdir+"/"+sel, False, True, histos, colors,
@@ -460,7 +460,7 @@ def runPlotsHistmaker(hName, param, plotCfg):
 def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
               logY, stacksig, histos, colors, ana_tex, extralab, scaleSig,
               customLabel, nsig, nbkg, legend2=None, yields=None,
-              plotStatUnc=False, xmin=-1, xmax=8, ymin=0.01, ymax=100000000000,
+              plotStatUnc=False, xmin=-1, xmax=-1, ymin=0.1, ymax=10000,
               xtitle=""):
 
     canvas = ROOT.TCanvas(name, name, 800, 800)
@@ -646,10 +646,10 @@ def drawStack(name, ylabel, legend, leftText, rightText, formats, directory,
     latex.SetTextSize(0.032)
     latex.DrawLatex(0.18, 0.76, text)
 
-    # otherlab = r"N_{trk} > 2, m_{ch} > 2 GeV"
-    # text = '#bf{' + otherlab + '}'
-    # latex.SetTextSize(0.032)
-    # latex.DrawLatex(0.18, 0.71, text)
+    otherlab = r"N_{trk} \geq 3, m_{ch} > 2 GeV"
+    text = '#bf{' + otherlab + '}'
+    latex.SetTextSize(0.032)
+    latex.DrawLatex(0.18, 0.71, text)
 
     text = '#bf{#it{' + 'Signal scale=' + str(scaleSig)+'}}'
     latex.SetTextSize(0.025)

@@ -24,16 +24,16 @@ variables = [
     # "n_tracks",
     # "n_RecoedPrimaryTracks",
     # "n_seltracks_DVs",
-    "n_DV_fullsel",
+    # "n_DV_fullsel",
     
-    'n_trks_seltracks_DVs',
+    #'n_trks_seltracks_DVs',
     # 'n_trks_2tracks_DVs',
     
     # "DV_evt_seltracks_normchi2",
     #"DV_evt_gt2tracks_normchi2",
 
     # 'invMass_seltracks_DVs',
-    'invMass_gt2tracks_DVs',
+    #'invMass_gt2tracks_DVs',
     # "invMass_seltracks_DVs_zoom",
 
     "Reco_gt2tracksgt2GeVmass_DVs_Lxyz",
@@ -41,8 +41,8 @@ variables = [
     #"Reco_seltracks_DVs_Lxyz_02000",
     #"Reco_seltracks_DVs_Lxyz_zoom",
 
-    "isoReco_ee_invMass",
-    "isoReco_mumu_invMass",
+    # "isoReco_ee_invMass",
+    # "isoReco_mumu_invMass",
 
     # 'n_RecoElectrons',
     # 'n_RecoMuons',
@@ -67,7 +67,7 @@ selections['ExoticHiggs']  = [
 extralabel = {}
 extralabel['selNone'] = ""
 extralabel['only_exactly_two_leptons'] = r"e^{+}e^{-} selection"
-extralabel['Z-mass'] = r"Final event selection"
+extralabel['Z-mass'] = r"Event pre-selection,"
 extralabel['detector-volume'] = r"Event pre-selection"
 extralabel["ntracks"] = r"Event pre-selection, N_{trk} \geq 3"
 extralabel["DV_invMass"] = r"Event pre-selection"
