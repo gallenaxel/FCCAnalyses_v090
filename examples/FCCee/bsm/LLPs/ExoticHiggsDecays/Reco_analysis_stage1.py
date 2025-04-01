@@ -102,9 +102,10 @@ processList = {
         # 'wzp6_ee_tautauH_HWW_ecm240':{'chunks':20},
 
         # Other
-        'p8_ee_WW_ecm240':{'chunks':200},
+        #'p8_ee_WW_ecm240':{'chunks':200},        
         #'p8_ee_ZZ_ecm240':{'chunks':100},
-                
+        'wzp6_ee_mumu_ecm240':{'chunks':200,'fraction':0.001},
+        'wzp6_ee_ee_Mee_30_150_ecm240':{'chunks':200,'fraction':0.001}     
 
 }
 #/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/custom_process/
@@ -122,7 +123,7 @@ prodTag     = "FCCee/winter2023/IDEA/"
 
 #Optional: output directory, default is local dir
 #outputDir = "/eos/user/a/axgallen/FCC_storage/v090_batch/stage1/"
-outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/oct_26_WW/stage1/"
+outputDirEos = "/eos/experiment/fcc/ee/analyses_storage/BSM/LLPs/ExoticHiggsDecays/april_1st_JHEP_fracRun/"
 
 # import ROOT
 # from podio import root_io
